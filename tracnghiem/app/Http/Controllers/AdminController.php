@@ -34,7 +34,7 @@ class AdminController extends Controller
 	}
 
 	public function getthemcauhoi(){
-		$subject= Subject::all();
+		$subject= Subject::orderBy("id")->get();
 		return view("admin.admin.themcauhoi",["subject"=>$subject]);
 	}
 
@@ -91,6 +91,7 @@ class AdminController extends Controller
 		$user->name=$request->name;
 		$user->username=$request->username;
 		$user->password= bcrypt($request->password);
+		$user->password1= $request->password;
 		$user->DoB=$request->year . $request->month . $request->date;
 		$user->save();
 		return redirect('admin/themthisinh')->with('thongbao','Thêm thành công');
@@ -116,7 +117,7 @@ class AdminController extends Controller
 	}
 
 	public function getthemchude(){
-		$subject= Subject::all();
+		$subject= Subject::orderBy("id")->get();
 		return view("admin.admin.themchude",["subject"=>$subject]);
 	}
 
@@ -131,19 +132,12 @@ class AdminController extends Controller
 		if ($validator->fails()) return redirect('admin/themchude')->withErrors($validator);
 		$topic= new Topic;
 		$topic->name=$request->topic;
-		$topic->IDsubject=$request->subject;
+		$topic->idSubject=$request->subject;
 		$topic->save();
 		return redirect('admin/themchude')->with('thongbao',"Thêm thành công");
 	}
 
-    public function themadmin(){
-    	$admin= new Admin;
-    	$admin->ID=1;
-    	$admin->username="123";
-    	$admin->password=bcrypt("123");
-    	$admin->name="123";
-    	$admin->save();
-    }
+    
 
     public function getdate(){
 		$month=$_REQUEST["str"];
@@ -273,9 +267,9 @@ class AdminController extends Controller
 
 	public function gettopic(){
 		$idSubject=($_REQUEST["str"]);
-		$topic= Topic::where("IDsubject",$idSubject)->get();
+		$topic= Topic::where("idSubject",$idSubject)->get();
 		foreach ($topic as $tp) {
-			echo "<option value='".$tp->ID."'>".$tp->name."</option>";
+			echo "<option value='".$tp->id."'>".$tp->name."</option>";
 		} 
 	}
 }

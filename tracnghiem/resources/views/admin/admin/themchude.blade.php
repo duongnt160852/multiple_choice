@@ -103,7 +103,7 @@
                                                     Môn thi
                                                     <select class="form-control" name="subject">
                                                         @foreach($subject as $su)
-                                                            <option value="{{$su->ID}}">{{$su->name}}</option>
+                                                            <option value="{{$su->id}}">{{$su->name}}</option>
                                                         @endforeach
                                                     </select> 
                                                 </div> 

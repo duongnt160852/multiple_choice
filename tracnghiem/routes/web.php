@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get("themadmin","LoginController@themadmin");
+
 Route::get("admin/login","LoginController@getLogin")->name('login');
 
 Route::post("admin/login","LoginController@postLogin");
@@ -48,7 +50,7 @@ Route::group(["prefix"=>"admin" ,"middleware"=>"auth:admin"],function(){
 
 	Route::post("themchude","AdminController@postthemchude");
 
-	Route::get("themadmin","AdminController@themadmin");
+	
 
 	Route::get("test",function(){
 		return view('test');

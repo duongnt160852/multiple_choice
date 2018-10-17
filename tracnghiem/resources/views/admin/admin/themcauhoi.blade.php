@@ -104,7 +104,7 @@
                                                     </div>
                                                     <select class="form-control" id="subject" onchange="change(this.value)">
                                                         @foreach($subject as $su)
-                                                            <option value="{{$su->ID}}">{{$su->name}}</option>}
+                                                            <option value="{{$su->id}}">{{$su->name}}</option>}
                                                         @endforeach
                                                     </select> 
                                                 </div> 
