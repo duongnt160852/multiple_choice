@@ -1,5 +1,6 @@
-    @if (Auth::guard('admin')->check())
-        {{"123"}}
-       @else 
-       {{"321"}}
-    @endif
+@extends('admin.layout.index')
+@section('content')
+	<div>
+		<span class="math-text">{{$question->comment}}</span>
+	</div>
+@endsection

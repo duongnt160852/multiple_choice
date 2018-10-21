@@ -75,6 +75,8 @@
 	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 	<script src="assets/js/demo.js"></script>
 
+    <script type="text/javascript" language="javascript" src="ckeditor/ckeditor.js" ></script>
+
 	<script type="text/javascript">
     	$(document).ready(function(){
 

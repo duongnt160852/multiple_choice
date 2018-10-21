@@ -38,4 +38,9 @@ class TopicController extends Controller
 		$topic->save();
 		return redirect('admin/topic/add')->with('thongbao',"Thêm thành công");
 	}
+
+	public function test(){
+		$question=Question::find(29);
+		return view("test",['question'=>$question]);
+	}
 }

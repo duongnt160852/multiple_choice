@@ -7,7 +7,7 @@
                                 <h4 class="title">Thí Sinh Mới</h4>
                             </div>
                             <div class="content">
-                                <form action="admin/themcauhoi" method="post">
+                                <form action="admin/question/add" method="post">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                     <div class="form-group">
                                         @if(count($errors)>0)
@@ -25,7 +25,7 @@
                                                     <div>
                                                         <label>Môn thi</label>
                                                     </div>
-                                                    <select class="form-control" id="subject" onchange="change(this.value)">
+                                                    <select class="form-control" id="subject1" name="subject">
                                                         @foreach($subject as $su)
                                                             <option value="{{$su->id}}">{{$su->name}}</option>}
                                                         @endforeach
@@ -116,7 +116,7 @@
                                                    <div class="col-xs-12 col-md-12">
                                                     <label>Giải thích</label>
                                                     <div>
-                                                        <textarea name="comment" rows='5' cols='160' ></textarea >
+                                                        <textarea name="comment" rows='5' cols='160' id="demo" class="ckeditor"></textarea >
                                                     </div>
                                                 </div> 
                                         </div>
@@ -135,30 +135,21 @@
     <script>
         $('#questionAdd').addClass("active");
         $("tittle").html("Thêm câu hỏi");
-        var str=document.getElementById("subject").value;
-        var xmlhttp= new XMLHttpRequest();
-            xmlhttp.onreadystatechange= function(){
-                if (this.status==200 && this.readyState==4){
-                    document.getElementById("topic").innerHTML=this.responseText;
-                }    
-            };
-            xmlhttp.open("GET","admin/ajax/gettopic?str="+str, true);
-            xmlhttp.send();
-        function change(str){
-            var xmlhttp= new XMLHttpRequest();
-            xmlhttp.onreadystatechange= function(){
-                if (this.status==200 && this.readyState==4){
-                    document.getElementById("topic").innerHTML=this.responseText;
-                }    
-            };
-            xmlhttp.open("GET","admin/ajax/gettopic?str="+str, true);
-            xmlhttp.send();
-        }
     </script>
     <script>
         $(document).ready(function(){
             $("#questionList").css("display","block");
             $("#questionAdd").css("display","block");
-        });
+
+            $.get("admin/ajax/gettopic?str="+$('#subject1').val(),function(data){
+                $('#topic').html(data);
+            });
+
+            $('#subject1').change(function(){
+                $.get("admin/ajax/gettopic?str="+$('#subject1').val(),function(data){
+                    $('#topic').html(data);
+                });
+                });
+            });
     </script>
 @endsection
