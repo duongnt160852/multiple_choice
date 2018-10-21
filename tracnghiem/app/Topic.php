@@ -10,6 +10,6 @@ class Topic extends Model
     public $timestamps=false;
 
     public function subject(){
-    	return $this->belongsToMany('Subject','IDsubject','ID');
+    	return $this->belongsTo('App\Subject','idSubject','id');
     }
 }

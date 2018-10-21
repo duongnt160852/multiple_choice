@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth as Auth;
 class LoginController extends Controller
 {
     public function getLogin(){
-    	return view("admin/admin/dangnhap");
+    	return view("admin/admin/login");
     }
 
     public function logout(){
@@ -18,7 +18,7 @@ class LoginController extends Controller
     }
     public function postLogin(Request $request){
     	if (Auth::guard('admin')->attempt(["username"=>$request->username, "password"=>$request->password])){
-    		return redirect()->route('trangchu');
+    		return redirect()->route('home');
     	}
     	return redirect()->back();
     }

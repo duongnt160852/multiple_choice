@@ -6,7 +6,9 @@ create table admins (
 	id int(10) unsigned not null auto_increment primary key,
 	name varchar(255) not null,
     username varchar(255) not null unique,
-    password varchar(255) not null
+    password varchar(255) not null,
+	remember_token varchar(100) 
+
 )ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -38,13 +40,16 @@ create table questions(
 )ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 create table exams(
-	id int(10) unsigned not null auto_increment,
+idOrder int(10) unsigned not null auto_increment primary key,
+	id int(10) unsigned not null,
     code int(10) unsigned not null,
     idQuestion int(10) unsigned not null,
+idTopic int(10) unsigned not null,
     name varchar(255) not null,
 	time int not null,
-	primary key(id,code,idQuestion),
-    foreign key(idQuestion) references questions(id)
+unique(id,code,idQuestion),
+    foreign key(idQuestion) references questions(id),
+foreign key(idTopic) references questions(idTopic)
 )ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 create table users(
@@ -62,6 +67,7 @@ create table users(
     mark float null default null,
     idExam int(10) unsigned not null,
     code int(10) unsigned not null,
+remember_token varchar(100),
     foreign key(idExam,code) references exams(id,code)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
     

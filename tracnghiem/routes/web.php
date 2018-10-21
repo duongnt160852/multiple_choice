@@ -24,39 +24,40 @@ Route::post("admin/login","LoginController@postLogin");
 Route::get("admin/logout","LoginController@logout")->name('logout');
 
 Route::group(["prefix"=>"admin" ,"middleware"=>"auth:admin"],function(){
-	Route::get("trangchu","AdminController@trangchu")->name("trangchu");
-
-	Route::get("quanlycauhoi","AdminController@quanlycauhoi");
-
-	Route::get("quanlythisinh","AdminController@quanlythisinh");
-
+	Route::group(["prefix"=>"question"],function(){
+		Route::get("list","QuestionController@list");
+		Route::get("add","QuestionController@getAdd");
+		Route::post("add","QuestionController@postAdd");
+		Route::get("edit/{id}","QuestionController@getEdit");
+		Route::post("edit/{id}","QuestionController@postEdit");
+	});
+	Route::group(["prefix"=>"user"],function(){
+		Route::get("list","UserController@list");
+		Route::get("add","UserController@getAdd");
+		Route::post("add","UserController@postAdd")->name('themthisinh');
+	});
+	Route::group(["prefix"=>"subject"],function(){
+		Route::get("list","SubjectController@list");
+		Route::get("add","SubjectController@getAdd");
+		Route::post("add","SubjectController@postAdd");
+		Route::get("edit/{id}","SubjectController@getEdit");
+		Route::post("edit/{id}","SubjectController@postEdit");
+	});
+	Route::group(["prefix"=>"topic"],function(){
+		Route::get("add","TopicController@getAdd");
+		Route::post("add","TopicController@postAdd");
+	});
+	Route::group(["prefix"=>"exam"],function(){
+		Route::get("add","ExamController@getAdd");
+		Route::post("add","ExamController@postAdd");
+	});
+	Route::group(["prefix"=>"ajax"],function(){
+		Route::get("getdate","AjaxController@getDate");
+		Route::get("gettopic","AjaxController@getTopic");
+		Route::get("getexam","AjaxController@getExam");
+	});
+	Route::get("home","AdminController@home")->name("home");
 	Route::get("taikhoan","AdminController@taikhoan");
-
-	Route::get("themcauhoi","AdminController@getthemcauhoi");
-
-	Route::post("themcauhoi","AdminController@postthemcauhoi");
-
 	Route::get("thongbao","AdminController@thongbao");
-
-	Route::get("themthisinh","AdminController@themthisinh");
-
-	Route::post("themthisinh","AdminController@postthemthisinh")->name('themthisinh');
-
-	Route::get("themmonthi","AdminController@getthemmonthi");
-
-	Route::post("themmonthi","AdminController@postthemmonthi");
-
-	Route::get("themchude","AdminController@getthemchude");
-
-	Route::post("themchude","AdminController@postthemchude");
-
-	
-
-	Route::get("test",function(){
-		return view('test');
-	})->name('test');
-
-	Route::get("ajax/getdate","AdminController@getdate");
-
-	Route::get("ajax/gettopic","AdminController@gettopic");
 });
+	Route::get("test","TopicController@test");

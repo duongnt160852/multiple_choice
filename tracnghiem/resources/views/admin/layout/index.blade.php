@@ -7,7 +7,7 @@
 	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	@yield('title')
+	<title></title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -26,17 +26,17 @@
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="css/demo.css" rel="stylesheet" />
 
-
     <!--  Fonts and icons     -->
     {{-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet"> --}}
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/themify-icons.css" rel="stylesheet">
 
+
 </head>
 <body>
 
 <div class="wrapper">
-    @yield('menu')
+    @include('admin.layout.menu')
 
     <div class="main-panel">
         
@@ -82,7 +82,7 @@
 
         	$.notify({
             	icon: 'ti-gift',
-            	message: "Welcome to <b>Paper Dashboard</b> - a beautiful Bootstrap freebie for your next project."
+            	message: "Welcome"
 
             },{
                 type: 'success',
@@ -91,6 +91,35 @@
 
     	});
 	</script>
+
+    <script>
+        $(document).ready(function(){
+            $('#user').click(function(){
+                $('#questionList').css("display","none");
+                $('#questionAdd').css("display","none");
+                $('#subjectList').css("display","none");
+                $('#subjectAdd').css("display","none");
+                $('#userList').slideToggle("fast");
+                $('#userAdd').slideToggle("fast");
+            });
+            $('#question').click(function(){
+                $('#userList').css("display","none");
+                $('#userAdd').css("display","none");
+                $('#subjectList').css("display","none");
+                $('#subjectAdd').css("display","none");
+                $('#questionList').slideToggle("fast");
+                $('#questionAdd').slideToggle("fast");
+            });
+            $('#subject').click(function(){
+                $('#questionList').css("display","none");
+                $('#questionAdd').css("display","none");
+                $('#userList').css("display","none");
+                $('#userAdd').css("display","none");
+                $('#subjectList').slideToggle("fast");
+                $('#subjectAdd').slideToggle("fast");
+            })
+        });
+    </script>
 
     @yield('script')
 
