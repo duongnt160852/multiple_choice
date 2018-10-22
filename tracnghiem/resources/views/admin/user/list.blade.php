@@ -15,9 +15,7 @@
                                         <th>Họ Tên</th>
                                         <th>MSDT</th>
                                         <th>Email</th>
-                                        <th>SDT</th>
-                                        <th>Giới Tính</th>
-                                        <th>Địa Chỉ</th>
+                                        <th>Ngày Sinh</th>
                                         <th>Trạng Thái</th>
                                         <th>Sửa</th>
                                         <th>Xóa</th>
@@ -29,9 +27,7 @@
                                             <td>{{$us->name}}</td>
                                             <td>{{$us->username}}</td>
                                             <td>{{$us->email}}</td>
-                                            <td>{{$us->phone_number}}</td>
-                                            <td>{{$us->sex}}</td>
-                                            <td>{{$us->address}}</td>
+                                            <td>{{$us->DoB}}</td>
                                             <td>@if($us->status=="0")
                                                     {{"chưa thi"}}
                                                 @else($us->status=="1")
@@ -47,7 +43,9 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-
+                            <div class="text-center">
+                                {!! $user->links() !!}
+                            </div>
                             </div>
                         </div>
                     </div>

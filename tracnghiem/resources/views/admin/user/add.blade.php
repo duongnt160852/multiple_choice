@@ -102,7 +102,7 @@
                                                     <div>
                                                         <label>Chủ đề</label>
                                                     </div>
-                                                    <select class="form-control border-input" id="topic" name="topic">
+                                                    <select class="form-control border-input" id="topic1" name="topic">
                                                     </select> 
                                                 </div> 
                                                 <div class="col-xs-3 col-md-3">
@@ -139,23 +139,23 @@
     <script>       
         $(document).ready(function(){
         	$.get("admin/ajax/gettopic?str="+$('#subject1').val(),function(data){
-                $('#topic').html(data);
-                $.get("admin/ajax/getexam?str="+$('#topic').val(),function(data){
+                $('#topic1').html(data);
+                $.get("admin/ajax/getexam?str="+$('#topic1').val(),function(data){
                     $('#exam').html(data);
                 });
             });
 
             $('#subject1').change(function(){
                 $.get("admin/ajax/gettopic?str="+$('#subject1').val(),function(data){
-                    $('#topic').html(data);
-                    $.get("admin/ajax/getexam?str="+$('#topic').val(),function(data){
+                    $('#topic1').html(data);
+                    $.get("admin/ajax/getexam?str="+$('#topic1').val(),function(data){
                     $('#exam').html(data);
                 });
                 });
             });
 
-            $('#topic').change(function(){
-                $.get("admin/ajax/getexam?str="+$('#topic').val(),function(data){
+            $('#topic1').change(function(){
+                $.get("admin/ajax/getexam?str="+$('#topic1').val(),function(data){
                     $('#exam').html(data);
                 });
             });

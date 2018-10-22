@@ -46,10 +46,13 @@ Route::group(["prefix"=>"admin" ,"middleware"=>"auth:admin"],function(){
 	Route::group(["prefix"=>"topic"],function(){
 		Route::get("add","TopicController@getAdd");
 		Route::post("add","TopicController@postAdd");
+		Route::get("list","TopicController@list");
 	});
 	Route::group(["prefix"=>"exam"],function(){
 		Route::get("add","ExamController@getAdd");
 		Route::post("add","ExamController@postAdd");
+		Route::get('list','ExamController@list');
+		Route::get('view/{id?}','ExamController@view');
 	});
 	Route::group(["prefix"=>"ajax"],function(){
 		Route::get("getdate","AjaxController@getDate");
@@ -57,6 +60,7 @@ Route::group(["prefix"=>"admin" ,"middleware"=>"auth:admin"],function(){
 		Route::get("getexam","AjaxController@getExam");
 	});
 	Route::get("home","AdminController@home")->name("home");
+	Route::get("/","AdminController@home");
 	Route::get("taikhoan","AdminController@taikhoan");
 	Route::get("thongbao","AdminController@thongbao");
 });

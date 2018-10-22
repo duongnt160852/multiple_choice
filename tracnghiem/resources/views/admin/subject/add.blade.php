@@ -25,7 +25,7 @@
                                                     <div>
                                                          Môn thi
                                                      </div> 
-                                                     <input class="form-control" type="text" name="name" value="" placeholder="Môn thi mới" size="45px" required="">
+                                                     <input class="form-control border-input" type="text" name="name" value="" placeholder="Môn thi mới" size="45px" required="">
                                                 </div>
                                             </div>
                                     <div class="text-center">

@@ -18,6 +18,17 @@ class ExamController extends Controller
     public function __construct(){
         $this->middleware('auth:admin');
     }
+
+    public function list(){
+        $exam=Exam::groupBy('id')->get();
+        return view("admin.exam.list",["exam"=>$exam]);
+    }
+
+    public function view($id){
+        $exam=Exam::where([["id","=",$id],["code","=","1"]])->orderBy('idOrder')->get();
+        return view("admin.exam.view",["exam"=>$exam]);
+    }
+
     public function getAdd(){
     	$subject=Subject::orderBy('id')->get();
     	return view("admin.exam.add",["subject"=>$subject]);

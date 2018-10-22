@@ -25,7 +25,7 @@
                                                     <div>
                                                         <label>Môn thi</label>
                                                     </div>
-                                                    <select class="form-control" id="subject1" name="subject">
+                                                    <select class="form-control border-input" id="subject1" name="subject">
                                                         @foreach($subject as $su)
                                                             <option value="{{$su->id}}">{{$su->name}}</option>}
                                                         @endforeach
@@ -35,14 +35,14 @@
                                                     <div>
                                                         <label>Chủ đề</label>
                                                     </div>
-                                                    <select class="form-control" id="topic" name="topic">
+                                                    <select class="form-control border-input" id="topic1" name="topic">
                                                     </select> 
                                                 </div> 
                                                 <div class="col-xs-4 col-md-4">
                                                     <div>
                                                        <label>Độ khó</label>
                                                     </div>
-                                                    <select class="form-control" name="level">
+                                                    <select class="form-control border-input" name="level">
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
                                                         <option value="3">3</option>
@@ -55,7 +55,9 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Câu Hỏi</label>
-                                                <input type="text" class="form-control border-input" placeholder="Câu hỏi" required="" name="question">
+                                                <div>
+                                                        <textarea name="question" rows='5' cols='160' id="demo" class="ckeditor" required=""></textarea >
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -63,7 +65,9 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Đáp Án A</label>
-                                                <input type="text" class="form-control border-input" placeholder="Đáp án A" required="" name="A">
+                                                <div>
+                                                        <textarea name="A" rows='5' cols='160' id="demo" class="ckeditor" required=""></textarea >
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -71,7 +75,9 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Đáp Án B</label>
-                                                <input type="text" class="form-control border-input" placeholder="Đáp án B" required="" name="B">
+                                                <div>
+                                                        <textarea name="B" rows='5' cols='160' id="demo" class="ckeditor" required=""></textarea >
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -79,7 +85,9 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Đáp Án C</label>
-                                                <input type="text" class="form-control border-input" placeholder="Đáp án C" required="" name="C">
+                                                <div>
+                                                        <textarea name="C" rows='5' cols='160' id="demo" class="ckeditor" required=""></textarea >
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -87,7 +95,9 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Đáp Án D</label>
-                                                <input type="text" class="form-control border-input" placeholder="Đáp án D" required="" name="D">
+                                                <div>
+                                                        <textarea name="D" rows='5' cols='160' id="demo" class="ckeditor" required=""></textarea >
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -142,12 +152,12 @@
             $("#questionAdd").css("display","block");
 
             $.get("admin/ajax/gettopic?str="+$('#subject1').val(),function(data){
-                $('#topic').html(data);
+                $('#topic1').html(data);
             });
 
             $('#subject1').change(function(){
                 $.get("admin/ajax/gettopic?str="+$('#subject1').val(),function(data){
-                    $('#topic').html(data);
+                    $('#topic1').html(data);
                 });
                 });
             });

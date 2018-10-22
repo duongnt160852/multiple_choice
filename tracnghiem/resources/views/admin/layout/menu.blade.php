@@ -1,4 +1,4 @@
-<div class="sidebar" data-background-color="white" data-active-color="danger">
+<div class="sidebar" data-background-color="black" data-active-color="danger">
 
     <!--
 		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
@@ -59,7 +59,7 @@
                 </li>
                 <li id="subject">
                     <a style="cursor: pointer;">
-                        <i class="ti-gallery"></i>
+                        <i class="ti-book"></i>
                         <p>Quản Lý Môn Thi</p>
                     </a>
                 </li>
@@ -73,15 +73,35 @@
                         <p>Thêm Môn Thi</p>
                     </a>
                 </li>
-                <li id="topicAdd">
+                <li id="topic">
+                    <a style="cursor: pointer;">
+                        <i class="ti-book"></i>
+                        <p>Quản Lý Chủ Đề</p>
+                    </a>
+                </li>
+                <li id="topicList" style="display:none; margin: 0px;position: relative;left: 47px;width: 212px">
+                    <a href="admin/topic/list">
+                        <p>Danh Sách Chủ Đề</p>
+                    </a>
+                </li>
+                <li id="topicAdd" style="display:none; margin: 0px;position: relative;left: 47px;width: 212px">
                     <a href="admin/topic/add">
-                        <i class="ti-plus"></i>
                         <p>Thêm Chủ Đề</p>
                     </a>
                 </li>
-                <li id="examAdd">
+                <li id="exam1">
+                    <a style="cursor: pointer;">
+                        <i class="ti-book"></i>
+                        <p>Quản Lý Đề Thi</p>
+                    </a>
+                </li>
+                <li id="examList" style="display:none; margin: 0px;position: relative;left: 47px;width: 212px">
+                    <a href="admin/exam/list">
+                        <p>Danh Sách Đề Thi</p>
+                    </a>
+                </li>
+                <li id="examAdd" style="display:none; margin: 0px;position: relative;left: 47px;width: 212px">
                     <a href="admin/exam/add">
-                        <i class="ti-plus"></i>
                         <p>Thêm Đề Thi</p>
                     </a>
                 </li>

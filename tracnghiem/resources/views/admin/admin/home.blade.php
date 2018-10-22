@@ -16,7 +16,7 @@
                                     <div class="col-xs-7">
                                         <div class="numbers">
                                             <p>Tổng Số Thí Sinh</p>
-                                            105GB
+                                            {{$count_user}}
                                         </div>
                                     </div>
                                 </div>
@@ -41,7 +41,7 @@
                                     <div class="col-xs-7">
                                         <div class="numbers">
                                             <p>Thí Sinh Đang Thi</p>
-                                            $1,345
+                                            {{$count_online}}
                                         </div>
                                     </div>
                                 </div>
@@ -184,5 +184,21 @@
     <script>
     $('#home').addClass("active");
     $("tittle").html("Trang chủ");
+    </script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+
+            demo.initChartist();
+
+            $.notify({
+                icon: 'ti-gift',
+                message: "Welcome to multiplechoice.com"
+
+            },{
+                type: 'success',
+                timer: 2000
+            });
+
+        });
     </script>
 @endsection

@@ -24,7 +24,7 @@
                                         <th>D</th>
                                         <th>Đáp Án</th>
                                         <th>Độ khó</th>
-                                        <th>ID Chủ Đề</th>
+                                        <th>Chủ Đề</th>
                                         <th>Sửa</th>
                                     </thead>
                                     <tbody>
@@ -38,13 +38,15 @@
                                             <td>{{$qt->D}}</td>
                                             <td>{{$qt->answer}}</td>
                                             <td>{{$qt->level}}</td>
-                                            <td>{{$qt->idTopic}}</td>
+                                            <td>{{$qt->topic->name}}</td>
                                             <td><a href="admin/question/edit/{{$qt->id}}"><img src="https://cdn1.iconfinder.com/data/icons/real-estate-set-2/512/21-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
                                         </tr> 
                                         @endforeach
                                     </tbody>
                                 </table>
-
+                            <div class="text-center">
+                                {!! $question->links() !!}
+                            </div>
                             </div>
                         </div>
                     </div>

@@ -20,7 +20,7 @@ class SubjectController extends Controller
 	}
 
 	public function list(){
-		$subject=Subject::orderBy('id')->get();
+		$subject=Subject::paginate(10);
 		return view("admin.subject.list",['subject'=>$subject]);
 	}
 

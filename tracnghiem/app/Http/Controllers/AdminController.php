@@ -17,7 +17,11 @@ class AdminController extends Controller
 	}
 
 	public function home(){
-		return view("admin.admin.home");
+		// $admin=auth::guard('admin')->user();
+		// $count=question::where('id',$admin->id)->count();
+		$count_user=User::all()->count();
+		$count_online=User::where("status","đang thi")->count();
+		return view("admin.admin.home",["count_user"=>$count_user,"count_online"=>$count_online]);
 	}
 
 	public function taikhoan(){

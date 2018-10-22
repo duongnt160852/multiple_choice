@@ -12,4 +12,8 @@ class Topic extends Model
     public function subject(){
     	return $this->belongsTo('App\Subject','idSubject','id');
     }
+
+    public function question(){
+    	return $this->hasMany('App\Question','id','idQuestion');
+    }
 }

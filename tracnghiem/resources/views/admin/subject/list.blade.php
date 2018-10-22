@@ -25,7 +25,9 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-
+                            <div class="text-center">
+                                {!! $subject->links() !!}
+                            </div>
                             </div>
                         </div>
                     </div>

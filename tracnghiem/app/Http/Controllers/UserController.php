@@ -16,7 +16,7 @@ class UserController extends Controller
 {
     //
     public function list(){
-		$user = User::orderBy("id","desc")->get();
+		$user = User::paginate(10);
 		return view("admin.user.list",["user"=>$user]);
 	}
 
@@ -47,6 +47,7 @@ class UserController extends Controller
 		$user= new User;
 		$user->name=$request->name;
 		$user->username=$request->username;
+		$user->email=$request->email;
 		$user->password= $request->password;	
 		$user->password1= $request->password1;
 		$user->DoB=$request->year . $request->month . $request->date;

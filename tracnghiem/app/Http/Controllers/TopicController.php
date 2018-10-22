@@ -39,8 +39,13 @@ class TopicController extends Controller
 		return redirect('admin/topic/add')->with('thongbao',"Thêm thành công");
 	}
 
+	public function list(){
+		$topic=Topic::paginate(10);
+		return view('admin.topic.list',['topic'=>$topic]);
+	}
+
 	public function test(){
-		$question=Question::find(29);
+		$question=Question::find(31);
 		return view("test",['question'=>$question]);
 	}
 }

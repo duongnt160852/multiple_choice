@@ -8,4 +8,8 @@ class Question extends Model
 {
     protected $table="questions";
     public $timestamps=false;
+
+    public function topic(){
+    	return $this->belongsTo('App\Topic','idTopic','id');
+    }
 }

@@ -24,7 +24,7 @@
                                         <div class="row"> 
                                                 <div class="col-xs-4 col-md-4">
                                                     Môn thi
-                                                    <select class="form-control" name="subject">
+                                                    <select class="form-control border-input" name="subject">
                                                         @foreach($subject as $su)
                                                             <option value="{{$su->id}}">{{$su->name}}</option>
                                                         @endforeach
@@ -36,7 +36,7 @@
                                                      <div>
                                                          Chủ đề 
                                                       </div> 
-                                                      <input class="form-control"type="text" name="topic" value="" placeholder="Chủ đề mới" size="42px" required="">
+                                                      <input class="form-control border-input" type="text" name="topic" value="" placeholder="Chủ đề mới" size="42px" required="">
                                                 </div> 
                                             </div>
                                     <div class="text-center">
@@ -51,7 +51,12 @@
 @endsection
 @section('script')
     <script>
-    $('#topicAdd').addClass("active");
-    $("tittle").html("Thêm chủ đề");
+        $(document).ready(function(){
+            $("#topicAdd").addClass('active');
+            $("#tittle").html('Thêm Chủ Đề');
+            $("#topicList").css("display","block");
+            $("#topicAdd").css("display","block");
+        });
     </script>
 @endsection
+

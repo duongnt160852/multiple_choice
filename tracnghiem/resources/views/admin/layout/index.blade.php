@@ -77,26 +77,19 @@
 
     <script type="text/javascript" language="javascript" src="ckeditor/ckeditor.js" ></script>
 
-	<script type="text/javascript">
-    	$(document).ready(function(){
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+</script>
 
-        	demo.initChartist();
 
-        	$.notify({
-            	icon: 'ti-gift',
-            	message: "Welcome"
-
-            },{
-                type: 'success',
-                timer: 4000
-            });
-
-    	});
-	</script>
 
     <script>
         $(document).ready(function(){
             $('#user').click(function(){
+                $('#examList').css("display","none");
+                $('#examAdd').css("display","none");
+                $('#topicList').css("display","none");
+                $('#topicAdd').css("display","none");
                 $('#questionList').css("display","none");
                 $('#questionAdd').css("display","none");
                 $('#subjectList').css("display","none");
@@ -105,6 +98,10 @@
                 $('#userAdd').slideToggle("fast");
             });
             $('#question').click(function(){
+                $('#examList').css("display","none");
+                $('#examAdd').css("display","none");
+                $('#topicList').css("display","none");
+                $('#topicAdd').css("display","none");
                 $('#userList').css("display","none");
                 $('#userAdd').css("display","none");
                 $('#subjectList').css("display","none");
@@ -113,13 +110,41 @@
                 $('#questionAdd').slideToggle("fast");
             });
             $('#subject').click(function(){
+                $('#examList').css("display","none");
+                $('#examAdd').css("display","none");
+                $('#topicList').css("display","none");
+                $('#topicAdd').css("display","none");
                 $('#questionList').css("display","none");
                 $('#questionAdd').css("display","none");
                 $('#userList').css("display","none");
                 $('#userAdd').css("display","none");
                 $('#subjectList').slideToggle("fast");
                 $('#subjectAdd').slideToggle("fast");
-            })
+            });
+            $('#topic').click(function(){
+                $('#examList').css("display","none");
+                $('#examAdd').css("display","none");
+                $('#questionList').css("display","none");
+                $('#questionAdd').css("display","none");
+                $('#userList').css("display","none");
+                $('#userAdd').css("display","none");
+                $('#subjectList').css("display","none");
+                $('#subjectAdd').css("display","none");
+                $('#topicList').slideToggle("fast");
+                $('#topicAdd').slideToggle("fast");
+            });
+            $('#exam1').click(function(){
+                $('#questionList').css("display","none");
+                $('#questionAdd').css("display","none");
+                $('#userList').css("display","none");
+                $('#userAdd').css("display","none");
+                $('#subjectList').css("display","none");
+                $('#subjectAdd').css("display","none");
+                $('#topicList').css("display","none");
+                $('#topicAdd').css("display","none");
+                $('#examList').slideToggle("fast");
+                $('#examAdd').slideToggle("fast");
+            });
         });
     </script>
 

@@ -60,7 +60,7 @@ create table users(
     DoB date not null,
     password varchar(255) not null,
     password1 varchar(255) not null,
-    status varchar(255) default 'chưa thi',
+    status varchar(255) default '0',
     time datetime null default null,
     count_true int null default null,
     total int null default null,

@@ -1,6 +1,18 @@
 @extends('admin.layout.index')
 @section('content')
 	<div>
-		<span class="math-text">{{$question->comment}}</span>
+		{!! $question->name !!}
+	</div>
+	<div>
+		{!! $question->A !!}
+	</div>
+	<div>
+		{!! $question->B !!}
+	</div>
+	<div>
+		{!! $question->C !!}
+	</div>
+	<div>
+		{!! $question->D !!}
 	</div>
 @endsection
