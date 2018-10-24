@@ -59,4 +59,5 @@ class UserController extends Controller
 		$user->save();
 		return redirect('admin/user/add')->with('thongbao','Thêm thành công');
 	}
+
 }

@@ -10,6 +10,7 @@ use App\Subject;
 use Validator;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth as Auth;
 class AdminController extends Controller
 {
 	public function __construct(){
@@ -31,4 +32,9 @@ class AdminController extends Controller
 	public function thongbao(){
 		return view("admin.admin.thongbao");
 	}
+
+	public function logout(){
+    	Auth::guard('admin')->logout();
+    	return redirect()->route('login');
+    }
 }

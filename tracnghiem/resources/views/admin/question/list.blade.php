@@ -31,11 +31,11 @@
                                         @foreach($question as $qt)
                                            <tr>
                                             <td>{{$qt->id}}</td>
-                                            <td>{{$qt->name}}</td>
-                                            <td>{{$qt->A}}</td>
-                                            <td>{{$qt->B}}</td>
-                                            <td>{{$qt->C}}</td>
-                                            <td>{{$qt->D}}</td>
+                                            <td>{!!$qt->name!!}</td>
+                                            <td>{!!$qt->A!!}</td>
+                                            <td>{!!$qt->B!!}</td>
+                                            <td>{!!$qt->C!!}</td>
+                                            <td>{!!$qt->D!!}</td>
                                             <td>{{$qt->answer}}</td>
                                             <td>{{$qt->level}}</td>
                                             <td>{{$qt->topic->name}}</td>

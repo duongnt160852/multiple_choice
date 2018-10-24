@@ -1,7 +1,7 @@
 @extends('admin.layout.index')
 @section('content')
 	<div>
-		{!! $question->name !!}
+		Câu 1: {!! $question->name !!}
 	</div>
 	<div>
 		{!! $question->A !!}

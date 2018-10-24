@@ -7,7 +7,7 @@
                                 <h4 class="title">Chủ Đề Mới</h4>
                             </div>
                             <div class="content">
-                                <form action="admin/themchude" method="post">
+                                <form action="admin/topic/add" method="post">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                                     <div class="form-group">

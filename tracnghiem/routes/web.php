@@ -12,16 +12,20 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('user/login');
 });
 
 Route::get("themadmin","LoginController@themadmin");
 
-Route::get("admin/login","LoginController@getLogin")->name('login');
+Route::get("admin/login","LoginController@getLoginAdmin")->name('login');
 
-Route::post("admin/login","LoginController@postLogin");
+Route::post("admin/login","LoginController@postLoginAdmin");
 
-Route::get("admin/logout","LoginController@logout")->name('logout');
+Route::get("login","LoginController@getLoginUser");
+
+Route::post("login","LoginController@postLoginUser");
+
+
 
 Route::group(["prefix"=>"admin" ,"middleware"=>"auth:admin"],function(){
 	Route::group(["prefix"=>"question"],function(){
@@ -52,7 +56,7 @@ Route::group(["prefix"=>"admin" ,"middleware"=>"auth:admin"],function(){
 		Route::get("add","ExamController@getAdd");
 		Route::post("add","ExamController@postAdd");
 		Route::get('list','ExamController@list');
-		Route::get('view/{id?}','ExamController@view');
+		Route::get('view/{id?}','ExamController@viewExam');
 	});
 	Route::group(["prefix"=>"ajax"],function(){
 		Route::get("getdate","AjaxController@getDate");
@@ -63,5 +67,14 @@ Route::group(["prefix"=>"admin" ,"middleware"=>"auth:admin"],function(){
 	Route::get("/","AdminController@home");
 	Route::get("taikhoan","AdminController@taikhoan");
 	Route::get("thongbao","AdminController@thongbao");
+	Route::get("logout","AdminController@logout")->name('logout');
+});
+
+Route::group(["prefix"=>"user","middleware"=>"auth"],function(){
+	Route::get("view","Controller@getView");
+	Route::post("view/{idExam}/{code}","Controller@postView");
+	Route::get("result/{count}/{total}/{answer}","Controller@getResult")->name("result");
+	Route::post("result/{count}/{total}/{answer}","Controller@postResult");
+	Route::get("answer/{answer}","Controller@answer")->name("answer");
 });
 	Route::get("test","TopicController@test");

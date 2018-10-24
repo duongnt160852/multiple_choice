@@ -7,7 +7,7 @@
                                 <h4 class="title">Thêm Đề Thi</h4>
                             </div>
                             <div class="content">
-                                <form action="admin/themdethi" method="post">
+                                <form action="admin/exam/add" method="post">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                     <div class="form-group">
                                         @if(count($errors)>0)

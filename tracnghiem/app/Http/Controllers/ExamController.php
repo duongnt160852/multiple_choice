@@ -24,7 +24,7 @@ class ExamController extends Controller
         return view("admin.exam.list",["exam"=>$exam]);
     }
 
-    public function view($id){
+    public function viewExam($id){
         $exam=Exam::where([["id","=",$id],["code","=","1"]])->orderBy('idOrder')->get();
         return view("admin.exam.view",["exam"=>$exam]);
     }
