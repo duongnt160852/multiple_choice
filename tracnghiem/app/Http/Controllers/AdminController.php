@@ -37,4 +37,10 @@ class AdminController extends Controller
     	Auth::guard('admin')->logout();
     	return redirect()->route('login');
     }
+
+    public function aaa(){
+    	$user=Auth::user();
+    	$user->status="2";
+    	$user->save();
+    }
 }

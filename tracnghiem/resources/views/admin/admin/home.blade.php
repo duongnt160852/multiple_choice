@@ -181,12 +181,11 @@
         </div>
 @endsection
 @section('script')
-    <script>
-    $('#home').addClass("active");
-    $("tittle").html("Trang chủ");
-    </script>
-        <script type="text/javascript">
+    <script type="text/javascript">
         $(document).ready(function(){
+            $('#home').addClass("active");
+
+            $('title').html("Trang chủ");
 
             demo.initChartist();
 

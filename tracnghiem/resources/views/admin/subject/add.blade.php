@@ -41,7 +41,7 @@
 @section('script')
     <script>
     $('#subjectAdd').addClass("active");
-    $("tittle").html("Thêm môn thi");
+    $("title").html("Thêm môn thi");
     </script>
     <script>
         $(document).ready(function(){

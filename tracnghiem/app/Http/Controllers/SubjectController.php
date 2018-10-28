@@ -20,7 +20,7 @@ class SubjectController extends Controller
 	}
 
 	public function list(){
-		$subject=Subject::paginate(10);
+		$subject=Subject::where("status",1)->paginate(10);
 		return view("admin.subject.list",['subject'=>$subject]);
 	}
 
@@ -53,5 +53,28 @@ class SubjectController extends Controller
         $subject->name=$request->subject;
         $subject->save();
         return redirect("admin/subject/edit/".$id)->with('thongbao',"Sửa Thành Công");
+	}
+
+	public function postDelete($id)
+	{
+		$subject=Subject::find($id);
+		$topic=Topic::where("idSubject",$id)->get();
+		foreach($topic as $value){
+			$exam=Exam::where("idTopic",$value->id)->get();
+			foreach ($exam as $value) {
+				$value->status=0;
+				$value->save();
+			}
+			$question=Question::where("idTopic",$id)->get();
+			foreach ($question as $value) {
+				$value->status=0;
+				$value->save();
+			}
+			$value->status=0;
+			$value->save();
+		}		
+		$subject->status=0;
+		$subject->save();
+    	return redirect("admin/subject/list")->with("thongbao","Xóa thành công");
 	}
 }

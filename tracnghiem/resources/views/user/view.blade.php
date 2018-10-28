@@ -33,7 +33,7 @@
 
 
 </head>
-<body>
+<body onbeforeunload="return myFunction()">
 
 <div class="wrapper">
     <div class="sidebar" data-background-color="white" data-active-color="danger">
@@ -113,7 +113,7 @@
 
         <div class="content">
             <div class="container">
-            <form action="user/view/{{$exam[0]->id}}/{{$exam[0]->code}}" method="post">
+            <form name="form1" action="user/view/{{$exam[0]->id}}/{{$exam[0]->code}}" method="post">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
             @for($i=0;$i<count($exam);$i++)
                 <div class="row">
@@ -210,8 +210,8 @@
     <script type="text/javascript" language="javascript" src="ckeditor/ckeditor.js" ></script>
 
     <script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
-</script>
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+    </script>
     <script>
     var target_date = new Date().getTime() + (1000*60*<?php echo $exam[0]->time ?>); // set the countdown date
     var hours, minutes, seconds; // variables for time units
@@ -236,12 +236,19 @@
 
         // format countdown string + set tag value
         countdown.innerHTML ="</span><span>" + hours + "</span>:<span>" + minutes + "</span>:<span>" + seconds + "</span>"; 
+        if (countdown.innerHTML =="<span>00</span>:<span>00</span>:<span>00</span>") {
+            document.form1.submit();
+        };
     }
 
     function pad(n) {
         return (n < 10 ? '0' : '') + n;
     }
-
-
     </script>
+    <script> 
+            window.onbeforeunload = function(e) { 
+                 
+                 return document.form1.submit();
+            }; 
+    </script> 
 </html>

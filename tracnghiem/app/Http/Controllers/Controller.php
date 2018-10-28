@@ -32,6 +32,14 @@ class Controller extends BaseController
     	for ($i = 1; $i <= $total ; $i++) {
     		$answer.= ($request->$i==null)?"0":$request->$i;
     	}
+        $dt = date('Y-m-d H:i:s');
+        $user=User::find(Auth::user()->id);
+        $user->status="2";
+        $user->time=$dt;
+        $user->count_true=$count;
+        $user->total=$total;
+        $user->mark=$count*1.0/$total;
+        $user->save();
     	return redirect()->route('result',[$count,$total,$answer]);
     }
 

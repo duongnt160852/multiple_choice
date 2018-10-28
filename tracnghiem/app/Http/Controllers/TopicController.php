@@ -40,12 +40,42 @@ class TopicController extends Controller
 	}
 
 	public function list(){
-		$topic=Topic::paginate(10);
+		$topic=Topic::where("status",1)->paginate(10);
 		return view('admin.topic.list',['topic'=>$topic]);
+	}
+
+	public function getEdit($id){
+		$topic=Topic::find($id);
+		return view('admin.topic.edit',['topic'=>$topic]);
+	}
+
+	public function postEdit(Request $request,$id){
+		$topic=Topic::find($id);
+        $topic->name=$request->topic;
+        $topic->save();
+        return redirect("admin/topic/edit/".$id)->with('thongbao',"Sửa Thành Công");
 	}
 
 	public function test(){
 		$question=Question::find(31);
 		return view("test",['question'=>$question]);
+	}
+
+	public function postDelete($id)
+	{
+		$topic=Topic::find($id);
+    	$exam=Exam::where("idTopic",$id)->get();
+    	foreach ($exam as $value) {
+    		$value->status=0;
+    		$value->save();
+    	}
+    	$question=Question::where("idTopic",$id);
+    	foreach ($question as $value) {
+    		$value->status=0;
+    		$value->save();
+    	}
+    	$topic->status=0;
+    	$topic->save();
+    	return redirect("admin/topic/list")->with("thongbao","Xóa thành công");
 	}
 }

@@ -16,7 +16,7 @@ class UserController extends Controller
 {
     //
     public function list(){
-		$user = User::paginate(10);
+		$user = User::where("status","!=","3")->paginate(10);
 		return view("admin.user.list",["user"=>$user]);
 	}
 
@@ -59,5 +59,26 @@ class UserController extends Controller
 		$user->save();
 		return redirect('admin/user/add')->with('thongbao','Thêm thành công');
 	}
+
+	public function getEdit($id){
+        $user=User::find($id);
+		return view("admin.user.edit",['user'=>$user]);
+	}
+
+	public function postEdit(Request $request,$id){
+        $user=User::find($id);
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->DoB=$request->year . $request->month . $request->date;
+        $user->save();
+        return redirect("admin/user/edit/".$id)->with('thongbao',"Sửa Thành Công");
+    }
+
+    public function postDelete($id){
+    	$user=User::find($id);
+    	$user->status="3";
+    	$user->save();
+    	return redirect("admin/user/list")->with("thongbao","Xóa thành công");
+    }
 
 }

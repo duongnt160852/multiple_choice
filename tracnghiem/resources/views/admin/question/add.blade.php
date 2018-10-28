@@ -144,7 +144,7 @@
 @section('script')
     <script>
         $('#questionAdd').addClass("active");
-        $("tittle").html("Thêm câu hỏi");
+        $("title").html("Thêm câu hỏi");
     </script>
     <script>
         $(document).ready(function(){

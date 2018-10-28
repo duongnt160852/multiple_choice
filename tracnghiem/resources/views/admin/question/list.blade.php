@@ -26,6 +26,7 @@
                                         <th>Độ khó</th>
                                         <th>Chủ Đề</th>
                                         <th>Sửa</th>
+                                        <th>Xóa</th>
                                     </thead>
                                     <tbody>
                                         @foreach($question as $qt)
@@ -40,6 +41,7 @@
                                             <td>{{$qt->level}}</td>
                                             <td>{{$qt->topic->name}}</td>
                                             <td><a href="admin/question/edit/{{$qt->id}}"><img src="https://cdn1.iconfinder.com/data/icons/real-estate-set-2/512/21-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                                            <td><a onclick="myFunction('{{$qt->id}}')" style="cursor: pointer;"><img src="https://cdn2.iconfinder.com/data/icons/basic-ui-elements-plain/448/010_trash-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
                                         </tr> 
                                         @endforeach
                                     </tbody>
@@ -57,12 +59,17 @@
 @section('script')
     <script>
     $('#questionList').addClass("active");
-    $("tittle").html("Danh sách câu hỏi");
+    $("title").html("Danh sách câu hỏi");
     </script>
     <script>
         $(document).ready(function(){
             $("#questionList").css("display","block");
             $("#questionAdd").css("display","block");
         });
+        function myFunction(str){
+            if (confirm('Bạn có chắc chắn muốn xóa\nXóa câu hỏi này cũng sẽ xóa toàn bộ đề thi chứa nó?')){
+                window.location.href="admin/question/delete/"+str;
+            }
+        }
     </script>
 @endsection

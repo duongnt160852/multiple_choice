@@ -19,7 +19,7 @@ class QuestionController extends Controller
 		$this->middleware('auth:admin');
 	}
     public function list(){
-		$question= Question::paginate(10);
+		$question= Question::where("status",1)->paginate(10);
 		return view("admin.question.list",["question"=>$question]);
 	}
 
@@ -69,5 +69,20 @@ class QuestionController extends Controller
         $question->comment=$request->comment;
         $question->save();
         return redirect("admin/question/edit/".$id)->with('thongbao',"Sửa Thành Công");
+    }
+
+    public function postDelete($id){
+    	$question=Question::find($id);
+    	$exam=Exam::where("idQuestion",$id)->get();
+    	foreach ($exam as $value) {
+    		$exam1=Exam::where("id",$value->id)->get();
+    		foreach ($exam1 as $value) {
+    			$value->status=0;
+    			$value->save();
+    		}
+    	}
+    	$question->status=0;
+    	$question->save();
+    	return redirect("admin/question/list")->with("thongbao","Xóa thành công");
     }
 }

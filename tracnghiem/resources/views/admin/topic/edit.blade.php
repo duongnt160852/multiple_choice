@@ -2,7 +2,7 @@
 @section('content')
 <div class="content">
             <div class="container-fluid">
-                <form action="admin/subject/edit/{{$subject->id}}" method="post">
+                <form action="admin/topic/edit/{{$topic->id}}" method="post">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                     <div class="form-group">
                                         @if(count($errors)>0)
@@ -18,15 +18,15 @@
                                      <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Môn Thi</label>
-                                                <input type="text" class="form-control border-input" placeholder="Câu hỏi" required="" name="subject" value="{{$subject->name}}">
+                                                <label>Chủ đề</label>
+                                                <input type="text" class="form-control border-input" placeholder="Câu hỏi" required="" name="topic" value="{{$topic->name}}">
                                             </div>
                                         </div>
                                     </div>
                                     </div>
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-info btn-fill btn-wd">Sửa</button>
-                                        <a href="admin/subject/list" class="btn btn-info btn-fill btn-wd">Hủy</a>
+                                        <a href="admin/topic/list" class="btn btn-info btn-fill btn-wd">Hủy</a>
                                     </div>
                                     <div class="clearfix"></div>
                                 </form>
@@ -41,8 +41,8 @@
     </script>
     <script>
         $(document).ready(function(){
-            $("#subjectList").css("display","block");
-            $("#subjectAdd").css("display","block");
+            $("#topicList").css("display","block");
+            $("#topicAdd").css("display","block");
         });
     </script>
 @endsection

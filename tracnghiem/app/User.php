@@ -28,4 +28,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function exam(){
+        return $this->hasOne("App\Exam","id","idExam");
+    }
 }

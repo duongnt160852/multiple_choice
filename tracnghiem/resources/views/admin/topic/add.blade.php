@@ -53,7 +53,7 @@
     <script>
         $(document).ready(function(){
             $("#topicAdd").addClass('active');
-            $("#tittle").html('Thêm Chủ Đề');
+            $("#title").html('Thêm Chủ Đề');
             $("#topicList").css("display","block");
             $("#topicAdd").css("display","block");
         });

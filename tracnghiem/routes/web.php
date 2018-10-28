@@ -34,11 +34,15 @@ Route::group(["prefix"=>"admin" ,"middleware"=>"auth:admin"],function(){
 		Route::post("add","QuestionController@postAdd");
 		Route::get("edit/{id}","QuestionController@getEdit");
 		Route::post("edit/{id}","QuestionController@postEdit");
+		Route::get("delete/{id}","QuestionController@postDelete");
 	});
 	Route::group(["prefix"=>"user"],function(){
 		Route::get("list","UserController@list");
 		Route::get("add","UserController@getAdd");
-		Route::post("add","UserController@postAdd")->name('themthisinh');
+		Route::post("add","UserController@postAdd");
+		Route::get("edit/{id}","UserController@getEdit");
+		Route::post("edit/{id}","UserController@postEdit");
+		Route::get("delete/{id}","UserController@postDelete");
 	});
 	Route::group(["prefix"=>"subject"],function(){
 		Route::get("list","SubjectController@list");
@@ -46,17 +50,22 @@ Route::group(["prefix"=>"admin" ,"middleware"=>"auth:admin"],function(){
 		Route::post("add","SubjectController@postAdd");
 		Route::get("edit/{id}","SubjectController@getEdit");
 		Route::post("edit/{id}","SubjectController@postEdit");
+		Route::get("delete/{id}","SubjectController@postDelete");
 	});
 	Route::group(["prefix"=>"topic"],function(){
 		Route::get("add","TopicController@getAdd");
 		Route::post("add","TopicController@postAdd");
 		Route::get("list","TopicController@list");
+		Route::get("edit/{id}","TopicController@getEdit");
+		Route::post("edit/{id}","TopicController@postEdit");
+		Route::get("delete/{id}","TopicController@postDelete");
 	});
 	Route::group(["prefix"=>"exam"],function(){
 		Route::get("add","ExamController@getAdd");
 		Route::post("add","ExamController@postAdd");
 		Route::get('list','ExamController@list');
 		Route::get('view/{id?}','ExamController@viewExam');
+		Route::get("delete/{id}","ExamController@postDelete");
 	});
 	Route::group(["prefix"=>"ajax"],function(){
 		Route::get("getdate","AjaxController@getDate");
@@ -73,8 +82,9 @@ Route::group(["prefix"=>"admin" ,"middleware"=>"auth:admin"],function(){
 Route::group(["prefix"=>"user","middleware"=>"auth"],function(){
 	Route::get("view","Controller@getView");
 	Route::post("view/{idExam}/{code}","Controller@postView");
-	Route::get("result/{count}/{total}/{answer}","Controller@getResult")->name("result");
+	Route::get("result/{count?}/{total?}/{answer?}","Controller@getResult")->name("result");
 	Route::post("result/{count}/{total}/{answer}","Controller@postResult");
 	Route::get("answer/{answer}","Controller@answer")->name("answer");
 });
 	Route::get("test","TopicController@test");
+	Route::get("aaa","AdminController@aaa");

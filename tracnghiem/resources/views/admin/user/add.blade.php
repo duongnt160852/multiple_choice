@@ -8,7 +8,7 @@
                             </div>
                             
                             <div class="content">
-                                <form action="{{route('themthisinh')}}" method="post">
+                                <form action="admin/user/add" method="post">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                     @if(count($errors)>0)
                                     @foreach($errors->all() as $err)

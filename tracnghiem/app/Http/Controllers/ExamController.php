@@ -20,7 +20,7 @@ class ExamController extends Controller
     }
 
     public function list(){
-        $exam=Exam::groupBy('id')->get();
+        $exam=Exam::where("status",1)->groupBy('id')->paginate(10);
         return view("admin.exam.list",["exam"=>$exam]);
     }
 
@@ -138,5 +138,15 @@ class ExamController extends Controller
         	}
         	}
     	return redirect("admin/exam/add")->with('thongbao','Thêm thành công');
+    }
+
+    public function postDelete($id)
+    {
+        $exam=Exam::where("id",$id)->get();
+        foreach ($exam as $value) {
+            $value->status=0;
+            $value->save();
+        }
+        return redirect("admin/exam/list")->with("thongbao","Xóa thành công");
     }
 }

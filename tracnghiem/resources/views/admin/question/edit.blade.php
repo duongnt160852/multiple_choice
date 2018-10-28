@@ -31,7 +31,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Câu Hỏi</label>
-                                                <input type="text" class="form-control border-input" placeholder="Câu hỏi" required="" name="question" value="{{$question->name}}">
+                                                <textarea name="question" rows='5' cols='160' id="demo" class="ckeditor" required="">{{$question->name}}</textarea >
                                             </div>
                                         </div>
                                     </div>
@@ -39,7 +39,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Đáp Án A</label>
-                                                <input type="text" class="form-control border-input" placeholder="Đáp án A" required="" name="A" value="{{$question->A}}">
+                                                <textarea name="A" rows='5' cols='160' id="demo" class="ckeditor" required="">{{$question->A}}</textarea >
                                             </div>
                                         </div>
                                     </div>
@@ -47,7 +47,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Đáp Án B</label>
-                                                <input type="text" class="form-control border-input" placeholder="Đáp án B" required="" name="B" value="{{$question->B}}">
+                                                <textarea name="B" rows='5' cols='160' id="demo" class="ckeditor" required="">{{$question->B}}</textarea >
                                             </div>
                                         </div>
                                     </div>
@@ -55,7 +55,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Đáp Án C</label>
-                                                <input type="text" class="form-control border-input" placeholder="Đáp án C" required="" name="C" value="{{$question->C}}">
+                                                <textarea name="C" rows='5' cols='160' id="demo" class="ckeditor" required="">{{$question->C}}</textarea >
                                             </div>
                                         </div>
                                     </div>
@@ -63,7 +63,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Đáp Án D</label>
-                                                <input type="text" class="form-control border-input" placeholder="Đáp án D" required="" name="D" value="{{$question->D}}">
+                                                <textarea name="D" rows='5' cols='160' id="demo" class="ckeditor" required="">{{$question->D}}</textarea >
                                             </div>
                                         </div>
                                     </div>
@@ -92,18 +92,17 @@
                                                    <div class="col-xs-12 col-md-12">
                                                     <label>Giải thích</label>
                                                     <div>
-                                                        <textarea name="comment" rows='5' cols='160' >{{$question->comment}}</textarea >
+                                                        <textarea name="comment" rows='5' cols='160' id="demo" class="ckeditor">{{$question->comment}}</textarea >
                                                     </div>
                                                 </div> 
                                         </div>
                                     </div>
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-info btn-fill btn-wd">Sửa</button>
-                                        <a href="admin/quanlycauhoi" class="btn btn-info btn-fill btn-wd">Hủy</a>
+                                        <a href="admin/question/list" class="btn btn-info btn-fill btn-wd">Hủy</a>
                                     </div>
                                     <div class="clearfix"></div>
                                 </form>
-                                <p id="idTopic" style="display: none;">{{$question->idTopic}}</p>
                 </div>
             </div>
         </div>
@@ -111,7 +110,7 @@
 @section('script')
     <script>
     $('#questionEdit').addClass("active");
-    $("tittle").html("Sửa câu hỏi");
+    $("title").html("Sửa câu hỏi");
     </script>
     <script>
         $(document).ready(function(){

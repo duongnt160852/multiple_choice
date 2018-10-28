@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests;
+use App\User;
 use App\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as Auth;
@@ -25,6 +26,9 @@ class LoginController extends Controller
 
     public function postLoginUser(Request $request){
         if (Auth::attempt(["username"=>$request->username, "password"=>$request->password])){
+            $user=Auth::user();
+            $user->status=1;
+            $user->save();
             return redirect("user/view");
         }
         return redirect()->back();

@@ -23,6 +23,7 @@
                                         <th>Môn thi</th>
                                         <th>Chi tiết</th>
                                         <th>Sửa</th>
+                                        <th>Xóa</th>
                                     </thead>
                                     <tbody>
                                         @foreach($exam as $qt)
@@ -34,13 +35,14 @@
                                             <td>{{$qt->topic->subject->name}}</td>
                                             <td><a href="admin/exam/view/{{$qt->id}}"><i class="ti-eye"></i></a></td>
                                             <td><a href="admin/exam/edit/{{$qt->id}}"><img src="https://cdn1.iconfinder.com/data/icons/real-estate-set-2/512/21-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                                            <td><a onclick="myFunction({{$qt->id}})" style="cursor: pointer;"><img src="https://cdn2.iconfinder.com/data/icons/basic-ui-elements-plain/448/010_trash-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
                                         </tr> 
                                         @endforeach
                                     </tbody>
                                 </table>
-                            {{-- <div class="text-center">
+                            <div class="text-center">
                                 {!! $exam->links() !!}
-                            </div> --}}
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -52,9 +54,14 @@
     <script>
         $(document).ready(function(){
             $('#examList').addClass("active");
-            $("tittle").html("Danh sách đề thi");
+            $("title").html("Danh sách đề thi");
             $("#examList").css("display","block");
             $("#examAdd").css("display","block");
         });
+        function myFunction(str){
+            if (confirm('Bạn có chắc chắn muốn xóa?')){
+                window.location.href="admin/exam/delete/"+str;
+            }
+        }
     </script>
 @endsection

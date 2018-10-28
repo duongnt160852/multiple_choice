@@ -122,7 +122,7 @@
     <script>
         $(document).ready(function(){
             $('#examAdd').addClass("active");
-            $("tittle").html("Thêm đề thi");
+            $("title").html("Thêm đề thi");
             $("#examList").css("display","block");
             $("#examAdd").css("display","block");
             $.get("admin/ajax/gettopic?str="+$('#subject1').val(),function(data){
