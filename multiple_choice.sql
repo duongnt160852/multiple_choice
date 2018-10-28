@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 28, 2018 lúc 01:56 PM
+-- Thời gian đã tạo: Th10 28, 2018 lúc 02:18 PM
 -- Phiên bản máy phục vụ: 10.1.35-MariaDB
 -- Phiên bản PHP: 7.2.9
 
@@ -944,9 +944,6 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `DoB`, `password`, `password1`, `status`, `time`, `count_true`, `total`, `mark`, `idExam`, `code`, `remember_token`) VALUES
-(3, 'aaa', 'aaa', NULL, '1234-01-01', '$2y$10$BfF1X/ygK9H4L.SbIxDQmuAQnok3HVI0UiniTVEqUT7LHSnWnIjr.', 'fERlF0WWk8', '3', '2018-10-27 15:28:55', 0, 15, 0, 1, 1, NULL),
-(4, 'Trần Khánh Duy', 'duyanlon', NULL, '1234-01-01', '$2y$10$DQ5ltx0qFEpHvtgg4ocKpe1o2MGmjxb.SwMJcMXSsVUGkLT8MaTfq', 'eaaLtYgMWK', '1', '2018-10-27 15:29:55', 0, 15, 0, 1, 1, NULL),
-(5, 'Nguyễn Bá Sơn', 'sonanlon', '123@123', '1234-01-01', '$2y$10$FjZx0HpCx2tfZvG5lsZN7ejsh7MnH5yXsRpXX/VMHpWyVKuzRpukq', 'PQp3xi237R', '1', NULL, NULL, NULL, NULL, 1, 1, NULL),
 (6, 'a', 'a', 'a@a', '1234-01-01', '$2y$10$QGV8TKRLNeFG/harOjEo5uicrjAqKOtA0kjG8Wq4Ny74RdMlcq4DO', 'PlhDXUe2S8', '2', '2018-10-27 15:32:03', 0, 15, 0, 1, 1, NULL),
 (7, 'b', 'b', 'b@b', '1234-01-01', '$2y$10$neW5JbmX99DX/FrRoEIL5ujq49ruJs.PPUIU7H3mQeL6hGJuVjIXC', 'YkwOLnRyL5', '2', '2018-10-27 15:32:39', 0, 15, 0, 1, 1, NULL),
 (8, 'c', 'c', 'c@c', '1234-01-01', '$2y$10$mShlT6VTcGj6z/iz/oKnsuRnFBI4TVJM3SD6NyPKbF.3BZvEKxDKi', 'QnfPcTNNFE', '1', NULL, NULL, NULL, NULL, 1, 1, NULL),
@@ -959,7 +956,6 @@ INSERT INTO `users` (`id`, `name`, `username`, `email`, `DoB`, `password`, `pass
 (15, 'j', 'j', 'j@j', '1234-01-01', '$2y$10$B/4.QtZA2Yta1W58.UBesu33jHdSWG5lIIyXBtRF5doFBpJ0Qvcb2', 'o9j075I57t', '0', NULL, NULL, NULL, NULL, 1, 1, NULL),
 (16, 'Nguyễn Tùng Dương', 'duong', 'duong@duong', '1998-10-04', '$2y$10$I/wXJ3d5vcXq6P8K3Phb9.2Wc1oyYLT.lolfs3tZv1YRHJU91CUu2', 'NU48Hz6DzX', '2', '2018-10-27 20:21:15', 0, 15, 0, 4, 1, NULL),
 (17, '1234', '1234', '1234@1234', '1234-01-01', '$2y$10$JKCSXVUk2yeNP9To3lRXP.ldrbvcXbfALD4S33jYyk4fjSVIUJrdO', 'ZOoZBMhnNU', '2', '2018-10-27 15:35:23', 0, 15, 0, 5, 1, NULL),
-(18, 'Nguyễn Mai Phương', 'phuongancut', 'phuong@ancut', '2008-10-06', '$2y$10$3o3E5.duJP9XPyRjpaE6X.elLDNGfIfl7rcbyGHrOIdnTdLSbD1xG', 'jidS0x9ak3', '1', '2018-10-27 15:23:28', 0, 15, 0, 1, 1, NULL),
 (19, 'vvv', 'vvv', 'vv@vvv', '2002-09-05', '$2y$10$M6pr6GM0DXFjmcYAD2WTYecRWBh2Lx/toGYOPaY0timYUmzyDoyJS', 'HjdIsoDVkR', '0', NULL, NULL, NULL, NULL, 1, 1, NULL),
 (20, 'rrr', 'rrr', 'r@r', '1998-02-28', '$2y$10$F5hX/9onngRff2FS6Xk6suWhrdz1ZDkqIIuiZW1ZTZo3AAPiJgDau', 'Z8xYa76uD2', '0', NULL, NULL, NULL, NULL, 1, 1, NULL);
 
