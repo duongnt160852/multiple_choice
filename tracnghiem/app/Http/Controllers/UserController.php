@@ -33,7 +33,7 @@ class UserController extends Controller
 				"username"=>"required|unique:users,username",
 				"date"=>"required",
 				"month"=>"required",
-				"year"=>"required"
+				"year"=>"required|regex:/^[0-9]{4}$/"
 			], 
 			[
 				"name.required"=>"Bạn chưa nhập tên thí sinh",
@@ -41,7 +41,8 @@ class UserController extends Controller
 				 "username.unique"=>"MSDT đã tồn tại",
 				"date.required"=>"Bạn chưa nhập ngày",
 				"month.required"=>"Bạn chưa nhập tháng",
-				"year.required"=>"Bạn chưa nhập năm"
+				"year.required"=>"Bạn chưa nhập năm",
+				"year.regex"=>"Nhập sai năm"
 			]);
 		if ($validator->fails()) return redirect('admin/user/add')->withErrors($validator);
 		$user= new User;
@@ -74,7 +75,7 @@ class UserController extends Controller
         return redirect("admin/user/edit/".$id)->with('thongbao',"Sửa Thành Công");
     }
 
-    public function postDelete($id){
+    public function delete($id){
     	$user=User::find($id);
     	$user->status="3";
     	$user->save();

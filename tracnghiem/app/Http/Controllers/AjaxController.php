@@ -61,4 +61,250 @@ class AjaxController extends Controller
 			echo "<option value='".$ex->id."'>".$ex->name."</option>";
 		} 
 	}
+
+	public function searchUser(){
+		$option=$_REQUEST["str"];
+		$name=$_REQUEST["str1"];
+		if($option=="1"){
+			$user = User::where([["name","like","%".$name."%"],["status","!=","3"]])->get();
+			foreach ($user as $value) {
+                if($value->status=="0")
+                	echo '<tr>
+                        <td>'.$value->id.'</td>
+                        <td>'.$value->name.'</td>
+                        <td>'.$value->username.'</td>
+                        <td>'.$value->email.'</td>
+                        <td>'.$value->DoB.'</td>
+                        <td> chưa thi
+                        </td>
+                        <td>'.$value->mark.'</td>
+                        <td>'.$value->time.'</td>
+                        <td>'.$value->exam->topic->subject->name.'</td>
+                        <td>'.$value->exam->name.'</td>
+                        <td>'.$value->code.'</td>
+                        <td><a href="admin/user/edit/'.$value->id.'"><img src="https://cdn1.iconfinder.com/data/icons/real-estate-set-2/512/21-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                        <td><a onclick="myFunction('.$value->id.')" style="cursor: pointer;"><img src="https://cdn2.iconfinder.com/data/icons/basic-ui-elements-plain/448/010_trash-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                    </tr>' ;
+                else if($value->status=="1")
+                	echo '<tr>
+                        <td>'.$value->id.'</td>
+                        <td>'.$value->name.'</td>
+                        <td>'.$value->username.'</td>
+                        <td>'.$value->email.'</td>
+                        <td>'.$value->DoB.'</td>
+                        <td> đang thi
+                        </td>
+                        <td>'.$value->mark.'</td>
+                        <td>'.$value->time.'</td>
+                        <td>'.$value->exam->topic->subject->name.'</td>
+                        <td>'.$value->exam->name.'</td>
+                        <td>'.$value->code.'</td>
+                        <td><a href="admin/user/edit/'.$value->id.'"><img src="https://cdn1.iconfinder.com/data/icons/real-estate-set-2/512/21-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                        <td><a onclick="myFunction('.$value->id.')" style="cursor: pointer;"><img src="https://cdn2.iconfinder.com/data/icons/basic-ui-elements-plain/448/010_trash-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                    </tr>' ;
+                else echo '<tr>
+                        <td>'.$value->id.'</td>
+                        <td>'.$value->name.'</td>
+                        <td>'.$value->username.'</td>
+                        <td>'.$value->email.'</td>
+                        <td>'.$value->DoB.'</td>
+                        <td> đã thi
+                        </td>
+                        <td>'.$value->mark.'</td>
+                        <td>'.$value->time.'</td>
+                        <td>'.$value->exam->topic->subject->name.'</td>
+                        <td>'.$value->exam->name.'</td>
+                        <td>'.$value->code.'</td>
+                        <td><a href="admin/user/edit/'.$value->id.'"><img src="https://cdn1.iconfinder.com/data/icons/real-estate-set-2/512/21-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                        <td><a onclick="myFunction('.$value->id.')" style="cursor: pointer;"><img src="https://cdn2.iconfinder.com/data/icons/basic-ui-elements-plain/448/010_trash-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                    </tr>' ;
+			}
+		}
+		else if($option=="2"){
+			$user = User::where([["email","like","%".$name."%"],["status","!=","3"]])->get();
+			foreach ($user as $value) {
+                if($value->status=="0")
+                	echo '<tr>
+                        <td>'.$value->id.'</td>
+                        <td>'.$value->name.'</td>
+                        <td>'.$value->username.'</td>
+                        <td>'.$value->email.'</td>
+                        <td>'.$value->DoB.'</td>
+                        <td> chưa thi
+                        </td>
+                        <td>'.$value->mark.'</td>
+                        <td>'.$value->time.'</td>
+                        <td>'.$value->exam->topic->subject->name.'</td>
+                        <td>'.$value->exam->name.'</td>
+                        <td>'.$value->code.'</td>
+                        <td><a href="admin/user/edit/'.$value->id.'"><img src="https://cdn1.iconfinder.com/data/icons/real-estate-set-2/512/21-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                        <td><a onclick="myFunction('.$value->id.')" style="cursor: pointer;"><img src="https://cdn2.iconfinder.com/data/icons/basic-ui-elements-plain/448/010_trash-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                    </tr>' ;
+                else if($value->status=="1")
+                	echo '<tr>
+                        <td>'.$value->id.'</td>
+                        <td>'.$value->name.'</td>
+                        <td>'.$value->username.'</td>
+                        <td>'.$value->email.'</td>
+                        <td>'.$value->DoB.'</td>
+                        <td> đang thi
+                        </td>
+                        <td>'.$value->mark.'</td>
+                        <td>'.$value->time.'</td>
+                        <td>'.$value->exam->topic->subject->name.'</td>
+                        <td>'.$value->exam->name.'</td>
+                        <td>'.$value->code.'</td>
+                        <td><a href="admin/user/edit/'.$value->id.'"><img src="https://cdn1.iconfinder.com/data/icons/real-estate-set-2/512/21-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                        <td><a onclick="myFunction('.$value->id.')" style="cursor: pointer;"><img src="https://cdn2.iconfinder.com/data/icons/basic-ui-elements-plain/448/010_trash-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                    </tr>' ;
+                else echo '<tr>
+                        <td>'.$value->id.'</td>
+                        <td>'.$value->name.'</td>
+                        <td>'.$value->username.'</td>
+                        <td>'.$value->email.'</td>
+                        <td>'.$value->DoB.'</td>
+                        <td> đã thi
+                        </td>
+                        <td>'.$value->mark.'</td>
+                        <td>'.$value->time.'</td>
+                        <td>'.$value->exam->topic->subject->name.'</td>
+                        <td>'.$value->exam->name.'</td>
+                        <td>'.$value->code.'</td>
+                        <td><a href="admin/user/edit/'.$value->id.'"><img src="https://cdn1.iconfinder.com/data/icons/real-estate-set-2/512/21-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                        <td><a onclick="myFunction('.$value->id.')" style="cursor: pointer;"><img src="https://cdn2.iconfinder.com/data/icons/basic-ui-elements-plain/448/010_trash-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                    </tr>' ;
+			}
+		}
+		else {
+			$user = User::where([["username","like","%".$name."%"],["status","!=","3"]])->get();
+			foreach ($user as $value) {
+                if($value->status=="0")
+                	echo '<tr>
+                        <td>'.$value->id.'</td>
+                        <td>'.$value->name.'</td>
+                        <td>'.$value->username.'</td>
+                        <td>'.$value->email.'</td>
+                        <td>'.$value->DoB.'</td>
+                        <td> chưa thi
+                        </td>
+                        <td>'.$value->mark.'</td>
+                        <td>'.$value->time.'</td>
+                        <td>'.$value->exam->topic->subject->name.'</td>
+                        <td>'.$value->exam->name.'</td>
+                        <td>'.$value->code.'</td>
+                        <td><a href="admin/user/edit/'.$value->id.'"><img src="https://cdn1.iconfinder.com/data/icons/real-estate-set-2/512/21-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                        <td><a onclick="myFunction('.$value->id.')" style="cursor: pointer;"><img src="https://cdn2.iconfinder.com/data/icons/basic-ui-elements-plain/448/010_trash-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                    </tr>' ;
+                else if($value->status=="1")
+                	echo '<tr>
+                        <td>'.$value->id.'</td>
+                        <td>'.$value->name.'</td>
+                        <td>'.$value->username.'</td>
+                        <td>'.$value->email.'</td>
+                        <td>'.$value->DoB.'</td>
+                        <td> đang thi
+                        </td>
+                        <td>'.$value->mark.'</td>
+                        <td>'.$value->time.'</td>
+                        <td>'.$value->exam->topic->subject->name.'</td>
+                        <td>'.$value->exam->name.'</td>
+                        <td>'.$value->code.'</td>
+                        <td><a href="admin/user/edit/'.$value->id.'"><img src="https://cdn1.iconfinder.com/data/icons/real-estate-set-2/512/21-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                        <td><a onclick="myFunction('.$value->id.')" style="cursor: pointer;"><img src="https://cdn2.iconfinder.com/data/icons/basic-ui-elements-plain/448/010_trash-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                    </tr>' ;
+                else echo '<tr>
+                        <td>'.$value->id.'</td>
+                        <td>'.$value->name.'</td>
+                        <td>'.$value->username.'</td>
+                        <td>'.$value->email.'</td>
+                        <td>'.$value->DoB.'</td>
+                        <td> đã thi
+                        </td>
+                        <td>'.$value->mark.'</td>
+                        <td>'.$value->time.'</td>
+                        <td>'.$value->exam->topic->subject->name.'</td>
+                        <td>'.$value->exam->name.'</td>
+                        <td>'.$value->code.'</td>
+                        <td><a href="admin/user/edit/'.$value->id.'"><img src="https://cdn1.iconfinder.com/data/icons/real-estate-set-2/512/21-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                        <td><a onclick="myFunction('.$value->id.')" style="cursor: pointer;"><img src="https://cdn2.iconfinder.com/data/icons/basic-ui-elements-plain/448/010_trash-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                    </tr>' ;
+			}
+		}
+	}
+
+	public function cancel(){
+		$user = User::where("status","!=","3")->paginate(10);
+		foreach ($user as $value) {
+                if($value->status=="0")
+                	echo '<tr>
+                        <td>'.$value->id.'</td>
+                        <td>'.$value->name.'</td>
+                        <td>'.$value->username.'</td>
+                        <td>'.$value->email.'</td>
+                        <td>'.$value->DoB.'</td>
+                        <td> chưa thi
+                        </td>
+                        <td>'.$value->mark.'</td>
+                        <td>'.$value->time.'</td>
+                        <td>'.$value->exam->topic->subject->name.'</td>
+                        <td>'.$value->exam->name.'</td>
+                        <td>'.$value->code.'</td>
+                        <td><a href="admin/user/edit/'.$value->id.'"><img src="https://cdn1.iconfinder.com/data/icons/real-estate-set-2/512/21-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                        <td><a onclick="myFunction('.$value->id.')" style="cursor: pointer;"><img src="https://cdn2.iconfinder.com/data/icons/basic-ui-elements-plain/448/010_trash-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                    </tr>' ;
+                else if($value->status=="1")
+                	echo '<tr>
+                        <td>'.$value->id.'</td>
+                        <td>'.$value->name.'</td>
+                        <td>'.$value->username.'</td>
+                        <td>'.$value->email.'</td>
+                        <td>'.$value->DoB.'</td>
+                        <td> đang thi
+                        </td>
+                        <td>'.$value->mark.'</td>
+                        <td>'.$value->time.'</td>
+                        <td>'.$value->exam->topic->subject->name.'</td>
+                        <td>'.$value->exam->name.'</td>
+                        <td>'.$value->code.'</td>
+                        <td><a href="admin/user/edit/'.$value->id.'"><img src="https://cdn1.iconfinder.com/data/icons/real-estate-set-2/512/21-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                        <td><a onclick="myFunction('.$value->id.')" style="cursor: pointer;"><img src="https://cdn2.iconfinder.com/data/icons/basic-ui-elements-plain/448/010_trash-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                    </tr>' ;
+                else echo '<tr>
+                        <td>'.$value->id.'</td>
+                        <td>'.$value->name.'</td>
+                        <td>'.$value->username.'</td>
+                        <td>'.$value->email.'</td>
+                        <td>'.$value->DoB.'</td>
+                        <td> đã thi
+                        </td>
+                        <td>'.$value->mark.'</td>
+                        <td>'.$value->time.'</td>
+                        <td>'.$value->exam->topic->subject->name.'</td>
+                        <td>'.$value->exam->name.'</td>
+                        <td>'.$value->code.'</td>
+                        <td><a href="admin/user/edit/'.$value->id.'"><img src="https://cdn1.iconfinder.com/data/icons/real-estate-set-2/512/21-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                        <td><a onclick="myFunction('.$value->id.')" style="cursor: pointer;"><img src="https://cdn2.iconfinder.com/data/icons/basic-ui-elements-plain/448/010_trash-512.png" class="img-responsive " alt="Responsive image" width="16" height="16"></a></td>
+                    </tr>' ;
+		}
+	}
+
+	public function paginate(){
+		$user = User::where("status","!=","3")->paginate(10);
+		echo $user->links();
+	}
+	public function paginate1(){
+		$option=$_REQUEST["str"];
+		$name=$_REQUEST["str1"];
+		if($option=="1"){
+			$user = User::where([["name","like","%".$name."%"],["status","!=","3"]])->paginate(10);
+		}
+		else if ($option=="1"){
+			$user = User::where([["email","like","%".$name."%"],["status","!=","3"]])->paginate(10);
+		}
+		else {
+			$user = User::where([["username","like","%".$name."%"],["status","!=","3"]])->paginate(10);
+		}
+		echo $user->links();
+	}
 }
+

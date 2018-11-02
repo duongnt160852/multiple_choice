@@ -71,7 +71,7 @@ class QuestionController extends Controller
         return redirect("admin/question/edit/".$id)->with('thongbao',"Sửa Thành Công");
     }
 
-    public function postDelete($id){
+    public function delete($id){
     	$question=Question::find($id);
     	$exam=Exam::where("idQuestion",$id)->get();
     	foreach ($exam as $value) {

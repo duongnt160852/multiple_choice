@@ -58,4 +58,10 @@ class Controller extends BaseController
     	$exam=$exam=$exam=Exam::where([["id",$user->idExam],["code",$user->code]])->orderBy("idOrder")->get();
     	return view("user/answer",["exam"=>$exam,"user"=>$user,"answer"=>$answer]);
     }
+
+    public function aaa(){
+        $user=Auth::user();
+        $user->status="2";
+        $user->save();
+    }
 }

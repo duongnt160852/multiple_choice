@@ -55,7 +55,7 @@ class SubjectController extends Controller
         return redirect("admin/subject/edit/".$id)->with('thongbao',"Sửa Thành Công");
 	}
 
-	public function postDelete($id)
+	public function delete($id)
 	{
 		$subject=Subject::find($id);
 		$topic=Topic::where("idSubject",$id)->get();

@@ -126,7 +126,7 @@
                                                    <div class="col-xs-12 col-md-12">
                                                     <label>Giải thích</label>
                                                     <div>
-                                                        <textarea name="comment" rows='5' cols='160' id="demo" class="ckeditor"></textarea >
+                                                        <textarea name="comment" rows='5' cols='160' class="ckeditor" id="demo"></textarea >
                                                     </div>
                                                 </div> 
                                         </div>
@@ -140,6 +140,7 @@
                         </div>
 			</div>
 		</div>
+        
 @endsection
 @section('script')
     <script>

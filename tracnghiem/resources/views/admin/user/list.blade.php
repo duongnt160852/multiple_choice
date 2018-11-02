@@ -14,6 +14,27 @@
                                                 {{session('thongbao')}}
                                             </div>
                                         @endif
+                                    <div class="row">
+                                    <div class="col-xs-2 col-xs-offset-1" >
+                                            <h5>Tìm kiếm</h1>
+                                    </div>   
+                                    <div class="col-xs-2">
+                                       <select class="form-control border-input" id="a">
+                                            <option value="1">Họ tên</option>
+                                            <option value="2">Email</option>
+                                            <option value="3">MSDT</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-3">
+                                            <input type="text" class="form-control border-input" id="name" autofocus="">
+                                    </div>
+                                    <div class="col-xs-1">
+                                       <button id="search" type="button" class="btn btn-info btn-fill btn-wd">Tìm</button>
+                                    </div>
+                                    <div class="col-xs-1 col-xs-offset-1">
+                                           <button id="cancel" type="button" class="btn btn-info btn-fill btn-wd">Hủy</button>
+                                        </div>
+                                    </div>
                                 <table class="table table-striped">
                                     <thead>
                                         <th>ID</th>
@@ -30,7 +51,7 @@
                                         <th>Sửa</th>
                                         <th>Xóa</th>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="body">
                                         @foreach($user as $us)
                                             <tr>
                                             <td>{{$us->id}}</td>
@@ -58,7 +79,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                            <div class="text-center">
+                            <div class="text-center" id="paginate">
                                 {!! $user->links() !!}
                             </div>
                             </div>
@@ -85,5 +106,30 @@
                 window.location.href="admin/user/delete/"+str;
             }
         }
+    </script>
+    <script>
+        $(document).ready(function(){
+            $("#search").click(function(){
+                $.get("admin/ajax/searchUser?str="+$('#a').val()+"&str1="+$("#name").val(),function(data){
+                    $("#body").html(data);
+                });
+                $.get("admin/ajax/paginate1?str="+$('#a').val()+"&str1="+$("#name").val(),function(data){
+                    $("#paginate").html(data);
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $("#cancel").click(function(){
+                $.get("admin/ajax/cancel",function(data){
+                    $('#body').html(data);
+                });
+                $.get("admin/ajax/paginate",function(data){
+                    $("#paginate").html(data);
+                });
+                $("#name").val("");
+            });
+        });
     </script>
 @endsection

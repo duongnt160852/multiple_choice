@@ -38,9 +38,5 @@ class AdminController extends Controller
     	return redirect()->route('login');
     }
 
-    public function aaa(){
-    	$user=Auth::user();
-    	$user->status="2";
-    	$user->save();
-    }
+    
 }

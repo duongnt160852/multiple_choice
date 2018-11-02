@@ -140,7 +140,7 @@ class ExamController extends Controller
     	return redirect("admin/exam/add")->with('thongbao','Thêm thành công');
     }
 
-    public function postDelete($id)
+    public function delete($id)
     {
         $exam=Exam::where("id",$id)->get();
         foreach ($exam as $value) {

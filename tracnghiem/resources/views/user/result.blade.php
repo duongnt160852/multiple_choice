@@ -69,7 +69,7 @@
 
     <div class="main-panel">
         
-        <nav class="navbar navbar-default">
+        {{-- <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle">
@@ -78,7 +78,6 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    {{-- <a class="navbar-brand" href="#">Trang Chủ</a> --}}
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -106,7 +105,7 @@
 
                 </div>
             </div>
-        </nav>
+        </nav> --}}
 	
         <div class="content">
             <div class="container">

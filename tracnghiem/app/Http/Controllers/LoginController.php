@@ -17,7 +17,7 @@ class LoginController extends Controller
     	if (Auth::guard('admin')->attempt(["username"=>$request->username, "password"=>$request->password])){
     		return redirect()->route('home');
     	}
-    	return redirect()->back();
+    	return redirect()->back()->with("thongbao","Đăng nhập thất bại");
     }
 
     public function getLoginUser(){
@@ -25,13 +25,13 @@ class LoginController extends Controller
     }
 
     public function postLoginUser(Request $request){
-        if (Auth::attempt(["username"=>$request->username, "password"=>$request->password])){
+        if (Auth::attempt(["username"=>$request->username, "password"=>$request->password, "status"=>"0"])){
             $user=Auth::user();
             $user->status=1;
             $user->save();
             return redirect("user/view");
         }
-        return redirect()->back();
+        return redirect()->back()->with("thongbao","Đăng nhập thất bại");
     }
 
     public function themadmin(){

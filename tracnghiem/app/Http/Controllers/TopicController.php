@@ -61,7 +61,7 @@ class TopicController extends Controller
 		return view("test",['question'=>$question]);
 	}
 
-	public function postDelete($id)
+	public function delete($id)
 	{
 		$topic=Topic::find($id);
     	$exam=Exam::where("idTopic",$id)->get();
