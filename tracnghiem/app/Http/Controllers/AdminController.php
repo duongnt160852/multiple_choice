@@ -8,6 +8,8 @@ use App\Topic;
 use App\Exam;
 use App\Subject;
 use Validator;
+use Excel;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth as Auth;
@@ -18,10 +20,8 @@ class AdminController extends Controller
 	}
 
 	public function home(){
-		// $admin=auth::guard('admin')->user();
-		// $count=question::where('id',$admin->id)->count();
-		$count_user=User::all()->count();
-		$count_online=User::where("status","đang thi")->count();
+		$count_user=User::where("status","!=","3")->count();
+		$count_online=User::where("status","1")->count();
 		return view("admin.admin.home",["count_user"=>$count_user,"count_online"=>$count_online]);
 	}
 
@@ -38,5 +38,24 @@ class AdminController extends Controller
     	return redirect()->route('login');
     }
 
-    
+    public function import() 
+    {
+        Excel::load(Input::file('file'),function($reader){
+        	$reader->each(function($sheet){
+        		foreach ($sheet->toArray() as $row) {
+        			$user=new User;
+        			$pass=str_random(10);
+        			$user->name=$row[0];
+		            $user->username=$row[1];
+		            $user->email=$row[2];
+		            $user->DoB=$row[3];
+		            $user->password=bcrypt($pass);
+		            $user->password1=$pass;
+		            $user->idExam=$row[4];
+		            $user->code=$row[5];
+		            $user->save();
+        		}
+        	});
+        });
+    }
 }

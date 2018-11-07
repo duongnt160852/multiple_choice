@@ -50,16 +50,16 @@
                 </a>
             </div>
             <div align="center" style="font-size: 20px">
-                Môn: {{$exam[0]->topic->subject->name}}
+                Môn: {{$exam->topic->subject->name}}
             </div>
             <div align="center" style="font-size: 20px">
-                Chủ đề: {{$exam[0]->topic->name}}
+                Chủ đề: {{$exam->topic->name}}
             </div>
             <div align="center" style="font-size: 20px">
-                Đề thi: {{$exam[0]->name}}
+                Đề thi: {{$exam->name}}
             </div>
             <div align="center" style="font-size: 20px">
-                Thời gian: {{$exam[0]->time}} phút
+                Thời gian: {{$exam->time}} phút
             </div>
         </div>
     </div>
@@ -108,40 +108,40 @@
         <div class="content">
             <div class="container">
             <form>
-            @for($i=0;$i<count($exam);$i++)
+            @for($i=0;$i<count($examquestion);$i++)
                 <div class="row">
                     <div class="col-md-12">
-                        Câu {{$i+1}}: {!! $exam[$i]->question[0]->name !!}
+                        Câu {{$i+1}}: {!! $examquestion[$i]->question->name !!}
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                    	
-                        <input @if($exam[$i]->question[0]->answer =="A") {{"checked=''"}} @endif type="radio" name="{{$i+1}}" value="A" placeholder=""> A. {!! $exam[$i]->question[0]->A !!}
+                        
+                        <input @if($examquestion[$i]->question->answer =="A") {{"checked=''"}} @endif type="radio" name="{{$i+1}}" value="A" placeholder=""> A. {!! $examquestion[$i]->question->A !!}
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <input @if($exam[$i]->question[0]->answer == "B") {{"checked=''"}} @endif type="radio" name="{{$i+1}}" value="B" placeholder=""> B. {!! $exam[$i]->question[0]->B !!}
+                        <input @if($examquestion[$i]->question->answer == "B") {{"checked=''"}} @endif type="radio" name="{{$i+1}}" value="B" placeholder=""> B. {!! $examquestion[$i]->question->B !!}
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <input @if($exam[$i]->question[0]->answer == "C") {{"checked=''"}} @endif type="radio" name="{{$i+1}}" value="C" placeholder=""> C. {!! $exam[$i]->question[0]->C !!}
+                        <input @if($examquestion[$i]->question->answer == "C") {{"checked=''"}} @endif type="radio" name="{{$i+1}}" value="C" placeholder=""> C. {!! $examquestion[$i]->question->C !!}
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <input @if($exam[$i]->question[0]->answer == "D") {{"checked=''"}} @endif type="radio" name="{{$i+1}}" value="D" placeholder=""> D. {!! $exam[$i]->question[0]->D !!}
+                        <input @if($examquestion[$i]->question->answer == "D") {{"checked=''"}} @endif type="radio" name="{{$i+1}}" value="D" placeholder=""> D. {!! $examquestion[$i]->question->D !!}
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        {!! $exam[$i]->question[0]->comment !!}
+                        {!! $examquestion[$i]->question->comment !!}
                     </div>
                 </div>
             @endfor
-        	</form>
+            </form>
             </div>
         </div>
 

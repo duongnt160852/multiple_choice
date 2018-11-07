@@ -9,6 +9,8 @@ use App\Topic;
 use App\Exam;
 use App\Subject;
 use Validator;
+use Excel;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
@@ -16,8 +18,8 @@ class UserController extends Controller
 {
     //
     public function list(){
-		$user = User::where("status","!=","3")->paginate(10);
-		return view("admin.user.list",["user"=>$user]);
+		$users = User::where("status","!=","3")->get();
+		return view("admin.user.list",["users"=>$users]);
 	}
 
 	public function getAdd(){
@@ -61,6 +63,33 @@ class UserController extends Controller
 		return redirect('admin/user/add')->with('thongbao','Thêm thành công');
 	}
 
+	public function postAdd1(){
+    	Excel::load(Input::file('file'),function($reader){
+        	$reader->each(function($sheet){
+        		$validator=Validator::make($sheet->toArray(), 
+					[
+						"username"=>"required|unique:users,username"
+					], 
+					[
+						 "username.unique"=>"MSDT đã tồn tại"
+					]);
+				if ($validator->fails()) return redirect('admin/user/add')->withErrors($validator);
+    			$user=new User;
+    			$pass=str_random(10);
+    			$user->name=$sheet->toArray()['name'];
+	            $user->username=$sheet->toArray()['username'];
+	            $user->email=$sheet->toArray()['email'];
+	            $user->DoB=$sheet->toArray()['dob'];
+	            $user->password=bcrypt($pass);
+	            $user->password1=$pass;
+	            $user->idExam=$sheet->toArray()['idexam'];
+	            $user->code=$sheet->toArray()['code'];
+	            $user->save();
+        	});
+        	return redirect('admin/user/add')->with('thongbao','Thêm thành công');
+        });
+    }
+
 	public function getEdit($id){
         $user=User::find($id);
 		return view("admin.user.edit",['user'=>$user]);
@@ -82,4 +111,5 @@ class UserController extends Controller
     	return redirect("admin/user/list")->with("thongbao","Xóa thành công");
     }
 
+    
 }

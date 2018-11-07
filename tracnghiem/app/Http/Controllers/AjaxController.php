@@ -288,11 +288,11 @@ class AjaxController extends Controller
 		}
 	}
 
-	public function paginate(){
+	public function paginate(Request $request){
 		$user = User::where("status","!=","3")->paginate(10);
 		echo $user->links();
 	}
-	public function paginate1(){
+	public function paginate1(Request $request){
 		$option=$_REQUEST["str"];
 		$name=$_REQUEST["str1"];
 		if($option=="1"){
@@ -304,7 +304,7 @@ class AjaxController extends Controller
 		else {
 			$user = User::where([["username","like","%".$name."%"],["status","!=","3"]])->paginate(10);
 		}
-		echo $user->links();
+		echo $user->appends(['str'=>$option,'str1'=>$name])->links();
 	}
 }
 

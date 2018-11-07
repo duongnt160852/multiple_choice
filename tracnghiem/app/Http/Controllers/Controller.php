@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\User;
 use App\Exam;
+use App\Examquestion;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -16,47 +17,52 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function getView(){
-       	$user=Auth::user();
-       	$exam=Exam::where([["id",$user->idExam],["code",$user->code]])->orderBy("idOrder")->get();
-    	return view("user/view",["user"=>$user,"exam"=>$exam]);
+        $user=Auth::user();
+        $exam=Exam::where([["id",$user->idExam],["code",$user->code]])->get()->first();
+        $examquestion=Examquestion::where([["idExam",$user->idExam],["code",$user->code]])->orderBy("id")->get();
+        return view("user/view",["user"=>$user,"exam"=>$exam,"examquestion"=>$examquestion]);
     }
 
     public function postView(Request $request, $idExam, $code){
-    	$count=0;
-    	$exam=Exam::where([["id",$idExam],["code",$code]])->orderBy("idOrder")->get();
-    	$total=count($exam);
-    	for ($i = 1; $i <= $total ; $i++) {
-    		if($request->$i ==$exam[$i-1]->question[0]->answer ) $count++;
-    	}
-    	$answer="";
-    	for ($i = 1; $i <= $total ; $i++) {
-    		$answer.= ($request->$i==null)?"0":$request->$i;
-    	}
+        $count=0;
+        $user=Auth::user();
+        $exam=Exam::where([["id",$user->idExam],["code",$user->code]])->get()->first();
+        $examquestion=Examquestion::where([["idExam",$user->idExam],["code",$user->code]])->orderBy("id")->get();
+        $total=count($examquestion);
+        for ($i = 1; $i <= $total ; $i++) {
+            if($request->$i ==$examquestion[$i-1]->question->answer ) $count++;
+        }
+        $answer="";
+        for ($i = 1; $i <= $total ; $i++) {
+            $answer.= ($request->$i==null)?"0":$request->$i;
+        }
         $dt = date('Y-m-d H:i:s');
         $user=User::find(Auth::user()->id);
         $user->status="2";
         $user->time=$dt;
         $user->count_true=$count;
         $user->total=$total;
-        $user->mark=$count*1.0/$total;
+        $user->mark=$count*10.0/$total;
         $user->save();
-    	return redirect()->route('result',[$count,$total,$answer]);
+        return redirect()->route('result',[$count,$total,$answer]);
     }
 
     public function getResult($count,$total,$answer){
-    	$user=Auth::user();
-    	$exam=$exam=Exam::where([["id",$user->idExam],["code",$user->code]])->orderBy("idOrder")->get();
-    	return view("user.result",["count"=>$count,"exam"=>$exam,"total"=>$total,"user"=>$user,"answer"=>$answer]);
+        $user=Auth::user();
+        $exam=Exam::where([["id",$user->idExam],["code",$user->code]])->get()->first();
+        $examquestion=Examquestion::where([["idExam",$user->idExam],["code",$user->code]])->orderBy("id")->get();
+        return view("user.result",["count"=>$count,"exam"=>$exam,"total"=>$total,"user"=>$user,"answer"=>$answer,"examquestion"=>$examquestion]);
     }
 
     public function postResult($count,$total,$answer){
-    	return redirect()->route('answer',[$answer]);
+        return redirect()->route('answer',[$answer]);
     }
 
     public function answer($answer){
-    	$user=Auth::user();
-    	$exam=$exam=$exam=Exam::where([["id",$user->idExam],["code",$user->code]])->orderBy("idOrder")->get();
-    	return view("user/answer",["exam"=>$exam,"user"=>$user,"answer"=>$answer]);
+        $user=Auth::user();
+        $exam=Exam::where([["id",$user->idExam],["code",$user->code]])->get()->first();
+        $examquestion=Examquestion::where([["idExam",$user->idExam],["code",$user->code]])->orderBy("id")->get();
+        return view("user/answer",["exam"=>$exam,"user"=>$user,"answer"=>$answer,"examquestion"=>$examquestion]);
     }
 
     public function aaa(){

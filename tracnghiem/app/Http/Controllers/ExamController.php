@@ -8,6 +8,7 @@ use App\User;
 use App\Topic;
 use App\Exam;
 use App\Subject;
+use App\Examquestion;
 use Validator;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -25,119 +26,115 @@ class ExamController extends Controller
     }
 
     public function viewExam($id){
-        $exam=Exam::where([["id","=",$id],["code","=","1"]])->orderBy('idOrder')->get();
-        return view("admin.exam.view",["exam"=>$exam]);
+        $exam=Exam::where([["id","=",$id],["code","=","1"]])->get()->first();
+        $examquestion=Examquestion::where([["idExam","=",$id],["code","=","1"]])->orderBy('id')->get();
+        return view("admin.exam.view",["exam"=>$exam,"examquestion"=>$examquestion]);
     }
 
     public function getAdd(){
-    	$subject=Subject::orderBy('id')->get();
-    	return view("admin.exam.add",["subject"=>$subject]);
+        $subject=Subject::orderBy('id')->get();
+        return view("admin.exam.add",["subject"=>$subject]);
     }
 
     public function postAdd(Request $request){
-    	$exam_max_id=Exam::max('id');
-    	
-    	if($request->level1>0){
-    		$question=Question::where([["idTopic",$request->topic],["level",1]])->inRandomOrder()->limit($request->level1)->get();
-    	   foreach ($question as $value) {
-    		  $array_question[]=$value;
-    	   }
-    	   for($j=1;$j<=12;$j++){
-    		  shuffle($array_question);
-    		  foreach($array_question as $a) {
-    		  $exam= new Exam;
-    		  $exam->id=$exam_max_id+1;
-    		  $exam->code=$j;
-    		  $exam->idQuestion=$a->id;
-    		  $exam->name=$request->name;
-    		  $exam->time=$request->time;
-    		  $exam->idTopic=$a->idTopic;
-    		  $exam->save();
-    		  }
-    	   }
-    	}
-    	if ($request->level2 >0){
-    		$question=Question::where([["idTopic",$request->topic],["level",2]])->inRandomOrder()->limit($request->level2)->get();
-    	   $array_question=null;
-    	   foreach ($question as $value) {
-    		  $array_question[]=$value;
-    	   }
-    	   for($j=1;$j<=12;$j++){
-    		  shuffle($array_question);
-    		  foreach($array_question as $a) {
-    		  $exam= new Exam;
-    		  $exam->id=$exam_max_id+1;
-    		  $exam->code=$j;
-    		  $exam->idQuestion=$a->id;
-    		  $exam->name=$request->name;
-    		  $exam->time=$request->time;
-    		  $exam->idTopic=$a->idTopic;
-    		  $exam->save();
-    		  }
-    	   }
-    	}
-    	if ($request->level3>0){
-    		$question=Question::where([["idTopic",$request->topic],["level",3]])->inRandomOrder()->limit($request->level3)->get();
-    	   $array_question=null;
-    	   foreach ($question as $value) {
-    		  $array_question[]=$value;
-    	   }
-    	
-    	   for($j=1;$j<=12;$j++){
-    		  shuffle($array_question);
-    		  foreach($array_question as $a) {
-    		  $exam= new Exam;
-    	   	  $exam->id=$exam_max_id+1;
-    	   	  $exam->code=$j;
-    	   	  $exam->idQuestion=$a->id;
-    	   	  $exam->name=$request->name;
-    	   	  $exam->time=$request->time;
-    	   	  $exam->idTopic=$a->idTopic;
-    	   	  $exam->save();
-    		  }
-    	   }
-    	}
-    	if ($request->level4>0){
-    		$question=Question::where([["idTopic",$request->topic],["level",4]])->inRandomOrder()->limit($request->level4)->get();
-    	   $array_question=null;
-    	   foreach ($question as $value) {
-    		  $array_question[]=$value;
-    	   }
-        	for($j=1;$j<=12;$j++){
-        		shuffle($array_question);
-        		foreach($array_question as $a) {
-        		$exam= new Exam;
-        		$exam->id=$exam_max_id+1;
-        		$exam->code=$j;
-        		$exam->idQuestion=$a->id;
-        		$exam->name=$request->name;
-        		$exam->time=$request->time;
-        		$exam->idTopic=$a->idTopic;
-        		$exam->save();
-        		}
-        	}
-    	}
-     	if ($request->level5>0){
-    		$question=Question::where([["idTopic",$request->topic],["level",5]])->inRandomOrder()->limit($request->level5)->get();
-        	$array_question=null;
-        	foreach ($question as $value) {
-        		$array_question[]=$value;
-        	}
-        	for($j=1;$j<=12;$j++){
-        		shuffle($array_question);
-        		foreach($array_question as $a) {
-        		$exam= new Exam;
-        		$exam->id=$exam_max_id+1;
-        		$exam->code=$j;
-        		$exam->idQuestion=$a->id;
-        		$exam->name=$request->name;
-        		$exam->time=$request->time;
-        		$exam->idTopic=$a->idTopic;
-        		$exam->save();
-        		}
-        	}
-        	}
-    	return redirect("admin/exam/add")->with('thongbao','Thêm thành công');
+
+        $exam_max_id=Exam::max('id');
+        for($j=1;$j<=12;$j++){
+            $exam= new Exam;
+            $exam->id=$exam_max_id+1;
+            $exam->code=$j;
+            $exam->name=$request->name;
+            $exam->time=$request->time;
+            $exam->idTopic=$request->topic;
+            $exam->save();
+        }
+
+        if($request->level1>0){
+            $question=Question::where([["idTopic",$request->topic],["level",1]])->inRandomOrder()->limit($request->level1)->get();
+           foreach ($question as $value) {
+              $array_question[]=$value;
+           }
+           for($j=1;$j<=12;$j++){
+              shuffle($array_question);
+              foreach($array_question as $a) {
+              $examquestion= new Examquestion;
+              $examquestion->idExam=$exam_max_id+1;
+              $examquestion->code=$j;
+              $examquestion->idQuestion=$a->id;
+              $examquestion->save();
+              }
+           }
+        }
+        if ($request->level2 >0){
+            $question=Question::where([["idTopic",$request->topic],["level",2]])->inRandomOrder()->limit($request->level2)->get();
+           $array_question=null;
+           foreach ($question as $value) {
+              $array_question[]=$value;
+           }
+           for($j=1;$j<=12;$j++){
+              shuffle($array_question);
+              foreach($array_question as $a) {
+              $examquestion= new Examquestion;
+              $examquestion->idExam=$exam_max_id+1;
+              $examquestion->code=$j;
+              $examquestion->idQuestion=$a->id;
+              $examquestion->save();
+              }
+           }
+        }
+        if ($request->level3>0){
+            $question=Question::where([["idTopic",$request->topic],["level",3]])->inRandomOrder()->limit($request->level3)->get();
+           $array_question=null;
+           foreach ($question as $value) {
+              $array_question[]=$value;
+           }
+        
+           for($j=1;$j<=12;$j++){
+              shuffle($array_question);
+              foreach($array_question as $a) {
+              $examquestion= new Examquestion;
+              $examquestion->idExam=$exam_max_id+1;
+              $examquestion->code=$j;
+              $examquestion->idQuestion=$a->id;
+              $examquestion->save();
+              }
+           }
+        }
+        if ($request->level4>0){
+            $question=Question::where([["idTopic",$request->topic],["level",4]])->inRandomOrder()->limit($request->level4)->get();
+           $array_question=null;
+           foreach ($question as $value) {
+              $array_question[]=$value;
+           }
+            for($j=1;$j<=12;$j++){
+                shuffle($array_question);
+                foreach($array_question as $a) {
+                $examquestion= new Examquestion;
+                $examquestion->idExam=$exam_max_id+1;
+                $examquestion->code=$j;
+                $examquestion->idQuestion=$a->id;
+                $examquestion->save();
+                }
+            }
+        }
+        if ($request->level5>0){
+            $question=Question::where([["idTopic",$request->topic],["level",5]])->inRandomOrder()->limit($request->level5)->get();
+            $array_question=null;
+            foreach ($question as $value) {
+                $array_question[]=$value;
+            }
+            for($j=1;$j<=12;$j++){
+                shuffle($array_question);
+                foreach($array_question as $a) {
+                $examquestion= new Examquestion;
+                $examquestion->idExam=$exam_max_id+1;
+                $examquestion->code=$j;
+                $examquestion->idQuestion=$a->id;
+                $examquestion->save();
+                }
+            }
+            }
+        return redirect("admin/exam/add")->with('thongbao','Thêm thành công');
     }
 
     public function delete($id)

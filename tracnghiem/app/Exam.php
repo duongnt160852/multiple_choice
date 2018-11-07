@@ -13,7 +13,7 @@ class Exam extends Model
     	return $this->belongsTo("App\Topic","idTopic","id");
     }
 
-    public function question(){
-    	return $this->hasMany("App\Question","id","idQuestion");
+    public function examquestion(){
+    	return $this->hasMany("App\Examquestion","idExam","id");
     }
 }

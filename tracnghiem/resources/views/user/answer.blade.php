@@ -44,24 +44,18 @@
     -->
 
         <div class="sidebar-wrapper">
-            <div class="logo">
+           <div class="logo">
                 <a class="simple-text">
-                    Trắc Nghiệm
+                    <h4 style="color:#AF4A92; font-weight: bold;">Trắc Nghiệm</h4>
                 </a>
             </div>
-            <div class="logo" align="center" style="font-size: 20px">
-                Môn: {{$exam[0]->topic->subject->name}}
-            </div>
-            <div class="logo" align="center" style="font-size: 20px">
-                Đề thi: {{$exam[0]->name}}
-            </div>
-            <div class="logo" align="center" style="font-size: 15px">
+           <div class="logo" align="center" style="font-size: 15px;font-weight: bold;color:#AF4A92;">
                 Thí sinh: {{$user->name}}
             </div>
-            <div class="logo" align="center" style="font-size: 15px">
+            <div class="logo" align="center" style="font-size: 15px;font-weight: bold;color:#AF4A92;">
                 Email: {{$user->email}}
             </div>
-            <div class="logo" align="center" style="font-size: 15px">
+            <div class="logo" align="center" style="font-size: 15px;font-weight:bold;color:#AF4A92;">
                 Ngày sinh: {{$user->DoB}}
             </div>
         </div>
@@ -69,7 +63,7 @@
 
     <div class="main-panel">
         
-        {{-- <nav class="navbar navbar-default">
+        <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle">
@@ -78,25 +72,12 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
+                    {{-- <a class="navbar-brand" href="#">Trang Chủ</a> --}}
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="ti-bell"></i>
-                                    <p>Thông Báo</p>
-                                    <b class="caret"></b>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                              </ul>
-                        </li>
                         <li>
-                            <a href="{{Route('logout')}}">
+                            <a href="">
                                 <i class="ti-settings"></i>
                                 <p>Đăng Xuất</p>
                             </a>
@@ -105,45 +86,50 @@
 
                 </div>
             </div>
-        </nav> --}}
+        </nav>
 
         <div class="content">
             <div class="container">
+                 <div class="text-center">
+                    <h1 style="color:#009298; font-weight: bold; font-size:70px;">Bài Thi Môn {{$exam->topic->subject->name}}</h1>
+                    <h3 style="color:#83C75D; font-style:italic; font-size:30px;">Đề thi: {{$exam->name}}</h3>
+                    <h3 style="color:#83C75D; font-style:italic; font-size:30px;">Thời gian làm bài:{{$exam->time}} phút</h3>
+                </div>
             <form>
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
-            @for($i=0;$i<count($exam);$i++)
+            @for($i=0;$i<count($examquestion);$i++)
                 <div class="row">
-                    <div class="col-md-12">
-                        Câu {{$i+1}}: {!! $exam[$i]->question[0]->name !!}
+                    <div class="col-md-12" style="color:black; font-weight: bold; font-size:25px;"">
+                        Câu {{$i+1}}: {!! $examquestion[$i]->question->name !!}
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <input type="radio" @if($answer[$i]=="A") {{"checked=''"}} @endif name="{{$i+1}}" value="A" placeholder="" disabled=""> A. {!! $exam[$i]->question[0]->A !!}
+                    <div class="col-md-12"style="font-style:italic;font-size:20px;">
+                        <input type="radio" @if($answer[$i]=="A") {{"checked=''"}} @endif name="{{$i+1}}" value="A" placeholder="" disabled=""> A. {!! $examquestion[$i]->question->A !!}
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <input type="radio" @if($answer[$i]=="B") {{"checked=''"}} @endif name="{{$i+1}}" value="B" placeholder="" disabled=""> B. {!! $exam[$i]->question[0]->B !!}
+                    <div class="col-md-12"style="font-style:italic;font-size:20px;">
+                        <input type="radio" @if($answer[$i]=="B") {{"checked=''"}} @endif name="{{$i+1}}" value="B" placeholder="" disabled=""> B. {!! $examquestion[$i]->question->B !!}
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <input type="radio" @if($answer[$i]=="C") {{"checked=''"}} @endif name="{{$i+1}}" value="C" placeholder="" disabled=""> C. {!! $exam[$i]->question[0]->C !!}
+                    <div class="col-md-12"style="font-style:italic;font-size:20px;">
+                        <input type="radio" @if($answer[$i]=="C") {{"checked=''"}} @endif name="{{$i+1}}" value="C" placeholder="" disabled=""> C. {!! $examquestion[$i]->question->C !!}
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <input type="radio" @if($answer[$i]=="D") {{"checked=''"}} @endif name="{{$i+1}}" value="D" placeholder="" disabled=""> D. {!! $exam[$i]->question[0]->D !!}
+                    <div class="col-md-12"style="font-style:italic;font-size:20px;">
+                        <input type="radio" @if($answer[$i]=="D") {{"checked=''"}} @endif name="{{$i+1}}" value="D" placeholder="" disabled=""> D. {!! $examquestion[$i]->question->D !!}
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        Đáp án: {!! $exam[$i]->question[0]->answer !!}
+                    <div class="col-md-12"style="color:red;font-style:italic;font-size:20px;">
+                        Đáp án: {!! $examquestion[$i]->question->answer !!}
                     </div>
                 </div>
             @endfor
-        	</form>
+            </form>
             </div>
         </div>
 
@@ -210,7 +196,7 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
     </script>
     <script>
-    var target_date = new Date().getTime() + (1000*60*<?php echo $exam[0]->time ?>); // set the countdown date
+    var target_date = new Date().getTime() + (1000*60*<?php echo $exam->time ?>); // set the countdown date
     var hours, minutes, seconds; // variables for time units
 
     var countdown = document.getElementById("clock"); // get tag element

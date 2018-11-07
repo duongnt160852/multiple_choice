@@ -8,20 +8,26 @@
                             </div>
                             
                             <div class="content">
+                                @if(count($errors)>0)
+                                @foreach($errors->all() as $err)
+                                    <div class="alert alert-danger" style="width: 30%">
+                                        {{$err}}
+                                    </div>
+                                @endforeach
+                                @endif
+                                @if(session('thongbao'))
+                                    <div class="alert alert-success" style="width:30%">
+                                     {{session('thongbao')}}
+                                    </div>
+                                @endif
+                                <form action="admin/user/add1" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                    <h6>Thêm bằng excel</h6>
+                                    <input type="file" name="file"><br>
+                                    <button type="submit">Thêm</button>
+                                </form>
                                 <form action="admin/user/add" method="post">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                    @if(count($errors)>0)
-                                    @foreach($errors->all() as $err)
-                                        <div class="alert alert-danger" style="width: 30%">
-                                            {{$err}}
-                                        </div>
-                                    @endforeach
-                                    @endif
-                                    @if(session('thongbao'))
-                                        <div class="alert alert-success" style="width:30%">
-                                         Thêm thành công
-                                        </div>
-                                    @endif
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">

@@ -43,6 +43,7 @@ Route::group(["prefix"=>"admin" ,"middleware"=>"auth:admin"],function(){
 		Route::get("edit/{id}","UserController@getEdit");
 		Route::post("edit/{id}","UserController@postEdit");
 		Route::get("delete/{id}","UserController@delete");
+		Route::post("add1","UserController@postAdd1");
 	});
 	Route::group(["prefix"=>"subject"],function(){
 		Route::get("list","SubjectController@list");
@@ -81,6 +82,8 @@ Route::group(["prefix"=>"admin" ,"middleware"=>"auth:admin"],function(){
 	Route::get("taikhoan","AdminController@taikhoan");
 	Route::get("thongbao","AdminController@thongbao");
 	Route::get("logout","AdminController@logout")->name('logout');
+	Route::get("test","AdminController@export");
+	Route::get("test1","AdminController@import");
 });
 
 Route::group(["prefix"=>"user","middleware"=>"auth"],function(){
@@ -89,6 +92,5 @@ Route::group(["prefix"=>"user","middleware"=>"auth"],function(){
 	Route::get("result/{count?}/{total?}/{answer?}","Controller@getResult")->name("result");
 	Route::post("result/{count}/{total}/{answer}","Controller@postResult");
 	Route::get("answer/{answer}","Controller@answer")->name("answer");
+
 });
-	Route::get("test","TopicController@test");
-	Route::get("aaa","UserController@aaa");
