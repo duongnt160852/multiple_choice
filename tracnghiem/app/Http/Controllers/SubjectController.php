@@ -11,6 +11,7 @@ use App\Subject;
 use Validator;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth as Auth;
 
 class SubjectController extends Controller
 {
@@ -21,11 +22,13 @@ class SubjectController extends Controller
 
 	public function list(){
 		$subject=Subject::where("status",1)->paginate(10);
-		return view("admin.subject.list",['subject'=>$subject]);
+		if (Auth::guard('admin')->user()->status=='1') return view("sadmin.subject.list",['subject'=>$subject]);
+		else return view("admin.subject.list",['subject'=>$subject]);
 	}
 
     public function getAdd(){
-		return view("admin.subject.add");
+		if (Auth::guard('admin')->user()->status=='1') return view("sadmin.subject.add");
+		else return view("admin.subject.add");
 	}
 
 	public function postAdd(Request $request){
@@ -36,23 +39,29 @@ class SubjectController extends Controller
 			[
 				"name.unique"=>"Môn thi đã tồn tại"
 			]);
-		if ($validator->fails()) return redirect('admin/subject/add')->withErrors($validator);
+		if ($validator->fails()) {
+			if (Auth::guard('admin')->user()->status=='1') return redirect('sadmin/subject/add')->withErrors($validator);
+			else return redirect('admin/subject/add')->withErrors($validator);
+		}
 		$subject= new Subject;
 		$subject->name=$request->name;
 		$subject->save();
-		return redirect('admin/subject/add')->with('thongbao',"Thêm thành công");
+		if (Auth::guard('admin')->user()->status=='1') return redirect('sadmin/subject/add')->with('thongbao',"Thêm thành công");
+		else return redirect('admin/subject/add')->with('thongbao',"Thêm thành công");
 	}
 
 	public function getEdit($id){
 		$subject=Subject::find($id);
-		return view('admin.subject.edit',['subject'=>$subject]);
+		if (Auth::guard('admin')->user()->status=='1') return view('sadmin.subject.edit',['subject'=>$subject]);
+		else return view('admin.subject.edit',['subject'=>$subject]);
 	}
 
 	public function postEdit(Request $request,$id){
 		$subject=Subject::find($id);
         $subject->name=$request->subject;
         $subject->save();
-        return redirect("admin/subject/edit/".$id)->with('thongbao',"Sửa Thành Công");
+        if (Auth::guard('admin')->user()->status=='1') return redirect("sadmin/subject/edit/".$id)->with('thongbao',"Sửa Thành Công");
+        else return redirect("admin/subject/edit/".$id)->with('thongbao',"Sửa Thành Công");
 	}
 
 	public function delete($id)
@@ -75,6 +84,7 @@ class SubjectController extends Controller
 		}		
 		$subject->status=0;
 		$subject->save();
-    	return redirect("admin/subject/list")->with("thongbao","Xóa thành công");
+    	if (Auth::guard('admin')->user()->status=='1') return redirect("sadmin/subject/list")->with("thongbao","Xóa thành công");
+    	else return redirect("sadmin/subject/list")->with("thongbao","Xóa thành công");
 	}
 }

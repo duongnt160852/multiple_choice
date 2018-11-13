@@ -14,9 +14,12 @@ class LoginController extends Controller
     }
 
     public function postLoginAdmin(Request $request){
-    	if (Auth::guard('admin')->attempt(["username"=>$request->username, "password"=>$request->password])){
-    		return redirect()->route('home');
+    	if (Auth::guard('admin')->attempt(["username"=>$request->username, "password"=>$request->password,"status"=>"1"])){
+    		return redirect('sadmin/home');
     	}
+        else if (Auth::guard('admin')->attempt(["username"=>$request->username, "password"=>$request->password,"status"=>"2"])){
+            return redirect('admin/home');
+        }
     	return redirect()->back()->with("thongbao","Đăng nhập thất bại");
     }
 
@@ -32,14 +35,5 @@ class LoginController extends Controller
             return redirect("user/view");
         }
         return redirect()->back()->with("thongbao","Đăng nhập thất bại");
-    }
-
-    public function themadmin(){
-        $admin= new Admin;
-        $admin->ID=1;
-        $admin->username="123";
-        $admin->password=bcrypt("123");
-        $admin->name="123";
-        $admin->save();
     }
 }

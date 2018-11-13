@@ -20,9 +20,24 @@ class AdminController extends Controller
 	}
 
 	public function home(){
+		$id=Auth::guard('admin')->user()->id;
+		$count_question=Question::where('idadmin',$id)->count();
 		$count_user=User::where("status","!=","3")->count();
-		$count_online=User::where("status","1")->count();
-		return view("admin.admin.home",["count_user"=>$count_user,"count_online"=>$count_online]);
+		$admin=Auth::guard('admin')->user();
+		$count_online=User::where('status',1)->count();
+		$alladmin=admin::all();
+		if (Auth::guard('admin')->user()->status=='1') return view("sadmin.admin.home",["count_question"=>$count_question,"count_user"=>$count_user,"adm"=>$admin,"count_online"=>$count_online,"alladmin"=>$alladmin]);
+		else return view("admin.admin.home",["count_question"=>$count_question,"count_user"=>$count_user,"adm"=>$admin,"count_online"=>$count_online,"alladmin"=>$alladmin]);
+	}
+
+	public function postAdmin(Request $request){
+		$admin=Auth::guard('admin')->user();
+		$admin->middlename=$request->middlename;
+		$admin->name=$request->name;
+		$admin->address=$request->address;
+		//$admin->email=$request->email;
+		$admin->save();
+		return redirect('admin/home')->with('thongbao','update thành công');
 	}
 
 	public function taikhoan(){
@@ -35,27 +50,54 @@ class AdminController extends Controller
 
 	public function logout(){
     	Auth::guard('admin')->logout();
-    	return redirect()->route('login');
+    	return redirect('admin/login');
     }
 
-    public function import() 
-    {
-        Excel::load(Input::file('file'),function($reader){
-        	$reader->each(function($sheet){
-        		foreach ($sheet->toArray() as $row) {
-        			$user=new User;
-        			$pass=str_random(10);
-        			$user->name=$row[0];
-		            $user->username=$row[1];
-		            $user->email=$row[2];
-		            $user->DoB=$row[3];
-		            $user->password=bcrypt($pass);
-		            $user->password1=$pass;
-		            $user->idExam=$row[4];
-		            $user->code=$row[5];
-		            $user->save();
-        		}
-        	});
-        });
+    public function list(){
+		$admin = Admin::where("status","2")->get();
+		if (Auth::guard('admin')->user()->status=='1') return view("sadmin.admin.list",["admin"=>$admin]);
+		else return view("admin.admin.list",["admin"=>$admin]);
+	}
+
+	public function getAdd(){
+		$admin= Admin::orderBy('id')->get();
+		if (Auth::guard('admin')->user()->status=='1') return view("sadmin.admin.add",["admin"=>$admin]);
+		else return view("admin.admin.add",["admin"=>$admin]);
+	}
+
+	public function postAdd(Request $request){
+		$validator=Validator::make($request->all(), 
+			[
+				"username"=>"required|unique:users,username"
+			], 
+			[
+				"username.unique"=>"MSDT đã tồn tại",
+			]);
+		if ($validator->fails()) {
+			if (Auth::guard('admin')->user()->status=='1') return redirect('sadmin/admin/add')->withErrors($validator);
+			else return redirect('admin/admin/add')->withErrors($validator);
+		}
+		$admin= new Admin;
+		$admin->name=$request->name;
+		$admin->username=$request->username;
+		$admin->email=$request->email;
+		$admin->password= bcrypt($request->password);	
+		$admin->save();
+		if (Auth::guard('admin')->user()->status=='1') return redirect('sadmin/admin/add')->with('thongbao','Thêm thành công');
+		else return redirect('admin/admin/add')->with('thongbao','Thêm thành công');
+	}
+
+	public function getEdit($id){
+        $admin=Admin::find($id);
+		if (Auth::guard('admin')->user()->status=='1') return view("sadmin.admin.edit",['user'=>$user]);
+		else return view("admin.admin.edit",['user'=>$user]);
+	}
+
+    public function delete($id){
+    	$admin=Admin::find($id);
+    	$admin->status=3;
+    	$admin->save();
+    	if (Auth::guard('admin')->user()->status=='1') return redirect("sadmin/admin/list")->with("thongbao","Xóa thành công");
+    	else return redirect("admin/admin/list")->with("thongbao","Xóa thành công");
     }
 }

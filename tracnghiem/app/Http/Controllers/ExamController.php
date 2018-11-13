@@ -12,6 +12,7 @@ use App\Examquestion;
 use Validator;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth as Auth;
 
 class ExamController extends Controller
 {
@@ -22,18 +23,21 @@ class ExamController extends Controller
 
     public function list(){
         $exam=Exam::where("status",1)->groupBy('id')->paginate(10);
-        return view("admin.exam.list",["exam"=>$exam]);
+        if (Auth::guard('admin')->user()->status=='1') return view("sadmin.exam.list",["exam"=>$exam]);
+        else return view("admin.exam.list",["exam"=>$exam]);
     }
 
     public function viewExam($id){
         $exam=Exam::where([["id","=",$id],["code","=","1"]])->get()->first();
         $examquestion=Examquestion::where([["idExam","=",$id],["code","=","1"]])->orderBy('id')->get();
-        return view("admin.exam.view",["exam"=>$exam,"examquestion"=>$examquestion]);
+        if (Auth::guard('admin')->user()->status=='1') return view("sadmin.exam.view",["exam"=>$exam,"examquestion"=>$examquestion]);
+        else return view("admin.exam.view",["exam"=>$exam,"examquestion"=>$examquestion]);
     }
 
     public function getAdd(){
         $subject=Subject::orderBy('id')->get();
-        return view("admin.exam.add",["subject"=>$subject]);
+        if (Auth::guard('admin')->user()->status=='1') return view("sadmin.exam.add",["subject"=>$subject]);
+        else return view("admin.exam.add",["subject"=>$subject]);
     }
 
     public function postAdd(Request $request){
@@ -134,7 +138,8 @@ class ExamController extends Controller
                 }
             }
             }
-        return redirect("admin/exam/add")->with('thongbao','Thêm thành công');
+        if (Auth::guard('admin')->user()->status=='1') return redirect("sadmin/exam/add")->with('thongbao','Thêm thành công');
+        else return redirect("admin/exam/add")->with('thongbao','Thêm thành công');
     }
 
     public function delete($id)
@@ -144,6 +149,7 @@ class ExamController extends Controller
             $value->status=0;
             $value->save();
         }
-        return redirect("admin/exam/list")->with("thongbao","Xóa thành công");
+        if (Auth::guard('admin')->user()->status=='1') return redirect("sadmin/exam/list")->with("thongbao","Xóa thành công");
+        else return redirect("admin/exam/list")->with("thongbao","Xóa thành công");
     }
 }

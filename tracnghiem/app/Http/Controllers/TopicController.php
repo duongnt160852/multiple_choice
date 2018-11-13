@@ -11,6 +11,7 @@ use App\Subject;
 use Validator;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth as Auth;
 
 class TopicController extends Controller
 {
@@ -20,7 +21,8 @@ class TopicController extends Controller
 	}
     public function getAdd(){
 		$subject= Subject::orderBy("id")->get();
-		return view("admin.topic.add",["subject"=>$subject]);
+		if (Auth::guard('admin')->user()->status=='1') return view("sadmin.topic.add",["subject"=>$subject]);
+		else return view("admin.topic.add",["subject"=>$subject]);
 	}
 
 	public function postAdd(Request $request){
@@ -36,29 +38,28 @@ class TopicController extends Controller
 		$topic->name=$request->topic;
 		$topic->idSubject=$request->subject;
 		$topic->save();
-		return redirect('admin/topic/add')->with('thongbao',"Thêm thành công");
+		if (Auth::guard('admin')->user()->status=='1') return redirect('sadmin/topic/add')->with('thongbao',"Thêm thành công");
+		else return redirect('admin/topic/add')->with('thongbao',"Thêm thành công");
 	}
 
 	public function list(){
 		$topic=Topic::where("status",1)->paginate(10);
-		return view('admin.topic.list',['topic'=>$topic]);
+		if (Auth::guard('admin')->user()->status=='1') return view('sadmin.topic.list',['topic'=>$topic]);
+		else return view('admin.topic.list',['topic'=>$topic]);
 	}
 
 	public function getEdit($id){
 		$topic=Topic::find($id);
-		return view('admin.topic.edit',['topic'=>$topic]);
+		if (Auth::guard('admin')->user()->status=='1') return view('sadmin.topic.edit',['topic'=>$topic]);
+		else return view('admin.topic.edit',['topic'=>$topic]);
 	}
 
 	public function postEdit(Request $request,$id){
 		$topic=Topic::find($id);
         $topic->name=$request->topic;
         $topic->save();
-        return redirect("admin/topic/edit/".$id)->with('thongbao',"Sửa Thành Công");
-	}
-
-	public function test(){
-		$question=Question::find(31);
-		return view("test",['question'=>$question]);
+        if (Auth::guard('admin')->user()->status=='1') return redirect("sadmin/topic/edit/".$id)->with('thongbao',"Sửa Thành Công");
+        else return redirect("admin/topic/edit/".$id)->with('thongbao',"Sửa Thành Công");
 	}
 
 	public function delete($id)
@@ -76,6 +77,7 @@ class TopicController extends Controller
     	}
     	$topic->status=0;
     	$topic->save();
-    	return redirect("admin/topic/list")->with("thongbao","Xóa thành công");
+    	if (Auth::guard('admin')->user()->status=='1') return redirect("sadmin/topic/list")->with("thongbao","Xóa thành công");
+    	else return redirect("admin/topic/list")->with("thongbao","Xóa thành công");
 	}
 }
