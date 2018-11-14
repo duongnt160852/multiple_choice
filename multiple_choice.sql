@@ -1,11 +1,11 @@
-﻿-- phpMyAdmin SQL Dump
+-- phpMyAdmin SQL Dump
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- MÃ¡y chá»§: 127.0.0.1
--- Thá»i gian Ä‘Ã£ táº¡o: Th10 13, 2018 lÃºc 03:37 PM
--- PhiÃªn báº£n mÃ¡y phá»¥c vá»¥: 10.1.35-MariaDB
--- PhiÃªn báº£n PHP: 7.2.9
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th10 14, 2018 lúc 08:17 AM
+-- Phiên bản máy phục vụ: 10.1.35-MariaDB
+-- Phiên bản PHP: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- CÆ¡ sá»Ÿ dá»¯ liá»‡u: `multiple_choice`
+-- Cơ sở dữ liệu: `multiple_choice`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cáº¥u trÃºc báº£ng cho báº£ng `admins`
+-- Cấu trúc bảng cho bảng `admins`
 --
 
 CREATE TABLE `admins` (
@@ -41,18 +41,18 @@ CREATE TABLE `admins` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Äang Ä‘á»• dá»¯ liá»‡u cho báº£ng `admins`
+-- Đang đổ dữ liệu cho bảng `admins`
 --
 
 INSERT INTO `admins` (`id`, `name`, `username`, `password`, `email`, `middlename`, `address`, `remember_token`, `status`) VALUES
-(1, 'dÆ°Æ¡ng', '123', '$2y$10$0dFpXcwjoP0C08xWQatiJe.vEpekIB/kLYQCinGcZOnaG3mqXq.nq', 'a@a', 'nguyá»…n tÃ¹ng', 'aaaaaa', '6CB56DIcQSSkDadIIvJc0T8cm5J2r1ThLSe1yhuDb7VBsVapAZcryjgFNN9n', 1),
+(1, 'dương', '123', '$2y$10$0dFpXcwjoP0C08xWQatiJe.vEpekIB/kLYQCinGcZOnaG3mqXq.nq', 'a@a', 'nguyễn tùng', 'aaaaaa', '6CB56DIcQSSkDadIIvJc0T8cm5J2r1ThLSe1yhuDb7VBsVapAZcryjgFNN9n', 1),
 (2, 'duong', '123456', '$2y$10$pygHcOF8PjfsVZZWWBDN3eqtJe6CsulD9u6XsMLi89Ufp3LJokUf6', '1@1', 'nguyen tung', 'bbbbbbb', NULL, 3),
 (3, 'aaa', 'aaa', '$2y$10$7uoD3nCg8i2nRAfqGMujDuTgksuJaDLf7t1bI1rV2qbXpj5BmLUZi', 'a@a', 'bbb', 'ccccc', 'ob11NKIEw1kPZ6gdKp3QKeRXg1MENa1ZWJ0nh9G97yR50nqDhGqeen0pMwhr', 2);
 
 -- --------------------------------------------------------
 
 --
--- Cáº¥u trÃºc báº£ng cho báº£ng `examquestion`
+-- Cấu trúc bảng cho bảng `examquestion`
 --
 
 CREATE TABLE `examquestion` (
@@ -63,7 +63,7 @@ CREATE TABLE `examquestion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Äang Ä‘á»• dá»¯ liá»‡u cho báº£ng `examquestion`
+-- Đang đổ dữ liệu cho bảng `examquestion`
 --
 
 INSERT INTO `examquestion` (`id`, `idExam`, `code`, `idQuestion`) VALUES
@@ -983,7 +983,7 @@ INSERT INTO `examquestion` (`id`, `idExam`, `code`, `idQuestion`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cáº¥u trÃºc báº£ng cho báº£ng `exams`
+-- Cấu trúc bảng cho bảng `exams`
 --
 
 CREATE TABLE `exams` (
@@ -996,34 +996,34 @@ CREATE TABLE `exams` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Äang Ä‘á»• dá»¯ liá»‡u cho báº£ng `exams`
+-- Đang đổ dữ liệu cho bảng `exams`
 --
 
 INSERT INTO `exams` (`id`, `code`, `name`, `idTopic`, `time`, `status`) VALUES
-(2, 1, 'giáº£i tÃ­ch', 1, 15, 1),
-(2, 2, 'giáº£i tÃ­ch', 1, 15, 1),
-(2, 3, 'giáº£i tÃ­ch', 1, 15, 1),
-(2, 4, 'giáº£i tÃ­ch', 1, 15, 1),
-(2, 5, 'giáº£i tÃ­ch', 1, 15, 1),
-(2, 6, 'giáº£i tÃ­ch', 1, 15, 1),
-(2, 7, 'giáº£i tÃ­ch', 1, 15, 1),
-(2, 8, 'giáº£i tÃ­ch', 1, 15, 1),
-(2, 9, 'giáº£i tÃ­ch', 1, 15, 1),
-(2, 10, 'giáº£i tÃ­ch', 1, 15, 1),
-(2, 11, 'giáº£i tÃ­ch', 1, 15, 1),
-(2, 12, 'giáº£i tÃ­ch', 1, 15, 1),
-(3, 1, 'giá»¯a kÃ¬', 2, 15, 1),
-(3, 2, 'giá»¯a kÃ¬', 2, 15, 1),
-(3, 3, 'giá»¯a kÃ¬', 2, 15, 1),
-(3, 4, 'giá»¯a kÃ¬', 2, 15, 1),
-(3, 5, 'giá»¯a kÃ¬', 2, 15, 1),
-(3, 6, 'giá»¯a kÃ¬', 2, 15, 1),
-(3, 7, 'giá»¯a kÃ¬', 2, 15, 1),
-(3, 8, 'giá»¯a kÃ¬', 2, 15, 1),
-(3, 9, 'giá»¯a kÃ¬', 2, 15, 1),
-(3, 10, 'giá»¯a kÃ¬', 2, 15, 1),
-(3, 11, 'giá»¯a kÃ¬', 2, 15, 1),
-(3, 12, 'giá»¯a kÃ¬', 2, 15, 1),
+(2, 1, 'giải tích', 1, 15, 1),
+(2, 2, 'giải tích', 1, 15, 1),
+(2, 3, 'giải tích', 1, 15, 1),
+(2, 4, 'giải tích', 1, 15, 1),
+(2, 5, 'giải tích', 1, 15, 1),
+(2, 6, 'giải tích', 1, 15, 1),
+(2, 7, 'giải tích', 1, 15, 1),
+(2, 8, 'giải tích', 1, 15, 1),
+(2, 9, 'giải tích', 1, 15, 1),
+(2, 10, 'giải tích', 1, 15, 1),
+(2, 11, 'giải tích', 1, 15, 1),
+(2, 12, 'giải tích', 1, 15, 1),
+(3, 1, 'giữa kì', 2, 15, 1),
+(3, 2, 'giữa kì', 2, 15, 1),
+(3, 3, 'giữa kì', 2, 15, 1),
+(3, 4, 'giữa kì', 2, 15, 1),
+(3, 5, 'giữa kì', 2, 15, 1),
+(3, 6, 'giữa kì', 2, 15, 1),
+(3, 7, 'giữa kì', 2, 15, 1),
+(3, 8, 'giữa kì', 2, 15, 1),
+(3, 9, 'giữa kì', 2, 15, 1),
+(3, 10, 'giữa kì', 2, 15, 1),
+(3, 11, 'giữa kì', 2, 15, 1),
+(3, 12, 'giữa kì', 2, 15, 1),
 (4, 1, 'aaa', 1, 15, 0),
 (4, 2, 'aaa', 1, 15, 0),
 (4, 3, 'aaa', 1, 15, 0),
@@ -1052,7 +1052,7 @@ INSERT INTO `exams` (`id`, `code`, `name`, `idTopic`, `time`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cáº¥u trÃºc báº£ng cho báº£ng `questions`
+-- Cấu trúc bảng cho bảng `questions`
 --
 
 CREATE TABLE `questions` (
@@ -1071,11 +1071,11 @@ CREATE TABLE `questions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Äang Ä‘á»• dá»¯ liá»‡u cho báº£ng `questions`
+-- Đang đổ dữ liệu cho bảng `questions`
 --
 
 INSERT INTO `questions` (`id`, `name`, `A`, `B`, `C`, `D`, `answer`, `idTopic`, `level`, `comment`, `idadmin`, `status`) VALUES
-(1, '1+0=?', '1', '2', '3', '4', 'A', 1, 1, 'khÃ´ng cáº§n giáº£i thÃ­ch', 1, 0),
+(1, '1+0=?', '1', '2', '3', '4', 'A', 1, 1, 'không cần giải thích', 1, 0),
 (2, '<p>2+1=?</p>', '<p>1</p>', '<p>2</p>', '<p>3</p>', '<p>4</p>', 'C', 1, 1, NULL, 1, 1),
 (3, '1+3=?', '1', '2', '3', '4', 'D', 1, 1, NULL, 1, 1),
 (4, '2+2=?', '1', '2', '3', '4', 'D', 1, 1, NULL, 1, 1),
@@ -1106,37 +1106,36 @@ INSERT INTO `questions` (`id`, `name`, `A`, `B`, `C`, `D`, `answer`, `idTopic`, 
 (29, '123', '123', '123', '123', '123', 'A', 1, 1, '<p>\\( \\int_{1}^{2}x=? \\)</p>', 1, 1),
 (30, 'aa', 'aaa', 'aa', 'aaa', 'aa', 'A', 1, 1, '<p>abc</p>\r\n\r\n<p>bcd</p>\r\n\r\n<p>ecd</p>', 1, 1),
 (31, '<p>\\( \\int_{1}^{2}x=? \\)</p>', '<p>1</p>', '<p>2</p>', '<p>3</p>', '<p>3.5</p>', 'D', 1, 1, NULL, 1, 1),
-(32, 'Cho \\( \\int_{0}^{1}\\frac{dx}{x^{5}+x^{2}}= a.ln2+b.ln5+c\\).Khi Ä‘Ã³ \\(a+2b+4c\\) báº±ng ', '2', '3', '0', '1', 'D', 2, 1, NULL, 1, 1),
-(33, 'NguyÃªn hÃ m cá»§a \\(f\\left ( x \\right )= \\left ( 2x-1 \\right )e^{\\frac{1}{x}} \\) lÃ  ', '\\( x.e^{\\frac{1}{x}} \\)', '\\( \\left ( x^{2}-1 \\right )e^{\\frac{1}{x}} \\)', '\\( x^{2}e^{\\frac{1}{x}} \\)', '\\( \\frac{1}{e^{x}} \\)', 'C', 2, 1, NULL, 1, 1),
-(34, 'TÃ­nh tÃ­ch phÃ¢n \\( I=\\int_{1}^{5}\\frac{dx}{x\\sqrt{3x+1}}\\) Ä‘Æ°á»£c káº¿t quáº£ lÃ  \\(I=a.ln3+b.ln5\\). GiÃ¡ trá»‹ cá»§a \\(a^{2}+ab+3b^{2}\\) lÃ  ', '4', '1', '0', '5', 'D', 2, 1, NULL, 1, 1),
-(35, 'TÃ­ch phÃ¢n \\( I=\\int_{0}^{\\frac{\\pi}{2}}\\left ( 1-cosx \\right )^{n}sinxdx \\) báº±ng ', '\\( \\frac{1}{n+1} \\)', '\\( \\frac{1}{n-1} \\)', '\\( \\frac{1}{2n} \\)', '\\( \\frac{1}{n} \\)', 'A', 2, 1, NULL, 1, 1),
-(36, 'HÃ¬nh pháº³ng giá»›i háº¡n bá»Ÿi \\( y=x, y=x^{2} \\) cÃ³ diá»‡n tÃ­ch lÃ  ', '\\( \\frac{1}{2} \\)', '\\( \\frac{1}{6} \\)', '\\( \\frac{1}{3} \\)', '1', 'B', 2, 1, NULL, 1, 1),
-(37, '\\( I=\\int_{\\frac{1}{e}}^{e}\\frac{dx}{x} \\) cÃ³ giÃ¡ trá»‹', '0', '-2', '2', 'e', 'C', 2, 2, NULL, 1, 1),
-(38, 'Cho \\(f\\left ( x \\right )\\) liÃªn tá»¥c trÃªn [0;10] thoáº£ mÃ£n: \\(\\int_{0}^{10}f\\left ( x \\right )dx= 7, \\int_{2}^{6}f\\left ( x \\right )dx= 3\\). Khi Ä‘Ã³ giÃ¡ trá»‹ cá»§a \\(\\int_{0}^{2}f\\left ( x \\right )dx+ \\int_{6}^{10}f\\left ( x \\right )dx\\) cÃ³ giÃ¡ trá»‹ lÃ :', '1', '4', '3', '2', 'B', 2, 2, NULL, 1, 1),
-(39, 'Thá»ƒ tÃ­ch váº­t thá»ƒ bá»‹ giá»›i háº¡n bá»Ÿi 2 máº·t trá»¥: \\(x^{2}+z^{2}=a^{2}\\) vÃ  \\(y^{2}+z^{2}=a^{2}\\) lÃ  \\(V=\\frac{2}{3} \\left ( Ä‘vtt \\right )\\).TÃ­nh giÃ¡ trá»‹ cá»§a a? ', '1', '\\( \\frac{1}{2} \\)', '2', '\\( \\frac{1}{4} \\)', 'D', 2, 2, NULL, 1, 1),
-(40, 'TÃ­nh \\( \\int 2^{\\frac{1}{2x}}\\frac{ln2}{x^{2}}dx,\\) káº¿t quáº£ sai lÃ : ', '\\( 2\\left ( 2^{\\frac{1}{2x}}+2 \\right )+ C \\)', '\\( 2^{\\frac{1}{2x}+1}+ C \\)', '\\( 2^{\\frac{1}{2x}}+ C \\)', '\\( 2\\left ( 2^{\\frac{1}{2x}}-2 \\right )+ C \\)', 'C', 2, 2, NULL, 1, 1),
-(41, 'TÃ­nh \\( K=\\int_{0}^{1}x^{2}e^{2x}dx \\)', '\\( K= \\frac{e^{2}-1}{2} \\)', '\\( K= \\frac{e^{2}+1}{4} \\)', '\\( K= \\frac{e^{2}}{4} \\)', '\\( \\frac{1}{4} \\)', 'A', 2, 2, NULL, 1, 1),
-(42, 'Diá»‡n tÃ­ch hÃ¬nh giá»›i háº¡n bá»Ÿi \\( (P):y=x^{3}+3,\\) tiáº¿p tuyáº¿n cá»§a (P) táº¡i x=2 vÃ  trá»¥c Oy lÃ  \\(&nbsp; \\)', '\\( \\frac{2}{3} \\)', '8', '\\( \\frac{8}{3} \\)', '4', 'C', 2, 3, NULL, 1, 1),
-(43, 'NguyÃªn hÃ m cá»§a hÃ m sá»‘ \\( y=sin^{3}x.cosx lÃ : \\)', '\\( \\frac{1}{4}sin^{4}x+C \\)', '\\( \\frac{1}{3}cos^{3}x+C \\)', '\\( \\frac{1}{3}sin^{3}x+C \\)', '\\( sin^{4}x+C \\)', 'A', 2, 3, NULL, 1, 1),
-(44, 'Cho f(x) lÃ  hÃ m sá»‘ láº», liÃªn tá»¥c trÃªn \\( \\mathbb{R}.\\) Khi Ä‘Ã³ giÃ¡ trá»‹ tÃ­ch phÃ¢n \\(\\int_{-1}^{1}f(x)dx\\) lÃ : ', '2', '0', '1', '-2', 'B', 2, 3, NULL, 1, 1),
-(45, 'Thá»ƒ tÃ­ch cá»§a khá»‘i trÃ²n xoay do hÃ¬nh pháº³ng (H) giá»›i háº¡n bá»Ÿi cÃ¡c Ä‘Æ°á»ng \\( y=sinx; y=0; x=0; x=\\pi\\) khi xoay quanh Ox lÃ : ', '\\( \\frac{\\pi ^{2}}{3} \\)', '\\( \\frac{\\pi ^{2}}{2} \\)', '\\( \\frac{\\pi ^{2}}{4} \\)', '\\( \\frac{2\\pi ^{2}}{3} \\)', 'B', 2, 3, NULL, 1, 1),
-(46, 'TÃ­ch phÃ¢n \\( I=\\int_{0}^{1}x\\sqrt[3]{1-x}dx \\)', '\\( \\frac{28}{9} \\)', '\\( \\frac{-9}{28} \\)', '\\( \\frac{9}{28} \\)', '\\( \\frac{3}{28} \\)', 'C', 2, 3, NULL, 1, 1),
-(47, 'Cho f(x) lÃ  hÃ m sá»‘ cháºµn, liÃªn tá»¥c trÃªn \\( \\mathbb{R}\\) thá»a mÃ£n \\(\\int_{-1}^{1}f(x)dx=2\\).Khi Ä‘Ã³ giÃ¡ trá»‹ tÃ­ch phÃ¢n \\(\\int_{0}^{1}f(x)dx\\) lÃ : ', '2', '1', '\\( \\frac{1}{2} \\)', '\\( \\frac{1}{4} \\)', 'B', 2, 4, NULL, 1, 1),
-(48, 'Cho \\( f\'(x)=3-5sinx\\) vÃ  \\(f(0)=10\\).Trong cÃ¡c kháº³ng Ä‘á»‹nh sau kháº³ng Ä‘á»‹nh nÃ o Ä‘Ãºng? ', '\\( f(x)=3x+5cosx+2 \\)', '\\( f(\\frac{\\pi }{2})=\\frac{3\\pi }{2} \\)', '\\( f(\\pi )=3\\pi&nbsp; \\)', '\\( f(x)=3x-5cosx \\)', 'C', 2, 4, NULL, 1, 1),
-(49, 'Cho hÃ m sá»‘ \\( y=f(x)\\) thá»a mÃ£n \\(y\'=x^{2}y\\) vÃ  \\(f(-1)=1\\) thÃ¬ \\(f(2)=\\) bao nhiÃªu? ', '\\( e^{3} \\)', '\\( e^{2} \\)', '2e', 'e+1', 'A', 2, 4, NULL, 1, 1),
-(50, 'Má»™t nguyÃªn hÃ m cá»§a hÃ m sá»‘ \\( :f(x)=x\\sqrt{1+x^{2}}\\) lÃ : ', '\\( F(x)=\\frac{1}{3}\\left ( \\sqrt{1+x^{2}} \\right )^{3} \\)', '\\( F(x)=\\frac{1}{3}\\left ( \\sqrt{1+x^{2}} \\right )^{2} \\)', '\\( F(x)=\\frac{x^{2}}{2}\\left ( \\sqrt{1+x^{2}} \\right )^{2} \\)', '\\( F(x)=\\frac{1}{2}\\left ( \\sqrt{1+x^{2}} \\right )^{2} \\)', 'A', 2, 4, NULL, 1, 1),
-(51, 'TÃ­nh \\( K=\\int_{0}^{1}x.ln(1+x^{2})dx \\)', '\\( ln2-\\frac{1}{2} \\)', '\\( ln2-\\frac{1}{4} \\)', '\\( ln2+\\frac{1}{2} \\)', '\\( -ln2+\\frac{1}{2} \\)', 'A', 2, 4, NULL, 1, 1),
-(52, 'Cho hÃ¬nh pháº³ng (S) giá»›i háº¡n bá»Ÿi \\( Ox,Oy,y=cosx\\) vÃ  \\(y=\\frac{-2}{\\pi }x+1\\).Diá»‡n tÃ­ch hÃ¬nh pháº³ng (s) lÃ : ', '\\( 2\\pi&nbsp; \\)', '\\( 2+\\frac{3\\pi }{2} \\)', '\\( \\pi&nbsp; \\)', '\\( 1+\\frac{3\\pi }{4} \\)', 'B', 2, 5, NULL, 1, 1),
-(53, 'TÃ­nh tÃ­ch phÃ¢n \\( \\int_{0}^{1}\\frac{dx}{x^{2}-x-12} \\)', '\\( ln\\frac{9}{16} \\)', '\\( \\frac{1}{4}ln\\frac{9}{16} \\)', '\\( -\\frac{1}{7}ln\\frac{9}{16} \\)', '\\( \\frac{1}{7}ln\\frac{9}{16} \\)', 'D', 2, 5, NULL, 1, 1),
-(54, 'Biáº¿t F(x) lÃ  nguyÃªn hÃ m cá»§a hÃ m sá»‘ \\( \\frac{1}{x-1} Ã  F(2)=1\\).Khi Ä‘Ã³ \\(F(3)\\) báº±ng bao nhiÃªu ', 'ln2+1', '\\( \\frac{1}{2} \\)', '\\( ln\\frac{3}{2} \\)', 'ln2', 'A', 2, 5, NULL, 1, 1),
+(32, 'Cho \\( \\int_{0}^{1}\\frac{dx}{x^{5}+x^{2}}= a.ln2+b.ln5+c\\).Khi đó \\(a+2b+4c\\) bằng ', '2', '3', '0', '1', 'D', 2, 1, NULL, 1, 1),
+(33, 'Nguyên hàm của \\(f\\left ( x \\right )= \\left ( 2x-1 \\right )e^{\\frac{1}{x}} \\) là ', '\\( x.e^{\\frac{1}{x}} \\)', '\\( \\left ( x^{2}-1 \\right )e^{\\frac{1}{x}} \\)', '\\( x^{2}e^{\\frac{1}{x}} \\)', '\\( \\frac{1}{e^{x}} \\)', 'C', 2, 1, NULL, 1, 1),
+(34, 'Tính tích phân \\( I=\\int_{1}^{5}\\frac{dx}{x\\sqrt{3x+1}}\\) được kết quả là \\(I=a.ln3+b.ln5\\). Giá trị của \\(a^{2}+ab+3b^{2}\\) là ', '4', '1', '0', '5', 'D', 2, 1, NULL, 1, 1),
+(35, 'Tích phân \\( I=\\int_{0}^{\\frac{\\pi}{2}}\\left ( 1-cosx \\right )^{n}sinxdx \\) bằng ', '\\( \\frac{1}{n+1} \\)', '\\( \\frac{1}{n-1} \\)', '\\( \\frac{1}{2n} \\)', '\\( \\frac{1}{n} \\)', 'A', 2, 1, NULL, 1, 1),
+(36, 'Hình phẳng giới hạn bởi \\( y=x, y=x^{2} \\) có diện tích là ', '\\( \\frac{1}{2} \\)', '\\( \\frac{1}{6} \\)', '\\( \\frac{1}{3} \\)', '1', 'B', 2, 1, NULL, 1, 1),
+(37, '\\( I=\\int_{\\frac{1}{e}}^{e}\\frac{dx}{x} \\) có giá trị', '0', '-2', '2', 'e', 'C', 2, 2, NULL, 1, 1),
+(38, 'Cho \\(f\\left ( x \\right )\\) liên tục trên [0;10] thoả mãn: \\(\\int_{0}^{10}f\\left ( x \\right )dx= 7, \\int_{2}^{6}f\\left ( x \\right )dx= 3\\). Khi đó giá trị của \\(\\int_{0}^{2}f\\left ( x \\right )dx+ \\int_{6}^{10}f\\left ( x \\right )dx\\) có giá trị là:', '1', '4', '3', '2', 'B', 2, 2, NULL, 1, 1),
+(39, 'Thể tích vật thể bị giới hạn bởi 2 mặt trụ: \\(x^{2}+z^{2}=a^{2}\\) và \\(y^{2}+z^{2}=a^{2}\\) là \\(V=\\frac{2}{3} \\left ( đvtt \\right )\\).Tính giá trị của a? ', '1', '\\( \\frac{1}{2} \\)', '2', '\\( \\frac{1}{4} \\)', 'D', 2, 2, NULL, 1, 1),
+(40, 'Tính \\( \\int 2^{\\frac{1}{2x}}\\frac{ln2}{x^{2}}dx,\\) kết quả sai là: ', '\\( 2\\left ( 2^{\\frac{1}{2x}}+2 \\right )+ C \\)', '\\( 2^{\\frac{1}{2x}+1}+ C \\)', '\\( 2^{\\frac{1}{2x}}+ C \\)', '\\( 2\\left ( 2^{\\frac{1}{2x}}-2 \\right )+ C \\)', 'C', 2, 2, NULL, 1, 1),
+(41, 'Tính \\( K=\\int_{0}^{1}x^{2}e^{2x}dx \\)', '\\( K= \\frac{e^{2}-1}{2} \\)', '\\( K= \\frac{e^{2}+1}{4} \\)', '\\( K= \\frac{e^{2}}{4} \\)', '\\( \\frac{1}{4} \\)', 'A', 2, 2, NULL, 1, 1),
+(42, 'Diện tích hình giới hạn bởi \\( (P):y=x^{3}+3,\\) tiếp tuyến của (P) tại x=2 và trục Oy là \\(&nbsp; \\)', '\\( \\frac{2}{3} \\)', '8', '\\( \\frac{8}{3} \\)', '4', 'C', 2, 3, NULL, 1, 1),
+(43, 'Nguyên hàm của hàm số \\( y=sin^{3}x.cosx là: \\)', '\\( \\frac{1}{4}sin^{4}x+C \\)', '\\( \\frac{1}{3}cos^{3}x+C \\)', '\\( \\frac{1}{3}sin^{3}x+C \\)', '\\( sin^{4}x+C \\)', 'A', 2, 3, NULL, 1, 1),
+(44, 'Cho f(x) là hàm số lẻ, liên tục trên \\( \\mathbb{R}.\\) Khi đó giá trị tích phân \\(\\int_{-1}^{1}f(x)dx\\) là: ', '2', '0', '1', '-2', 'B', 2, 3, NULL, 1, 1),
+(45, 'Thể tích của khối tròn xoay do hình phẳng (H) giới hạn bởi các đường \\( y=sinx; y=0; x=0; x=\\pi\\) khi xoay quanh Ox là: ', '\\( \\frac{\\pi ^{2}}{3} \\)', '\\( \\frac{\\pi ^{2}}{2} \\)', '\\( \\frac{\\pi ^{2}}{4} \\)', '\\( \\frac{2\\pi ^{2}}{3} \\)', 'B', 2, 3, NULL, 1, 1),
+(46, 'Tích phân \\( I=\\int_{0}^{1}x\\sqrt[3]{1-x}dx \\)', '\\( \\frac{28}{9} \\)', '\\( \\frac{-9}{28} \\)', '\\( \\frac{9}{28} \\)', '\\( \\frac{3}{28} \\)', 'C', 2, 3, NULL, 1, 1),
+(47, 'Cho f(x) là hàm số chẵn, liên tục trên \\( \\mathbb{R}\\) thỏa mãn \\(\\int_{-1}^{1}f(x)dx=2\\).Khi đó giá trị tích phân \\(\\int_{0}^{1}f(x)dx\\) là: ', '2', '1', '\\( \\frac{1}{2} \\)', '\\( \\frac{1}{4} \\)', 'B', 2, 4, NULL, 1, 1),
+(48, 'Cho \\( f\'(x)=3-5sinx\\) và \\(f(0)=10\\).Trong các khẳng định sau khẳng định nào đúng? ', '\\( f(x)=3x+5cosx+2 \\)', '\\( f(\\frac{\\pi }{2})=\\frac{3\\pi }{2} \\)', '\\( f(\\pi )=3\\pi&nbsp; \\)', '\\( f(x)=3x-5cosx \\)', 'C', 2, 4, NULL, 1, 1),
+(49, 'Cho hàm số \\( y=f(x)\\) thỏa mãn \\(y\'=x^{2}y\\) và \\(f(-1)=1\\) thì \\(f(2)=\\) bao nhiêu? ', '\\( e^{3} \\)', '\\( e^{2} \\)', '2e', 'e+1', 'A', 2, 4, NULL, 1, 1),
+(50, 'Một nguyên hàm của hàm số \\( :f(x)=x\\sqrt{1+x^{2}}\\) là: ', '\\( F(x)=\\frac{1}{3}\\left ( \\sqrt{1+x^{2}} \\right )^{3} \\)', '\\( F(x)=\\frac{1}{3}\\left ( \\sqrt{1+x^{2}} \\right )^{2} \\)', '\\( F(x)=\\frac{x^{2}}{2}\\left ( \\sqrt{1+x^{2}} \\right )^{2} \\)', '\\( F(x)=\\frac{1}{2}\\left ( \\sqrt{1+x^{2}} \\right )^{2} \\)', 'A', 2, 4, NULL, 1, 1),
+(51, 'Tính \\( K=\\int_{0}^{1}x.ln(1+x^{2})dx \\)', '\\( ln2-\\frac{1}{2} \\)', '\\( ln2-\\frac{1}{4} \\)', '\\( ln2+\\frac{1}{2} \\)', '\\( -ln2+\\frac{1}{2} \\)', 'A', 2, 4, NULL, 1, 1),
+(52, 'Cho hình phẳng (S) giới hạn bởi \\( Ox,Oy,y=cosx\\) và \\(y=\\frac{-2}{\\pi }x+1\\).Diện tích hình phẳng (s) là: ', '\\( 2\\pi&nbsp; \\)', '\\( 2+\\frac{3\\pi }{2} \\)', '\\( \\pi&nbsp; \\)', '\\( 1+\\frac{3\\pi }{4} \\)', 'B', 2, 5, NULL, 1, 1),
+(53, 'Tính tích phân \\( \\int_{0}^{1}\\frac{dx}{x^{2}-x-12} \\)', '\\( ln\\frac{9}{16} \\)', '\\( \\frac{1}{4}ln\\frac{9}{16} \\)', '\\( -\\frac{1}{7}ln\\frac{9}{16} \\)', '\\( \\frac{1}{7}ln\\frac{9}{16} \\)', 'D', 2, 5, NULL, 1, 1),
+(54, 'Biết F(x) là nguyên hàm của hàm số \\( \\frac{1}{x-1} à F(2)=1\\).Khi đó \\(F(3)\\) bằng bao nhiêu ', 'ln2+1', '\\( \\frac{1}{2} \\)', '\\( ln\\frac{3}{2} \\)', 'ln2', 'A', 2, 5, NULL, 1, 1),
 (55, '\\( \\int \\frac{dx}{(1+x^{2})x}= \\)', '\\( ln|x|(x^{2}+1)+C \\)', '\\( ln|x|(\\sqrt{1+x^{2}})+C \\)', '\\( ln\\frac{|x|}{\\sqrt{1+x^{2}}}+C \\)', '\\( ln\\frac{x}{1+x^{2}}+C \\)', 'C', 2, 5, NULL, 1, 1),
-(56, 'Cho parabol \\( (P):y=x^{2}+1\\) vÃ  Ä‘Æ°á»ng tháº³ng \\((d):y=mx+2\\).TÃ¬m m Ä‘á»ƒ diá»‡n tÃ­ch hÃ¬nh pháº³ng giá»›i háº¡n bá»Ÿi (P) vÃ  (d) Ä‘áº¡t giÃ¡ trá»‹ nhá» nháº¥t? ', '\\( \\frac{1}{2} \\)', '\\( \\frac{3}{4} \\)', '1', '0', 'D', 2, 5, NULL, 1, 1),
-(64, '', '', '', '', '', '', 0, 0, NULL, 1, 1);
+(56, 'Cho parabol \\( (P):y=x^{2}+1\\) và đường thẳng \\((d):y=mx+2\\).Tìm m để diện tích hình phẳng giới hạn bởi (P) và (d) đạt giá trị nhỏ nhất? ', '\\( \\frac{1}{2} \\)', '\\( \\frac{3}{4} \\)', '1', '0', 'D', 2, 5, NULL, 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Cáº¥u trÃºc báº£ng cho báº£ng `subjects`
+-- Cấu trúc bảng cho bảng `subjects`
 --
 
 CREATE TABLE `subjects` (
@@ -1146,19 +1145,19 @@ CREATE TABLE `subjects` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Äang Ä‘á»• dá»¯ liá»‡u cho báº£ng `subjects`
+-- Đang đổ dữ liệu cho bảng `subjects`
 --
 
 INSERT INTO `subjects` (`id`, `name`, `status`) VALUES
-(1, 'ToÃ¡n Há»c', 1),
-(2, 'Tiáº¿ng anh', 1),
-(3, 'VÄƒn', 0),
-(5, 'Váº­t lÃ½', 1);
+(1, 'Toán Học', 1),
+(2, 'Tiếng anh', 1),
+(3, 'Văn', 0),
+(5, 'Vật lý', 1);
 
 -- --------------------------------------------------------
 
 --
--- Cáº¥u trÃºc báº£ng cho báº£ng `topics`
+-- Cấu trúc bảng cho bảng `topics`
 --
 
 CREATE TABLE `topics` (
@@ -1169,21 +1168,21 @@ CREATE TABLE `topics` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Äang Ä‘á»• dá»¯ liá»‡u cho báº£ng `topics`
+-- Đang đổ dữ liệu cho bảng `topics`
 --
 
 INSERT INTO `topics` (`id`, `name`, `idSubject`, `status`) VALUES
-(1, 'Äáº¡i Sá»‘', 1, 1),
-(2, 'Giáº£i tÃ­ch', 1, 1),
-(3, 'Äá»c', 2, 1),
-(5, 'ThÆ¡ má»›i', 3, 0),
+(1, 'Đại Số', 1, 1),
+(2, 'Giải tích', 1, 1),
+(3, 'Đọc', 2, 1),
+(5, 'Thơ mới', 3, 0),
 (6, 'Nghe', 2, 1),
-(8, 'Thi Ä‘áº¡i há»c', 1, 0);
+(8, 'Thi đại học', 1, 0);
 
 -- --------------------------------------------------------
 
 --
--- Cáº¥u trÃºc báº£ng cho báº£ng `users`
+-- Cấu trúc bảng cho bảng `users`
 --
 
 CREATE TABLE `users` (
@@ -1205,28 +1204,28 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Äang Ä‘á»• dá»¯ liá»‡u cho báº£ng `users`
+-- Đang đổ dữ liệu cho bảng `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `DoB`, `password`, `password1`, `status`, `time`, `count_true`, `total`, `mark`, `idExam`, `code`, `remember_token`) VALUES
 (23, 'a', 'a', 'a@a', '1235-01-01', '$2y$10$l4WUG6XEMB0v0EqmzDrzceqMiMtwHa5wyz0cGML5wC0UF50lZcGTK', 'bXBOvdz7lk', '3', '2018-11-07 11:36:33', 2, 15, 1.33333, 3, 1, NULL),
-(24, 'abcd', 'abcde', 'abc@ade', '1234-01-01', '$2y$10$wbw1VK9hlAatMU8gAffAs.1yGKpPZIeZSIsdi3nN0i2TeRyG6ZlMW', '0LhOrBgpat', '0', NULL, NULL, NULL, NULL, 2, 1, NULL),
-(25, '1', '1', '1@1', '1234-01-01', '$2y$10$/T4JtEF0Nv1Eb2wkVceNoewz4byrwEB/GJTOzFFD1rphBhCDcv2Ym', 'ZOU8SZHY0D', '0', NULL, NULL, NULL, NULL, 2, 1, NULL),
+(24, 'abcd', 'abcde', 'abc@ade', '1234-01-01', '$2y$10$wbw1VK9hlAatMU8gAffAs.1yGKpPZIeZSIsdi3nN0i2TeRyG6ZlMW', '0LhOrBgpat', '2', '2018-11-14 09:00:03', 0, 15, 0, 2, 1, NULL),
+(25, '1', '1', '1@1', '1234-01-01', '$2y$10$/T4JtEF0Nv1Eb2wkVceNoewz4byrwEB/GJTOzFFD1rphBhCDcv2Ym', 'ZOU8SZHY0D', '2', '2018-11-14 09:02:36', 1, 15, 0.666667, 2, 1, NULL),
 (27, 'b', 'bb', 'b@b', '1234-01-01', '$2y$10$4bPooM.4nsVdYAckwEECfeJr6htCJm90eKEwoxeOXagEMH6nZcySW', 'mbdtyWRyOK', '0', NULL, NULL, NULL, NULL, 2, 1, NULL);
 
 --
--- Chá»‰ má»¥c cho cÃ¡c báº£ng Ä‘Ã£ Ä‘á»•
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Chá»‰ má»¥c cho báº£ng `admins`
+-- Chỉ mục cho bảng `admins`
 --
 ALTER TABLE `admins`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- Chá»‰ má»¥c cho báº£ng `examquestion`
+-- Chỉ mục cho bảng `examquestion`
 --
 ALTER TABLE `examquestion`
   ADD PRIMARY KEY (`id`),
@@ -1234,28 +1233,28 @@ ALTER TABLE `examquestion`
   ADD KEY `idQuestion` (`idQuestion`);
 
 --
--- Chá»‰ má»¥c cho báº£ng `exams`
+-- Chỉ mục cho bảng `exams`
 --
 ALTER TABLE `exams`
   ADD PRIMARY KEY (`id`,`code`),
   ADD KEY `idTopic` (`idTopic`);
 
 --
--- Chá»‰ má»¥c cho báº£ng `questions`
+-- Chỉ mục cho bảng `questions`
 --
 ALTER TABLE `questions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idTopic` (`idTopic`);
 
 --
--- Chá»‰ má»¥c cho báº£ng `subjects`
+-- Chỉ mục cho bảng `subjects`
 --
 ALTER TABLE `subjects`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`);
 
 --
--- Chá»‰ má»¥c cho báº£ng `topics`
+-- Chỉ mục cho bảng `topics`
 --
 ALTER TABLE `topics`
   ADD PRIMARY KEY (`id`),
@@ -1263,7 +1262,7 @@ ALTER TABLE `topics`
   ADD KEY `idSubject` (`idSubject`);
 
 --
--- Chá»‰ má»¥c cho báº£ng `users`
+-- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -1271,76 +1270,76 @@ ALTER TABLE `users`
   ADD KEY `idExam` (`idExam`,`code`);
 
 --
--- AUTO_INCREMENT cho cÃ¡c báº£ng Ä‘Ã£ Ä‘á»•
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT cho báº£ng `admins`
+-- AUTO_INCREMENT cho bảng `admins`
 --
 ALTER TABLE `admins`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT cho báº£ng `examquestion`
+-- AUTO_INCREMENT cho bảng `examquestion`
 --
 ALTER TABLE `examquestion`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1094;
 
 --
--- AUTO_INCREMENT cho báº£ng `questions`
+-- AUTO_INCREMENT cho bảng `questions`
 --
 ALTER TABLE `questions`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
--- AUTO_INCREMENT cho báº£ng `subjects`
+-- AUTO_INCREMENT cho bảng `subjects`
 --
 ALTER TABLE `subjects`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT cho báº£ng `topics`
+-- AUTO_INCREMENT cho bảng `topics`
 --
 ALTER TABLE `topics`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT cho báº£ng `users`
+-- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- CÃ¡c rÃ ng buá»™c cho cÃ¡c báº£ng Ä‘Ã£ Ä‘á»•
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- CÃ¡c rÃ ng buá»™c cho báº£ng `examquestion`
+-- Các ràng buộc cho bảng `examquestion`
 --
 ALTER TABLE `examquestion`
   ADD CONSTRAINT `examquestion_ibfk_2` FOREIGN KEY (`idQuestion`) REFERENCES `questions` (`id`),
   ADD CONSTRAINT `examquestion_ibfk_3` FOREIGN KEY (`idExam`,`code`) REFERENCES `exams` (`id`, `code`);
 
 --
--- CÃ¡c rÃ ng buá»™c cho báº£ng `exams`
+-- Các ràng buộc cho bảng `exams`
 --
 ALTER TABLE `exams`
   ADD CONSTRAINT `exam_ibfk_1` FOREIGN KEY (`idTopic`) REFERENCES `topics` (`id`);
 
 --
--- CÃ¡c rÃ ng buá»™c cho báº£ng `questions`
+-- Các ràng buộc cho bảng `questions`
 --
 ALTER TABLE `questions`
   ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`idTopic`) REFERENCES `topics` (`id`);
 
 --
--- CÃ¡c rÃ ng buá»™c cho báº£ng `topics`
+-- Các ràng buộc cho bảng `topics`
 --
 ALTER TABLE `topics`
   ADD CONSTRAINT `topics_ibfk_1` FOREIGN KEY (`idSubject`) REFERENCES `subjects` (`id`);
 
 --
--- CÃ¡c rÃ ng buá»™c cho báº£ng `users`
+-- Các ràng buộc cho bảng `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`idExam`,`code`) REFERENCES `exams` (`id`, `code`);
@@ -1349,3 +1348,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
