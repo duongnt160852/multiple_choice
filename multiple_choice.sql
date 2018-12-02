@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 14, 2018 lúc 08:17 AM
+-- Thời gian đã tạo: Th12 02, 2018 lúc 05:14 PM
 -- Phiên bản máy phục vụ: 10.1.35-MariaDB
 -- Phiên bản PHP: 7.2.9
 
@@ -45,9 +45,10 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `username`, `password`, `email`, `middlename`, `address`, `remember_token`, `status`) VALUES
-(1, 'dương', '123', '$2y$10$0dFpXcwjoP0C08xWQatiJe.vEpekIB/kLYQCinGcZOnaG3mqXq.nq', 'a@a', 'nguyễn tùng', 'aaaaaa', '6CB56DIcQSSkDadIIvJc0T8cm5J2r1ThLSe1yhuDb7VBsVapAZcryjgFNN9n', 1),
+(1, 'dương', '123', '$2y$10$0dFpXcwjoP0C08xWQatiJe.vEpekIB/kLYQCinGcZOnaG3mqXq.nq', 'a@a', 'nguyễn tùng', 'aaaaaa', 'bQpxuNxUmD1pKEiyJJ8BdWTo2LQ4l0Y6ReGZWYBiM5ANMbs5ItWm9voMDACU', 1),
 (2, 'duong', '123456', '$2y$10$pygHcOF8PjfsVZZWWBDN3eqtJe6CsulD9u6XsMLi89Ufp3LJokUf6', '1@1', 'nguyen tung', 'bbbbbbb', NULL, 3),
-(3, 'aaa', 'aaa', '$2y$10$7uoD3nCg8i2nRAfqGMujDuTgksuJaDLf7t1bI1rV2qbXpj5BmLUZi', 'a@a', 'bbb', 'ccccc', 'ob11NKIEw1kPZ6gdKp3QKeRXg1MENa1ZWJ0nh9G97yR50nqDhGqeen0pMwhr', 2);
+(3, 'aaa', 'aaa', '$2y$10$7uoD3nCg8i2nRAfqGMujDuTgksuJaDLf7t1bI1rV2qbXpj5BmLUZi', 'a@a', 'bbb', 'ccccc', 'ob11NKIEw1kPZ6gdKp3QKeRXg1MENa1ZWJ0nh9G97yR50nqDhGqeen0pMwhr', 3),
+(4, 'nguyenn tung duong', '1234', '$2y$10$k6yYDEht7LSoJLl3dVCbFe7QWibRQeYy2qZlhs4a2Yr9Ll5QRpM9K', '12@12', NULL, NULL, NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -978,7 +979,367 @@ INSERT INTO `examquestion` (`id`, `idExam`, `code`, `idQuestion`) VALUES
 (1055, 5, 12, 51),
 (1093, 5, 12, 52),
 (1092, 5, 12, 55),
-(1091, 5, 12, 56);
+(1091, 5, 12, 56),
+(1095, 6, 1, 34),
+(1094, 6, 1, 35),
+(1096, 6, 1, 36),
+(1132, 6, 1, 37),
+(1130, 6, 1, 38),
+(1131, 6, 1, 41),
+(1166, 6, 1, 43),
+(1167, 6, 1, 45),
+(1168, 6, 1, 46),
+(1204, 6, 1, 48),
+(1203, 6, 1, 50),
+(1202, 6, 1, 51),
+(1240, 6, 1, 52),
+(1239, 6, 1, 55),
+(1238, 6, 1, 56),
+(1097, 6, 2, 34),
+(1098, 6, 2, 35),
+(1099, 6, 2, 36),
+(1134, 6, 2, 37),
+(1135, 6, 2, 38),
+(1133, 6, 2, 41),
+(1171, 6, 2, 43),
+(1169, 6, 2, 45),
+(1170, 6, 2, 46),
+(1206, 6, 2, 48),
+(1205, 6, 2, 50),
+(1207, 6, 2, 51),
+(1241, 6, 2, 52),
+(1243, 6, 2, 55),
+(1242, 6, 2, 56),
+(1100, 6, 3, 34),
+(1101, 6, 3, 35),
+(1102, 6, 3, 36),
+(1137, 6, 3, 37),
+(1138, 6, 3, 38),
+(1136, 6, 3, 41),
+(1172, 6, 3, 43),
+(1174, 6, 3, 45),
+(1173, 6, 3, 46),
+(1208, 6, 3, 48),
+(1210, 6, 3, 50),
+(1209, 6, 3, 51),
+(1245, 6, 3, 52),
+(1246, 6, 3, 55),
+(1244, 6, 3, 56),
+(1103, 6, 4, 34),
+(1105, 6, 4, 35),
+(1104, 6, 4, 36),
+(1140, 6, 4, 37),
+(1139, 6, 4, 38),
+(1141, 6, 4, 41),
+(1176, 6, 4, 43),
+(1175, 6, 4, 45),
+(1177, 6, 4, 46),
+(1213, 6, 4, 48),
+(1211, 6, 4, 50),
+(1212, 6, 4, 51),
+(1247, 6, 4, 52),
+(1248, 6, 4, 55),
+(1249, 6, 4, 56),
+(1108, 6, 5, 34),
+(1107, 6, 5, 35),
+(1106, 6, 5, 36),
+(1144, 6, 5, 37),
+(1143, 6, 5, 38),
+(1142, 6, 5, 41),
+(1179, 6, 5, 43),
+(1180, 6, 5, 45),
+(1178, 6, 5, 46),
+(1216, 6, 5, 48),
+(1214, 6, 5, 50),
+(1215, 6, 5, 51),
+(1252, 6, 5, 52),
+(1251, 6, 5, 55),
+(1250, 6, 5, 56),
+(1109, 6, 6, 34),
+(1110, 6, 6, 35),
+(1111, 6, 6, 36),
+(1145, 6, 6, 37),
+(1146, 6, 6, 38),
+(1147, 6, 6, 41),
+(1183, 6, 6, 43),
+(1182, 6, 6, 45),
+(1181, 6, 6, 46),
+(1219, 6, 6, 48),
+(1218, 6, 6, 50),
+(1217, 6, 6, 51),
+(1253, 6, 6, 52),
+(1254, 6, 6, 55),
+(1255, 6, 6, 56),
+(1113, 6, 7, 34),
+(1114, 6, 7, 35),
+(1112, 6, 7, 36),
+(1148, 6, 7, 37),
+(1150, 6, 7, 38),
+(1149, 6, 7, 41),
+(1185, 6, 7, 43),
+(1184, 6, 7, 45),
+(1186, 6, 7, 46),
+(1222, 6, 7, 48),
+(1221, 6, 7, 50),
+(1220, 6, 7, 51),
+(1258, 6, 7, 52),
+(1256, 6, 7, 55),
+(1257, 6, 7, 56),
+(1116, 6, 8, 34),
+(1115, 6, 8, 35),
+(1117, 6, 8, 36),
+(1153, 6, 8, 37),
+(1152, 6, 8, 38),
+(1151, 6, 8, 41),
+(1188, 6, 8, 43),
+(1189, 6, 8, 45),
+(1187, 6, 8, 46),
+(1223, 6, 8, 48),
+(1224, 6, 8, 50),
+(1225, 6, 8, 51),
+(1259, 6, 8, 52),
+(1260, 6, 8, 55),
+(1261, 6, 8, 56),
+(1120, 6, 9, 34),
+(1118, 6, 9, 35),
+(1119, 6, 9, 36),
+(1156, 6, 9, 37),
+(1154, 6, 9, 38),
+(1155, 6, 9, 41),
+(1192, 6, 9, 43),
+(1190, 6, 9, 45),
+(1191, 6, 9, 46),
+(1226, 6, 9, 48),
+(1227, 6, 9, 50),
+(1228, 6, 9, 51),
+(1264, 6, 9, 52),
+(1262, 6, 9, 55),
+(1263, 6, 9, 56),
+(1121, 6, 10, 34),
+(1123, 6, 10, 35),
+(1122, 6, 10, 36),
+(1158, 6, 10, 37),
+(1157, 6, 10, 38),
+(1159, 6, 10, 41),
+(1193, 6, 10, 43),
+(1195, 6, 10, 45),
+(1194, 6, 10, 46),
+(1229, 6, 10, 48),
+(1231, 6, 10, 50),
+(1230, 6, 10, 51),
+(1267, 6, 10, 52),
+(1265, 6, 10, 55),
+(1266, 6, 10, 56),
+(1124, 6, 11, 34),
+(1125, 6, 11, 35),
+(1126, 6, 11, 36),
+(1161, 6, 11, 37),
+(1160, 6, 11, 38),
+(1162, 6, 11, 41),
+(1198, 6, 11, 43),
+(1197, 6, 11, 45),
+(1196, 6, 11, 46),
+(1232, 6, 11, 48),
+(1233, 6, 11, 50),
+(1234, 6, 11, 51),
+(1268, 6, 11, 52),
+(1269, 6, 11, 55),
+(1270, 6, 11, 56),
+(1128, 6, 12, 34),
+(1129, 6, 12, 35),
+(1127, 6, 12, 36),
+(1164, 6, 12, 37),
+(1163, 6, 12, 38),
+(1165, 6, 12, 41),
+(1201, 6, 12, 43),
+(1199, 6, 12, 45),
+(1200, 6, 12, 46),
+(1237, 6, 12, 48),
+(1235, 6, 12, 50),
+(1236, 6, 12, 51),
+(1273, 6, 12, 52),
+(1271, 6, 12, 55),
+(1272, 6, 12, 56),
+(1274, 7, 1, 33),
+(1276, 7, 1, 35),
+(1275, 7, 1, 36),
+(1310, 7, 1, 39),
+(1312, 7, 1, 40),
+(1311, 7, 1, 41),
+(1347, 7, 1, 43),
+(1346, 7, 1, 44),
+(1348, 7, 1, 46),
+(1384, 7, 1, 47),
+(1383, 7, 1, 48),
+(1382, 7, 1, 49),
+(1420, 7, 1, 52),
+(1419, 7, 1, 53),
+(1418, 7, 1, 54),
+(1278, 7, 2, 33),
+(1279, 7, 2, 35),
+(1277, 7, 2, 36),
+(1315, 7, 2, 39),
+(1313, 7, 2, 40),
+(1314, 7, 2, 41),
+(1350, 7, 2, 43),
+(1349, 7, 2, 44),
+(1351, 7, 2, 46),
+(1386, 7, 2, 47),
+(1387, 7, 2, 48),
+(1385, 7, 2, 49),
+(1423, 7, 2, 52),
+(1422, 7, 2, 53),
+(1421, 7, 2, 54),
+(1282, 7, 3, 33),
+(1281, 7, 3, 35),
+(1280, 7, 3, 36),
+(1316, 7, 3, 39),
+(1318, 7, 3, 40),
+(1317, 7, 3, 41),
+(1352, 7, 3, 43),
+(1354, 7, 3, 44),
+(1353, 7, 3, 46),
+(1388, 7, 3, 47),
+(1390, 7, 3, 48),
+(1389, 7, 3, 49),
+(1424, 7, 3, 52),
+(1426, 7, 3, 53),
+(1425, 7, 3, 54),
+(1285, 7, 4, 33),
+(1284, 7, 4, 35),
+(1283, 7, 4, 36),
+(1319, 7, 4, 39),
+(1321, 7, 4, 40),
+(1320, 7, 4, 41),
+(1357, 7, 4, 43),
+(1355, 7, 4, 44),
+(1356, 7, 4, 46),
+(1393, 7, 4, 47),
+(1391, 7, 4, 48),
+(1392, 7, 4, 49),
+(1429, 7, 4, 52),
+(1428, 7, 4, 53),
+(1427, 7, 4, 54),
+(1288, 7, 5, 33),
+(1286, 7, 5, 35),
+(1287, 7, 5, 36),
+(1322, 7, 5, 39),
+(1324, 7, 5, 40),
+(1323, 7, 5, 41),
+(1358, 7, 5, 43),
+(1359, 7, 5, 44),
+(1360, 7, 5, 46),
+(1395, 7, 5, 47),
+(1394, 7, 5, 48),
+(1396, 7, 5, 49),
+(1430, 7, 5, 52),
+(1431, 7, 5, 53),
+(1432, 7, 5, 54),
+(1291, 7, 6, 33),
+(1290, 7, 6, 35),
+(1289, 7, 6, 36),
+(1327, 7, 6, 39),
+(1326, 7, 6, 40),
+(1325, 7, 6, 41),
+(1361, 7, 6, 43),
+(1363, 7, 6, 44),
+(1362, 7, 6, 46),
+(1398, 7, 6, 47),
+(1397, 7, 6, 48),
+(1399, 7, 6, 49),
+(1433, 7, 6, 52),
+(1435, 7, 6, 53),
+(1434, 7, 6, 54),
+(1293, 7, 7, 33),
+(1292, 7, 7, 35),
+(1294, 7, 7, 36),
+(1330, 7, 7, 39),
+(1328, 7, 7, 40),
+(1329, 7, 7, 41),
+(1365, 7, 7, 43),
+(1364, 7, 7, 44),
+(1366, 7, 7, 46),
+(1400, 7, 7, 47),
+(1402, 7, 7, 48),
+(1401, 7, 7, 49),
+(1437, 7, 7, 52),
+(1436, 7, 7, 53),
+(1438, 7, 7, 54),
+(1296, 7, 8, 33),
+(1295, 7, 8, 35),
+(1297, 7, 8, 36),
+(1332, 7, 8, 39),
+(1331, 7, 8, 40),
+(1333, 7, 8, 41),
+(1368, 7, 8, 43),
+(1369, 7, 8, 44),
+(1367, 7, 8, 46),
+(1403, 7, 8, 47),
+(1404, 7, 8, 48),
+(1405, 7, 8, 49),
+(1441, 7, 8, 52),
+(1440, 7, 8, 53),
+(1439, 7, 8, 54),
+(1300, 7, 9, 33),
+(1299, 7, 9, 35),
+(1298, 7, 9, 36),
+(1334, 7, 9, 39),
+(1336, 7, 9, 40),
+(1335, 7, 9, 41),
+(1372, 7, 9, 43),
+(1371, 7, 9, 44),
+(1370, 7, 9, 46),
+(1408, 7, 9, 47),
+(1407, 7, 9, 48),
+(1406, 7, 9, 49),
+(1443, 7, 9, 52),
+(1442, 7, 9, 53),
+(1444, 7, 9, 54),
+(1302, 7, 10, 33),
+(1301, 7, 10, 35),
+(1303, 7, 10, 36),
+(1337, 7, 10, 39),
+(1338, 7, 10, 40),
+(1339, 7, 10, 41),
+(1375, 7, 10, 43),
+(1373, 7, 10, 44),
+(1374, 7, 10, 46),
+(1410, 7, 10, 47),
+(1411, 7, 10, 48),
+(1409, 7, 10, 49),
+(1447, 7, 10, 52),
+(1446, 7, 10, 53),
+(1445, 7, 10, 54),
+(1306, 7, 11, 33),
+(1305, 7, 11, 35),
+(1304, 7, 11, 36),
+(1341, 7, 11, 39),
+(1342, 7, 11, 40),
+(1340, 7, 11, 41),
+(1376, 7, 11, 43),
+(1377, 7, 11, 44),
+(1378, 7, 11, 46),
+(1414, 7, 11, 47),
+(1412, 7, 11, 48),
+(1413, 7, 11, 49),
+(1448, 7, 11, 52),
+(1449, 7, 11, 53),
+(1450, 7, 11, 54),
+(1308, 7, 12, 33),
+(1307, 7, 12, 35),
+(1309, 7, 12, 36),
+(1345, 7, 12, 39),
+(1343, 7, 12, 40),
+(1344, 7, 12, 41),
+(1381, 7, 12, 43),
+(1380, 7, 12, 44),
+(1379, 7, 12, 46),
+(1417, 7, 12, 47),
+(1416, 7, 12, 48),
+(1415, 7, 12, 49),
+(1451, 7, 12, 52),
+(1452, 7, 12, 53),
+(1453, 7, 12, 54);
 
 -- --------------------------------------------------------
 
@@ -1000,18 +1361,18 @@ CREATE TABLE `exams` (
 --
 
 INSERT INTO `exams` (`id`, `code`, `name`, `idTopic`, `time`, `status`) VALUES
-(2, 1, 'giải tích', 1, 15, 1),
-(2, 2, 'giải tích', 1, 15, 1),
-(2, 3, 'giải tích', 1, 15, 1),
-(2, 4, 'giải tích', 1, 15, 1),
-(2, 5, 'giải tích', 1, 15, 1),
-(2, 6, 'giải tích', 1, 15, 1),
-(2, 7, 'giải tích', 1, 15, 1),
-(2, 8, 'giải tích', 1, 15, 1),
-(2, 9, 'giải tích', 1, 15, 1),
-(2, 10, 'giải tích', 1, 15, 1),
-(2, 11, 'giải tích', 1, 15, 1),
-(2, 12, 'giải tích', 1, 15, 1),
+(2, 1, 'bbb', 1, 15, 1),
+(2, 2, 'bbb', 1, 15, 1),
+(2, 3, 'bbb', 1, 15, 1),
+(2, 4, 'bbb', 1, 15, 1),
+(2, 5, 'bbb', 1, 15, 1),
+(2, 6, 'bbb', 1, 15, 1),
+(2, 7, 'bbb', 1, 15, 1),
+(2, 8, 'bbb', 1, 15, 1),
+(2, 9, 'bbb', 1, 15, 1),
+(2, 10, 'bbb', 1, 15, 1),
+(2, 11, 'bbb', 1, 15, 1),
+(2, 12, 'bbb', 1, 15, 1),
 (3, 1, 'giữa kì', 2, 15, 1),
 (3, 2, 'giữa kì', 2, 15, 1),
 (3, 3, 'giữa kì', 2, 15, 1),
@@ -1047,7 +1408,31 @@ INSERT INTO `exams` (`id`, `code`, `name`, `idTopic`, `time`, `status`) VALUES
 (5, 9, 'aaa', 2, 15, 1),
 (5, 10, 'aaa', 2, 15, 1),
 (5, 11, 'aaa', 2, 15, 1),
-(5, 12, 'aaa', 2, 15, 1);
+(5, 12, 'aaa', 2, 15, 1),
+(6, 1, 'Cuối kì', 2, 15, 1),
+(6, 2, 'Cuối kì', 2, 15, 1),
+(6, 3, 'Cuối kì', 2, 15, 1),
+(6, 4, 'Cuối kì', 2, 15, 1),
+(6, 5, 'Cuối kì', 2, 15, 1),
+(6, 6, 'Cuối kì', 2, 15, 1),
+(6, 7, 'Cuối kì', 2, 15, 1),
+(6, 8, 'Cuối kì', 2, 15, 1),
+(6, 9, 'Cuối kì', 2, 15, 1),
+(6, 10, 'Cuối kì', 2, 15, 1),
+(6, 11, 'Cuối kì', 2, 15, 1),
+(6, 12, 'Cuối kì', 2, 15, 1),
+(7, 1, 'cuối kì 1', 2, 1, 1),
+(7, 2, 'cuối kì 1', 2, 1, 1),
+(7, 3, 'cuối kì 1', 2, 1, 1),
+(7, 4, 'cuối kì 1', 2, 1, 1),
+(7, 5, 'cuối kì 1', 2, 1, 1),
+(7, 6, 'cuối kì 1', 2, 1, 1),
+(7, 7, 'cuối kì 1', 2, 1, 1),
+(7, 8, 'cuối kì 1', 2, 1, 1),
+(7, 9, 'cuối kì 1', 2, 1, 1),
+(7, 10, 'cuối kì 1', 2, 1, 1),
+(7, 11, 'cuối kì 1', 2, 1, 1),
+(7, 12, 'cuối kì 1', 2, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1076,7 +1461,7 @@ CREATE TABLE `questions` (
 
 INSERT INTO `questions` (`id`, `name`, `A`, `B`, `C`, `D`, `answer`, `idTopic`, `level`, `comment`, `idadmin`, `status`) VALUES
 (1, '1+0=?', '1', '2', '3', '4', 'A', 1, 1, 'không cần giải thích', 1, 0),
-(2, '<p>2+1=?</p>', '<p>1</p>', '<p>2</p>', '<p>3</p>', '<p>4</p>', 'C', 1, 1, NULL, 1, 1),
+(2, '<p>2+2=?</p>', '<p>1</p>', '<p>2</p>', '<p>3</p>', '<p>4</p>', 'D', 1, 1, NULL, 1, 1),
 (3, '1+3=?', '1', '2', '3', '4', 'D', 1, 1, NULL, 1, 1),
 (4, '2+2=?', '1', '2', '3', '4', 'D', 1, 1, NULL, 1, 1),
 (5, '2+3=?', '2', '3', '4', '5', 'D', 1, 1, NULL, 1, 1),
@@ -1130,7 +1515,9 @@ INSERT INTO `questions` (`id`, `name`, `A`, `B`, `C`, `D`, `answer`, `idTopic`, 
 (53, 'Tính tích phân \\( \\int_{0}^{1}\\frac{dx}{x^{2}-x-12} \\)', '\\( ln\\frac{9}{16} \\)', '\\( \\frac{1}{4}ln\\frac{9}{16} \\)', '\\( -\\frac{1}{7}ln\\frac{9}{16} \\)', '\\( \\frac{1}{7}ln\\frac{9}{16} \\)', 'D', 2, 5, NULL, 1, 1),
 (54, 'Biết F(x) là nguyên hàm của hàm số \\( \\frac{1}{x-1} à F(2)=1\\).Khi đó \\(F(3)\\) bằng bao nhiêu ', 'ln2+1', '\\( \\frac{1}{2} \\)', '\\( ln\\frac{3}{2} \\)', 'ln2', 'A', 2, 5, NULL, 1, 1),
 (55, '\\( \\int \\frac{dx}{(1+x^{2})x}= \\)', '\\( ln|x|(x^{2}+1)+C \\)', '\\( ln|x|(\\sqrt{1+x^{2}})+C \\)', '\\( ln\\frac{|x|}{\\sqrt{1+x^{2}}}+C \\)', '\\( ln\\frac{x}{1+x^{2}}+C \\)', 'C', 2, 5, NULL, 1, 1),
-(56, 'Cho parabol \\( (P):y=x^{2}+1\\) và đường thẳng \\((d):y=mx+2\\).Tìm m để diện tích hình phẳng giới hạn bởi (P) và (d) đạt giá trị nhỏ nhất? ', '\\( \\frac{1}{2} \\)', '\\( \\frac{3}{4} \\)', '1', '0', 'D', 2, 5, NULL, 1, 1);
+(56, 'Cho parabol \\( (P):y=x^{2}+1\\) và đường thẳng \\((d):y=mx+2\\).Tìm m để diện tích hình phẳng giới hạn bởi (P) và (d) đạt giá trị nhỏ nhất? ', '\\( \\frac{1}{2} \\)', '\\( \\frac{3}{4} \\)', '1', '0', 'D', 2, 5, NULL, 1, 1),
+(66, '<p>1+1=</p>', '<p>2</p>', '<p>3</p>', '<p>4</p>', '<p>5</p>', 'A', 1, 1, NULL, 1, 0),
+(67, 'a\r\na', 'a', 'a', 'a', 'a', 'A', 1, 1, 'a', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -1149,10 +1536,11 @@ CREATE TABLE `subjects` (
 --
 
 INSERT INTO `subjects` (`id`, `name`, `status`) VALUES
-(1, 'Toán Học', 1),
+(1, 'Toán', 1),
 (2, 'Tiếng anh', 1),
 (3, 'Văn', 0),
-(5, 'Vật lý', 1);
+(5, 'Vật lý', 1),
+(6, 'Địa Lý', 1);
 
 -- --------------------------------------------------------
 
@@ -1177,7 +1565,8 @@ INSERT INTO `topics` (`id`, `name`, `idSubject`, `status`) VALUES
 (3, 'Đọc', 2, 1),
 (5, 'Thơ mới', 3, 0),
 (6, 'Nghe', 2, 1),
-(8, 'Thi đại học', 1, 0);
+(8, 'Thi đại học', 1, 0),
+(9, 'Thi Cuối Kì', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1209,9 +1598,32 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `DoB`, `password`, `password1`, `status`, `time`, `count_true`, `total`, `mark`, `idExam`, `code`, `remember_token`) VALUES
 (23, 'a', 'a', 'a@a', '1235-01-01', '$2y$10$l4WUG6XEMB0v0EqmzDrzceqMiMtwHa5wyz0cGML5wC0UF50lZcGTK', 'bXBOvdz7lk', '3', '2018-11-07 11:36:33', 2, 15, 1.33333, 3, 1, NULL),
-(24, 'abcd', 'abcde', 'abc@ade', '1234-01-01', '$2y$10$wbw1VK9hlAatMU8gAffAs.1yGKpPZIeZSIsdi3nN0i2TeRyG6ZlMW', '0LhOrBgpat', '2', '2018-11-14 09:00:03', 0, 15, 0, 2, 1, NULL),
+(24, 'nguyễn tùng dương', 'abcde', 'abc@ade', '1234-01-01', '$2y$10$wbw1VK9hlAatMU8gAffAs.1yGKpPZIeZSIsdi3nN0i2TeRyG6ZlMW', '0LhOrBgpat', '3', '2018-11-14 09:00:03', 0, 15, 0, 2, 1, NULL),
 (25, '1', '1', '1@1', '1234-01-01', '$2y$10$/T4JtEF0Nv1Eb2wkVceNoewz4byrwEB/GJTOzFFD1rphBhCDcv2Ym', 'ZOU8SZHY0D', '2', '2018-11-14 09:02:36', 1, 15, 0.666667, 2, 1, NULL),
-(27, 'b', 'bb', 'b@b', '1234-01-01', '$2y$10$4bPooM.4nsVdYAckwEECfeJr6htCJm90eKEwoxeOXagEMH6nZcySW', 'mbdtyWRyOK', '0', NULL, NULL, NULL, NULL, 2, 1, NULL);
+(27, 'b', 'bb', 'b@b', '1234-01-01', '$2y$10$4bPooM.4nsVdYAckwEECfeJr6htCJm90eKEwoxeOXagEMH6nZcySW', 'mbdtyWRyOK', '0', NULL, NULL, NULL, NULL, 2, 1, NULL),
+(28, 'ntduong', 'duong', 'abc@aa', '1234-01-01', '$2y$10$eqbVFk6jc7Ws47P9E16hoeKlqb2XvSgYEJVfneToevugY7vDIMv8S', '2GfOdvenXK', '0', NULL, NULL, NULL, NULL, 2, 1, NULL),
+(29, 'nguyễn tùng dương', 'ntduong', 'duong@123', '1234-02-21', '$2y$10$KRcUAdJzUnc8LLxa5dWWlOOq.t6Ou3vMcncYLh4Htkmezj.8c70vC', 'tYUPx6TuaT', '2', '2018-11-14 17:35:16', 4, 15, 2.66667, 7, 1, NULL),
+(30, 'bbbbb', 'bbbbb', 'abc@aa', '1234-01-01', '$2y$10$RXU7O8vAeYBoM4nqjRTP1eidqRHnoIFKC/xqknS8NWiCufrZk4mc2', 'PPUQ4mLsIZ', '0', NULL, NULL, NULL, NULL, 2, 1, NULL),
+(31, 'duyancac', 'duyancac', 'abc@aa', '1234-01-01', '$2y$10$8FyatcTk2oMzHGqIBLAKI.jjzTRngud7WNUANKI2c5I9blu5undXC', 'kM6oKGn0wS', '0', NULL, NULL, NULL, NULL, 2, 1, NULL),
+(32, 'duy', 'duy', 'abc@aa', '1234-01-01', '$2y$10$zV0dBrnwEND3Ff86KchYP.3LP4L4DteN5Jo2TeROFrOb91kvoKEyG', 'CYOdd8Npri', '0', NULL, NULL, NULL, NULL, 2, 1, NULL),
+(33, 'aaaa', 'aaa', 'abc@aa', '1234-01-01', '$2y$10$A4a7JWAFUULkDarcHFmc3.xNVoVDJr7xv5eeD6bkFVxq8QfDHW4FC', 'j8ZHIjhYqv', '0', NULL, NULL, NULL, NULL, 2, 1, NULL),
+(34, 'aaaabbb', 'aaabbb', 'abc@aa', '1234-01-01', '$2y$10$oW3JG6wfBfoG1R7MAKWsfe0mGq2SpgMlmo08FQxU.Z.tKVv09ULVO', 'Eo7eszKdsK', '0', NULL, NULL, NULL, NULL, 2, 1, NULL),
+(35, 'xxxxx', 'aaabxxxbb', 'abc@aa', '1234-01-01', '$2y$10$PInUfz6VV/RvpDRVTU.bP.Q3d2m.VkcnK0XVV.Dt65hX7pChtWG/e', 'zIbrZ4Gpci', '0', NULL, NULL, NULL, NULL, 2, 1, NULL),
+(36, 'xxxxxaaa', 'aaabxxaxbb', 'abc@aa', '1234-01-01', '$2y$10$4MMNrcDfWRO1T2J1yJM9XOJ1qH/t4MwKdHbn.WjzM2/iKVChMPMTK', '83wYti3sG5', '0', NULL, NULL, NULL, NULL, 2, 1, NULL),
+(37, '123a', '1xaxbb', 'abc@aa', '1234-01-01', '$2y$10$E4CPazh4UgL7nKOtjm6GgOmUOgBo0rMKUs7imeg9rIQD/kXNPm0Pi', 'EIETVAY3Ha', '0', NULL, NULL, NULL, NULL, 2, 1, NULL),
+(38, 'aasd', '1xaxasdbb', 'abc@aa', '1234-01-01', '$2y$10$6tXrKvAqIoXjmMZEPCkh1ub1/rIqqEbLZDB/1G7g3C.fFBXGOlDui', 'XW7h9avmuq', '0', NULL, NULL, NULL, NULL, 2, 1, NULL),
+(39, 'abc', '1xaxaacsdbb', 'abc@aa', '1234-01-01', '$2y$10$hJHV5s7OJWKo7h/RXelxxutp8JJgUyIhlq5CTHyYlv87Uc5XtChaS', 'rgVBSufYkD', '0', NULL, NULL, NULL, NULL, 2, 1, NULL),
+(40, 'aaaaa', '1xaaaaxaacsdbb', 'abc@aa', '1234-01-01', '$2y$10$lWBc2.7S3g9RIxvksAZEcONQVQp79gA2CqgUiM0H.azMz1yJumOaS', 'SN64w5IetP', '0', NULL, NULL, NULL, NULL, 2, 1, NULL),
+(41, 'aaaabba', '1xaaaabbxaacsdbb', 'abc@aa', '1234-01-01', '$2y$10$/1BCWfdoFxbYEs0dIZAWdOV.RqTeBMJfA8zVnYDxndVodH37ZDjmS', 'IJSxsjVhjP', '0', NULL, NULL, NULL, NULL, 2, 1, NULL),
+(42, 'aaacabba', 'cc', 'abc@aa', '1234-01-01', '$2y$10$1GKuNyeWCf4/KYD3mbs2veLjQq70q.f5G3AbSiXI5CtK/aI7zoMCe', 'oPD96pz3XF', '0', NULL, NULL, NULL, NULL, 2, 1, NULL),
+(43, 'aaacavbba', 'ccvvv', 'abc@aa', '1234-01-01', '$2y$10$MaoPpzkR7L2nFrP91d5n5e77QT7YFtYE58stxfRi5ZMnpzDgbd0BW', '1RQkcnkkGG', '0', NULL, NULL, NULL, NULL, 2, 1, NULL),
+(44, '1111', '1111', 'abc@aa', '1234-01-01', '$2y$10$YVsNOLNwwVMR0uacPT/xk.CH5cKyrCSGrTnH3qC2du0tBAcnLSpgu', 'XQUQUiM8qD', '0', NULL, NULL, NULL, NULL, 2, 1, NULL),
+(45, '11121', '12111', 'abc@aa', '1234-01-01', '$2y$10$2QXBLeOBpt4UFEep4MrapOq9czL0VBHj6FQSw.5OF6nSL/Tcetiau', 'Yf0eZOUnbl', '0', NULL, NULL, NULL, NULL, 2, 1, NULL),
+(46, '123', '123', 'abc@aa', '1234-01-01', '$2y$10$IeWWJGZeU4fwmXeN/4FU9uRxKPBW8GLENXRNS29/ZhQ9nvMi4FqbW', 'QxJzgcSQgd', '0', NULL, NULL, NULL, NULL, 2, 1, NULL),
+(48, '12xx3', 'xx123', 'abc@aa', '1234-01-01', '$2y$10$gVWyXS9XVTTXG57Wcq.PfOh1OOS3octtK6kLSiF0EHbiGJSmpPfCi', 'JJUWxtHyQM', '0', NULL, NULL, NULL, NULL, 2, 1, NULL),
+(49, '12xxx3', 'xx123x', 'abc@aa', '1234-01-01', '$2y$10$21OvVcnmCggUodhhz63qSeUvDYohYvaBz0kgS/gtyBTYFBsJz77la', 'G38tf6ayFw', '0', NULL, NULL, NULL, NULL, 2, 1, NULL),
+(50, 'vvvvv', 'vvvvv', 'abc@aa', '1234-01-01', '$2y$10$lRdJgfFuj8EPljyufX31CeOJ0VjA./XxOnLXyg3OjdtH8bxpnmEPC', 'Nbdf3OkqDb', '0', NULL, NULL, NULL, NULL, 2, 1, NULL),
+(51, 'vvvvvv', 'vvvvvv', 'abc@aa', '1234-01-01', '$2y$10$B4RtNE8hfe3R.QqeCUMjturrTs6hkiOFgq4XaClFwcu4ZBuI2xq6i', 'c2zt24rbPc', '3', NULL, NULL, NULL, NULL, 2, 1, NULL);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -1244,7 +1656,8 @@ ALTER TABLE `exams`
 --
 ALTER TABLE `questions`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `idTopic` (`idTopic`);
+  ADD KEY `idTopic` (`idTopic`),
+  ADD KEY `questions_ibfk_2` (`idadmin`);
 
 --
 -- Chỉ mục cho bảng `subjects`
@@ -1277,37 +1690,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `examquestion`
 --
 ALTER TABLE `examquestion`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1094;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1454;
 
 --
 -- AUTO_INCREMENT cho bảng `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT cho bảng `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `topics`
 --
 ALTER TABLE `topics`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -1330,7 +1743,8 @@ ALTER TABLE `exams`
 -- Các ràng buộc cho bảng `questions`
 --
 ALTER TABLE `questions`
-  ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`idTopic`) REFERENCES `topics` (`id`);
+  ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`idTopic`) REFERENCES `topics` (`id`),
+  ADD CONSTRAINT `questions_ibfk_2` FOREIGN KEY (`idadmin`) REFERENCES `admins` (`id`);
 
 --
 -- Các ràng buộc cho bảng `topics`

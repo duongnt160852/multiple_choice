@@ -54,7 +54,7 @@ class ExamController extends Controller
         }
 
         if($request->level1>0){
-            $question=Question::where([["idTopic",$request->topic],["level",1]])->inRandomOrder()->limit($request->level1)->get();
+            $question=Question::where([["idTopic",$request->topic],["level",1],['status',1]])->inRandomOrder()->limit($request->level1)->get();
            foreach ($question as $value) {
               $array_question[]=$value;
            }
@@ -70,7 +70,7 @@ class ExamController extends Controller
            }
         }
         if ($request->level2 >0){
-            $question=Question::where([["idTopic",$request->topic],["level",2]])->inRandomOrder()->limit($request->level2)->get();
+            $question=Question::where([["idTopic",$request->topic],["level",2],['status',1]])->inRandomOrder()->limit($request->level2)->get();
            $array_question=null;
            foreach ($question as $value) {
               $array_question[]=$value;
@@ -87,7 +87,7 @@ class ExamController extends Controller
            }
         }
         if ($request->level3>0){
-            $question=Question::where([["idTopic",$request->topic],["level",3]])->inRandomOrder()->limit($request->level3)->get();
+            $question=Question::where([["idTopic",$request->topic],["level",3],['status',1]])->inRandomOrder()->limit($request->level3)->get();
            $array_question=null;
            foreach ($question as $value) {
               $array_question[]=$value;
@@ -105,7 +105,7 @@ class ExamController extends Controller
            }
         }
         if ($request->level4>0){
-            $question=Question::where([["idTopic",$request->topic],["level",4]])->inRandomOrder()->limit($request->level4)->get();
+            $question=Question::where([["idTopic",$request->topic],["level",4],['status',1]])->inRandomOrder()->limit($request->level4)->get();
            $array_question=null;
            foreach ($question as $value) {
               $array_question[]=$value;
@@ -122,7 +122,7 @@ class ExamController extends Controller
             }
         }
         if ($request->level5>0){
-            $question=Question::where([["idTopic",$request->topic],["level",5]])->inRandomOrder()->limit($request->level5)->get();
+            $question=Question::where([["idTopic",$request->topic],["level",5],['status',1]])->inRandomOrder()->limit($request->level5)->get();
             $array_question=null;
             foreach ($question as $value) {
                 $array_question[]=$value;
@@ -151,5 +151,21 @@ class ExamController extends Controller
         }
         if (Auth::guard('admin')->user()->status=='1') return redirect("sadmin/exam/list")->with("thongbao","Xóa thành công");
         else return redirect("admin/exam/list")->with("thongbao","Xóa thành công");
+    }
+
+    public function getEdit($id){
+      $exam=Exam::where([['id',$id],['code',1]])->get()->first();
+      if (Auth::guard('admin')->user()->status=='1') return view('sadmin/exam/edit',['exam'=>$exam]);
+      return view('admin/exam/edit',['exam'=>$exam]);
+    }
+
+    public function postEdit(Request $request,$id){
+      $exam= Exam::where('id',$id)->get();
+      foreach ($exam as $ex) {
+        $ex->name=$request->name;
+        $ex->time=$request->time;
+        $ex->save();
+      }
+      return redirect()->back()->with('thongbao',"Sửa thành công");
     }
 }

@@ -23,7 +23,7 @@
                         </a>
                     </li>
                     <li id="user">
-                        <a href="#subUser" data-toggle="collapse" class="collapsed"><i class="ti-user"></i> <span>QUẢN LÝ THÍ SINH</span></a>
+                        <a href="#subUser" data-toggle="collapse" class="collapsed"><i class="ti-user"></i> <p>QUẢN LÝ THÍ SINH</p></a>
                         <div id="subUser" class="collapse in">
                             <ul class="nav">
                                 <li id="userList" style="margin: 0px;position: relative;left: 47px;width: 212px">
@@ -40,7 +40,7 @@
                         </div>
                     </li>  
                     <li>
-                        <a href="#subQuestion" data-toggle="collapse" class="collapsed"><i class="ti-gallery"></i> <span>QUẢN LÝ CÂU HỎI</span></a>
+                        <a href="#subQuestion" data-toggle="collapse" class="collapsed"><i class="ti-gallery"></i> <p>QUẢN LÝ CÂU HỎI</p></a>
                         <div id="subQuestion" class="collapse ">
                             <ul class="nav">
                                 <li id="questionList" style="margin: 0px;position: relative;left: 47px;width: 212px">
@@ -57,7 +57,7 @@
                         </div>
                     </li> 
                     <li>
-                        <a href="#subSubject" data-toggle="collapse" class="collapsed"><i class="ti-book"></i> <span>QUẢN LÝ MÔN THI</span></a>
+                        <a href="#subSubject" data-toggle="collapse" class="collapsed"><i class="ti-book"></i> <p>QUẢN LÝ MÔN THI</p></a>
                         <div id="subSubject" class="collapse ">
                             <ul class="nav">
                                 <li id="subjectList" style="margin: 0px;position: relative;left: 47px;width: 212px">
@@ -74,7 +74,7 @@
                         </div>
                     </li> 
                     <li>
-                        <a href="#subTopic" data-toggle="collapse" class="collapsed"><i class="ti-book"></i> <span>QUẢN LÝ CHỦ ĐỀ</span></a>
+                        <a href="#subTopic" data-toggle="collapse" class="collapsed"><i class="ti-book"></i> <p>QUẢN LÝ CHỦ ĐỀ</p></a>
                         <div id="subTopic" class="collapse ">
                             <ul class="nav">
                                 <li id="topicList" style="margin: 0px;position: relative;left: 47px;width: 212px">
@@ -91,7 +91,7 @@
                         </div>
                     </li> 
                     <li>
-                        <a href="#subExam" data-toggle="collapse" class="collapsed"><i class="ti-book"></i> <span>QUẢN LÝ ĐỀ THI</span></a>
+                        <a href="#subExam" data-toggle="collapse" class="collapsed"><i class="ti-book"></i> <p>QUẢN LÝ ĐỀ THI</p></a>
                         <div id="subExam" class="collapse ">
                             <ul class="nav">
                                 <li id="examList" style="margin: 0px;position: relative;left: 47px;width: 212px">
@@ -124,6 +124,13 @@
                             </div>
                             
                             <div class="content">
+                                @if(count($errors)>0)
+                                    @foreach($errors->all() as $err)
+                                    <div class="alert alert-danger" style="width:30%">
+                                     {{$err}}
+                                    </div>
+                                    @endforeach
+                                @endif
                                 @if(session('loi'))
                                     <div class="alert alert-danger" style="width:30%">
                                      {{session('loi')}}
@@ -167,7 +174,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Mã Số Dự Thi</label><!--Tên ADMIN-->
-                                                <input type="text" class="form-control border-input" name='username' placeholder="username" required="">
+                                                <input type="text" class="form-control border-input" name='username' placeholder="username" required="" pattern="[a-zA-Z0-9]{1,100}" title="Nhập sai MSDT">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -185,7 +192,7 @@
                                                     <div>
                                                         <label>Năm</label>
                                                     </div>
-                                                    <input class="form-control border-input" name="year" placeholder="Năm sinh" require=""  type="text" id="year">
+                                                    <input class="form-control border-input" name="year" placeholder="Năm sinh" require=""  type="text" id="year" pattern="[0-9]{4}" title="Nhập sai năm">
                                                 </div>
                                                 <div class="col-xs-4 col-md-4">
                                                     <div>

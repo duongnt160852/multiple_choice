@@ -77,7 +77,7 @@
                         <a href="#subTopic" data-toggle="collapse" class="collapsed"><i class="ti-book"></i> <p>QUẢN LÝ CHỦ ĐỀ</p></a>
                         <div id="subTopic" class="collapse ">
                             <ul class="nav">
-                                <li id="topicList" style="margin: 0px;position: relative;left: 47px;width: 212px">
+                                <li id="topicList" class="active" style="margin: 0px;position: relative;left: 47px;width: 212px">
                                     <a href="sadmin/topic/list">
                                         <p>DANH SÁCH CHỦ ĐỀ</p>
                                     </a>
@@ -92,9 +92,9 @@
                     </li> 
                     <li>
                         <a href="#subExam" data-toggle="collapse" class="collapsed"><i class="ti-book"></i> <p>QUẢN LÝ ĐỀ THI</p></a>
-                        <div id="subExam" class="collapse ">
+                        <div id="subExam" class="collapse in">
                             <ul class="nav">
-                                <li id="examList" style="margin: 0px;position: relative;left: 47px;width: 212px">
+                                <li id="examList" class="active" style="margin: 0px;position: relative;left: 47px;width: 212px">
                                     <a href="sadmin/exam/list">
                                         <p>DANH SÁCH ĐỀ THI</p>
                                     </a>
@@ -109,14 +109,14 @@
                     </li> 
                     <li>
                         <a href="#subAdmin" data-toggle="collapse" class="collapsed"><i class="ti-user"></i> <p>QUẢN LÝ ADMIN</p></a>
-                        <div id="subAdmin" class="collapse in">
+                        <div id="subAdmin" class="collapse ">
                             <ul class="nav">
                                 <li id="adminList" style="margin: 0px;position: relative;left: 47px;width: 212px">
                                     <a href="sadmin/admin/list">
                                         <p>DANH SÁCH ADMIN</p>
                                     </a>
                                 </li>
-                                <li id="adminAdd" class="active" style="margin: 0px;position: relative;left: 47px;width: 212px">
+                                <li id="adminAdd" style="margin: 0px;position: relative;left: 47px;width: 212px">
                                     <a href="sadmin/admin/add">
                                         <p>THÊM ADMIN</p>
                                     </a>
@@ -132,71 +132,50 @@
     </div>
 @endsection
 @section('content')
-    <div class="content">
+<div class="content">
             <div class="container-fluid">
-                <div class="card">
-                            <div class="header">
-                                <h4 class="title">Admin Mới</h4>
-                            </div>
-                            
-                            <div class="content">
-                                @if(count($errors)>0)
-                                    @foreach($errors->all() as $err)
-                                    <div class="alert alert-danger" style="width:30%">
-                                        {{$err}}
-                                    </div>
-                                    @endforeach
-                                @endif
-                                @if(session('thongbao'))
-                                    <div class="alert alert-success" style="width:30%">
-                                     {{session('thongbao')}}
-                                    </div>
-                                @endif
-                                <form action="sadmin/admin/add" method="post">
+                <form action="sadmin/exam/edit/{{$exam->id}}" method="post">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Họ tên</label>
-                                                <input type="text" class="form-control border-input" name="name" autofocus="" placeholder="Họ tên" required="">
+                                    <div class="form-group">
+                                        @if(count($errors)>0)
+                                            <div class="alert alert-danger" style="width: 30%">
+                                            {{$errors->all()[0]}} 
                                             </div>
-                                        </div>
-                                        <div class="col-md-6">
+                                        @endif
+                                        @if(session('thongbao'))
+                                            <div class="alert alert-success" style="width: 30%">
+                                               {{session('thongbao')}}
+                                            </div>
+                                        @endif
+                                     <div class="row">
+                                        <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Mật khẩu</label>
-                                                <input  type="text" class="form-control border-input" name="password" id="password" required="">
+                                                <label>Đề thi</label>
+                                                <input type="text" class="form-control border-input" required="" name="name" value="{{$exam->name}}">
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Tài khoản</label><!--Tên ADMIN-->
-                                                <input type="text" class="form-control border-input" name='username' placeholder="username" required="">
+                                                <label>Thời gian( phút)</label>
+                                                <input type="text" class="form-control border-input" required="" name="time" value="{{$exam->time}}">
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Địa Chỉ Email</label> <!--Email-->
-                                                <input type="email" class="form-control border-input" name='email' placeholder="Email" >
-                                            </div>
-                                        </div>
+                                    </div>
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-info btn-fill btn-wd">Thêm</button>
+                                        <button type="submit" class="btn btn-info btn-fill btn-wd">Sửa</button>
+                                        <a href="sadmin/exam/list" class="btn btn-info btn-fill btn-wd">Hủy</a>
                                     </div>
                                     <div class="clearfix"></div>
                                 </form>
-                            </div>
-                        </div>
+                </div>
             </div>
         </div>
 @endsection
 @section('script')
     <script>
-        $(document).ready(function(){
-            $('title').html("Thêm admin");
-        });
+    $("title").html("Sửa đề thi");
     </script>
 @endsection

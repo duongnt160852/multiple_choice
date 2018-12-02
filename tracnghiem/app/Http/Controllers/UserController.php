@@ -38,7 +38,9 @@ class UserController extends Controller
 				"username"=>"required|unique:users,username",
 				"date"=>"required",
 				"month"=>"required",
-				"year"=>"required|regex:/^[0-9]{4}$/"
+				"year"=>"required|regex:/^[0-9]{4}$/",
+				"topic"=>"required",
+				"exam"=>"required"
 			], 
 			[
 				"name.required"=>"Bạn chưa nhập tên thí sinh",
@@ -47,7 +49,9 @@ class UserController extends Controller
 				"date.required"=>"Bạn chưa nhập ngày",
 				"month.required"=>"Bạn chưa nhập tháng",
 				"year.required"=>"Bạn chưa nhập năm",
-				"year.regex"=>"Nhập sai năm"
+				"year.regex"=>"Nhập sai năm",
+				"topic.required"=>"Bạn chưa nhập chủ đề",
+				"exam.required"=>"Bạn chưa nhập đề thi"
 			]);
 		if ($validator->fails()) {
 			if (Auth::guard('admin')->user()->status=='1') return redirect('sadmin/user/add')->withErrors($validator);
@@ -70,9 +74,19 @@ class UserController extends Controller
 		else return redirect('admin/user/add')->with('thongbao','Thêm thành công');
 	}
 
-	public function postAdd1(){
-	    	Excel::load(Input::file('file'),function($reader){
+	public function postAdd1(Request $request){
+		if ($request->file==null) return redirect()->back()->with('loi','Không tồn tại tại file');  
+		$file=$request->file('file');
+		if($file->getClientOriginalExtension('file')!='xlsx') return redirect()->back()->with('loi','File không đúng định dạng');  
+		GLOBAL $validator;
+		GLOBAL $a;
+		$a=0;
+		$validator=Validator::make($request->all(),[],[]);
+	    Excel::load(Input::file('file'),function($reader){
+	    	GLOBAL $validator;
+	    	GLOBAL $a;
         	$reader->each(function($sheet){
+        		GLOBAL $validator;
         		$validator=Validator::make($sheet->toArray(), 
 					[
 						"username"=>"required|unique:users,username"
@@ -82,8 +96,9 @@ class UserController extends Controller
 						"username.unique"=>"MSDT đã tồn tại"
 					]);
 				if ($validator->fails()){
-					 $GLOBALS['errors'][]=$validator->errors()->messages()['username'][0];
-					 return;
+					GLOBAL $a;
+					$a=0;
+					return;
 				}
     			$user=new User;
     			$pass=str_random(10);
@@ -96,11 +111,13 @@ class UserController extends Controller
 	            $user->idExam=$sheet->toArray()['idexam'];
 	            $user->code=$sheet->toArray()['code'];
 	            $user->save();
+	            GLOBAL $a;
+	            $a=1;
         	});
         });
-        if (count($GLOBALS['errors'])==0 )return redirect()->back()->with('thongbao','Thêm thành công');
         
-        return redirect()->back()->with('loi',$GLOBALS['errors'][0]);
+        if($a==1) return redirect()->back()->with('thongbao','Thêm thành công');    
+         return redirect()->back()->withErrors($validator);
     }
 
 	public function getEdit($id){

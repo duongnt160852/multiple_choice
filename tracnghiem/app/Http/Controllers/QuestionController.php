@@ -51,6 +51,7 @@ class QuestionController extends Controller
 		$question->C=$request->C;
 		$question->D=$request->D;
 		$question->answer=$request->answer;
+		$question->idadmin=Auth::guard('admin')->user()->id;
 		$question->idTopic=$request->topic;
 		$question->level=$request->level;
 		$question->comment=$request->comment;
@@ -82,14 +83,6 @@ class QuestionController extends Controller
 
     public function delete($id){
     	$question=Question::find($id);
-    	$exam=Exam::where("idQuestion",$id)->get();
-    	foreach ($exam as $value) {
-    		$exam1=Exam::where("id",$value->id)->get();
-    		foreach ($exam1 as $value) {
-    			$value->status=0;
-    			$value->save();
-    		}
-    	}
     	$question->status=0;
     	$question->save();
     	if (Auth::guard('admin')->user()->status=='1') return redirect("sadmin/question/list")->with("thongbao","Xóa thành công");

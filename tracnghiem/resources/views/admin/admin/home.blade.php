@@ -23,7 +23,7 @@
                         </a>
                     </li>
                     <li id="user">
-                        <a href="#subUser" data-toggle="collapse" class="collapsed"><i class="ti-user"></i> <span>QUẢN LÝ THÍ SINH</span></a>
+                        <a href="#subUser" data-toggle="collapse" class="collapsed"><i class="ti-user"></i> <p>QUẢN LÝ THÍ SINH</p></a>
                         <div id="subUser" class="collapse">
                             <ul class="nav">
                                 <li id="userList" style="margin: 0px;position: relative;left: 47px;width: 212px">
@@ -40,7 +40,7 @@
                         </div>
                     </li>  
                     <li>
-                        <a href="#subQuestion" data-toggle="collapse" class="collapsed"><i class="ti-gallery"></i> <span>QUẢN LÝ CÂU HỎI</span></a>
+                        <a href="#subQuestion" data-toggle="collapse" class="collapsed"><i class="ti-gallery"></i> <p>QUẢN LÝ CÂU HỎI</p></a>
                         <div id="subQuestion" class="collapse ">
                             <ul class="nav">
                                 <li id="questionList" style="margin: 0px;position: relative;left: 47px;width: 212px">
@@ -57,7 +57,7 @@
                         </div>
                     </li> 
                     <li>
-                        <a href="#subSubject" data-toggle="collapse" class="collapsed"><i class="ti-book"></i> <span>QUẢN LÝ MÔN THI</span></a>
+                        <a href="#subSubject" data-toggle="collapse" class="collapsed"><i class="ti-book"></i> <p>QUẢN LÝ MÔN THI</p></a>
                         <div id="subSubject" class="collapse ">
                             <ul class="nav">
                                 <li id="subjectList" style="margin: 0px;position: relative;left: 47px;width: 212px">
@@ -74,7 +74,7 @@
                         </div>
                     </li> 
                     <li>
-                        <a href="#subTopic" data-toggle="collapse" class="collapsed"><i class="ti-book"></i> <span>QUẢN LÝ CHỦ ĐỀ</span></a>
+                        <a href="#subTopic" data-toggle="collapse" class="collapsed"><i class="ti-book"></i> <p>QUẢN LÝ CHỦ ĐỀ</p></a>
                         <div id="subTopic" class="collapse ">
                             <ul class="nav">
                                 <li id="topicList" style="margin: 0px;position: relative;left: 47px;width: 212px">
@@ -91,7 +91,7 @@
                         </div>
                     </li> 
                     <li>
-                        <a href="#subExam" data-toggle="collapse" class="collapsed"><i class="ti-book"></i> <span>QUẢN LÝ ĐỀ THI</span></a>
+                        <a href="#subExam" data-toggle="collapse" class="collapsed"><i class="ti-book"></i> <p>QUẢN LÝ ĐỀ THI</p></a>
                         <div id="subExam" class="collapse ">
                             <ul class="nav">
                                 <li id="examList" style="margin: 0px;position: relative;left: 47px;width: 212px">
@@ -119,7 +119,7 @@
     <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-3 col-sm-6">
+                    <div class="col-lg-4 col-sm-6">
                         <div class="card">
                             <div class="content">
                                 <div class="row">
@@ -144,7 +144,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6">
+                    <div class="col-lg-4 col-sm-6">
                         <div class="card">
                             <div class="content">
                                 <div class="row">
@@ -169,7 +169,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6">
+                    <div class="col-lg-4 col-sm-6">
                         <div class="card">
                             <div class="content">
                                 <div class="row">
@@ -194,7 +194,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6">
+{{--                     <div class="col-lg-3 col-sm-6">
                         <div class="card">
                             <div class="content">
                                 <div class="row">
@@ -217,7 +217,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="container-fluid">
@@ -236,40 +236,6 @@
                                 </div>
                             </div>
                             <hr>
-                        </div>
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Nhà Quản Trị</h4>
-                            </div>
-                            <div class="content">
-                                <ul class="list-unstyled team-members">
-                                    @foreach($alladmin as $a)
-                                        <li>
-                                            <div class="row">
-                                                <div class="col-xs-3">
-                                                    <div class="avatar">
-                                                        <img src="assets/img/faces/face-0.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6">
-                                                    {{$a->middlename." ".$a->name}}
-                                                    <br />
-                                                    
-                                                    @if($a->status=="online")
-                                                        <span class="text-success"><small>{{$a->status}}</small></span>
-                                                    @else
-                                                        <span class="text-muted"><small>{{$a->status}}</small></span>
-                                                    @endif
-                                                </div>
-                                                <div class="col-xs-3 text-right">
-                                                    <btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></btn>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    @endforeach
-
-                                        </ul>
-                            </div>
                         </div>
                     </div>
                     <div class="col-lg-8 col-md-7">
@@ -290,13 +256,13 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Tên Tài Khoản</label><!--Tên ADMIN-->
-                                                <input type="text" class="form-control border-input" disabled value="{{$adm->username}}">
+                                                <input type="text" class="form-control border-input" disabled value="{{$adm->username}}" >
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Địa Chỉ Email</label> <!--Email-->
-                                                <input type="email" class="form-control border-input" value="{{$adm->email}}" name="email">
+                                                <input type="email" class="form-control border-input" value="{{$adm->email}}" name="email" required="">
                                             </div>
                                         </div>
                                     </div>
@@ -305,13 +271,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Họ Và Tên Đệm</label>
-                                                <input type="text" class="form-control border-input"  value="{{$adm->middlename}}" name="middlename">
+                                                <input type="text" class="form-control border-input"  value="{{$adm->middlename}}" name="middlename" required="">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Tên</label>
-                                                <input type="text" class="form-control border-input"  value="{{$adm->name}}" name="name">
+                                                <input type="text" class="form-control border-input"  value="{{$adm->name}}" name="name" required="">
                                             </div>
                                         </div>
                                     </div>
@@ -320,18 +286,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Địa Chỉ</label>
-                                                <input type="text" class="form-control border-input" value="{{$adm->address}}" name="address">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>About Me</label>
-                                                <textarea rows="5" class="form-control border-input" placeholder="Here can be your description" value="Mike">Oh so, your weak rhyme
-You doubt I'll bother, reading into it
-I'll probably won't, left to my own devices
-But that's the difference in our opinions.</textarea>
+                                                <input type="text" class="form-control border-input" value="{{$adm->address}}" name="address" required="">
                                             </div>
                                         </div>
                                     </div>

@@ -71,6 +71,8 @@ Route::group(["prefix"=>"sadmin" ,"middleware"=>"auth:admin"],function(){
 		Route::get('list','ExamController@list');
 		Route::get('view/{id?}','ExamController@viewExam');
 		Route::get("delete/{id}","ExamController@delete");
+		Route::get("edit/{id}","ExamController@getEdit");
+		Route::post("edit/{id}","ExamController@postEdit");
 	});
 	Route::group(["prefix"=>"ajax"],function(){
 		Route::get("getdate","AjaxController@getDate");
@@ -136,6 +138,8 @@ Route::group(["prefix"=>"admin" ,"middleware"=>"auth:admin"],function(){
 		Route::get('list','ExamController@list');
 		Route::get('view/{id?}','ExamController@viewExam');
 		Route::get("delete/{id}","ExamController@delete");
+		Route::get("edit/{id}","ExamController@getEdit");
+		Route::post("edit/{id}","ExamController@postEdit");
 	});
 	Route::group(["prefix"=>"ajax"],function(){
 		Route::get("getdate","AjaxController@getDate");
