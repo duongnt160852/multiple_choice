@@ -120,7 +120,7 @@
             <div class="container-fluid">
                 <div class="card">
                             <div class="header">
-                                <h4 class="title">Thí Sinh Mới</h4>
+                                <h4 class="title">Câu Hỏi Mới</h4>
                             </div>
                             <div class="content">
                                 <form action="admin/question/add" method="post">

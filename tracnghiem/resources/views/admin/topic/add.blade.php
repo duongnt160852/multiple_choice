@@ -156,7 +156,7 @@
                                                 </div> 
                                             </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-info btn-fill btn-wd">Đăng Ký</button>
+                                        <button type="submit" class="btn btn-info btn-fill btn-wd">Thêm</button>
                                     </div>
                                     <div class="clearfix"></div>
                                 </form>

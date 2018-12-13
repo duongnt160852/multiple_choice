@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Auth as Auth;
 class LoginController extends Controller
 {
     public function getLoginAdmin(){
-    	return view("admin/admin/login");
+    	if (!Auth::guard("admin")->check()) return view("admin/admin/login");
+        if (Auth::guard("admin")->user()->status=="1") return redirect('sadmin/home');
+        return redirect('admin/home');
     }
 
     public function postLoginAdmin(Request $request){

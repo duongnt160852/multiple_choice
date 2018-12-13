@@ -58,12 +58,6 @@
 							Đăng Nhập
 						</button>
 					</div>
-
-					<div class="text-center p-t-90">
-						<a class="txt1" href="#">
-							Quên Mật Khẩu?
-						</a>
-					</div>
 				</form>
 			</div>
 		</div>

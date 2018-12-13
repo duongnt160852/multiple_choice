@@ -21,7 +21,7 @@ class AdminController extends Controller
 
 	public function home(){
 		$id=Auth::guard('admin')->user()->id;
-		$count_question=Question::where('idadmin',$id)->count();
+		$count_question=Question::where([['idadmin',$id],["status","1"]])->count();
 		$count_user=User::where("status","!=","3")->count();
 		$admin=Auth::guard('admin')->user();
 		$count_online=User::where('status',1)->count();
@@ -60,7 +60,7 @@ class AdminController extends Controller
 	}
 
 	public function getAdd(){
-		$admin= Admin::orderBy('id')->get();
+		$admin= Admin::where("status","2")->orderBy('id')->get();
 		if (Auth::guard('admin')->user()->status=='1') return view("sadmin.admin.add",["admin"=>$admin]);
 		else return view("admin.admin.add",["admin"=>$admin]);
 	}

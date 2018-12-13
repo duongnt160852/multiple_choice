@@ -159,7 +159,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Mật khẩu</label>
-                                                <input  type="text" class="form-control border-input" name="password" id="password" required="" value="{{str_random(10)}}">
+                                                <input  type="text" class="form-control border-input" name="password" id="password" required="" value="{{str_random(10)}}" readonly="">
                                             </div>
                                         </div>
                                         <div class="col-md-6" style="display: none">

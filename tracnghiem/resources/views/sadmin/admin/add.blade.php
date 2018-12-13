@@ -164,7 +164,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Mật khẩu</label>
-                                                <input  type="text" class="form-control border-input" name="password" id="password" required="">
+                                                <input  type="password" class="form-control border-input" name="password" id="password" required="">
                                             </div>
                                         </div>
                                     </div>

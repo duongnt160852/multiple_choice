@@ -28,20 +28,21 @@ class ExamController extends Controller
     }
 
     public function viewExam($id){
-        $exam=Exam::where([["id","=",$id],["code","=","1"]])->get()->first();
+        $exam=Exam::where([["id","=",$id],["code","=","1"],["status","1"]])->get()->first();
         $examquestion=Examquestion::where([["idExam","=",$id],["code","=","1"]])->orderBy('id')->get();
         if (Auth::guard('admin')->user()->status=='1') return view("sadmin.exam.view",["exam"=>$exam,"examquestion"=>$examquestion]);
         else return view("admin.exam.view",["exam"=>$exam,"examquestion"=>$examquestion]);
     }
 
     public function getAdd(){
-        $subject=Subject::orderBy('id')->get();
+        $subject=Subject::where("status","!=","0")->orderBy('id')->get();
         if (Auth::guard('admin')->user()->status=='1') return view("sadmin.exam.add",["subject"=>$subject]);
         else return view("admin.exam.add",["subject"=>$subject]);
     }
 
     public function postAdd(Request $request){
-
+      if((int)($request->level1)+(int)($request->level2)+(int)($request->level3)+(int)($request->level4)+(int)($request->level5)==0) return redirect()->back()->with("loi","Số lượng câu hỏi phải lớn hơn 0");
+      if($request->time=='0') return redirect()->back()->with("loi","Thời gian thi phải lớn hơn 0");
         $exam_max_id=Exam::max('id');
         for($j=1;$j<=12;$j++){
             $exam= new Exam;
@@ -144,7 +145,7 @@ class ExamController extends Controller
 
     public function delete($id)
     {
-        $exam=Exam::where("id",$id)->get();
+        $exam=Exam::where([["id","=",$id],["status","1"]])->get();
         foreach ($exam as $value) {
             $value->status=0;
             $value->save();
@@ -154,7 +155,7 @@ class ExamController extends Controller
     }
 
     public function getEdit($id){
-      $exam=Exam::where([['id',$id],['code',1]])->get()->first();
+      $exam=Exam::where([['id',$id],['code',1],["status","1"]])->get()->first();
       if (Auth::guard('admin')->user()->status=='1') return view('sadmin/exam/edit',['exam'=>$exam]);
       return view('admin/exam/edit',['exam'=>$exam]);
     }

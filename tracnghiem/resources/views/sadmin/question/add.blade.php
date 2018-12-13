@@ -136,7 +136,7 @@
             <div class="container-fluid">
                 <div class="card">
                             <div class="header">
-                                <h4 class="title">Thí Sinh Mới</h4>
+                                <h4 class="title">Câu Hỏi Mới</h4>
                             </div>
                             <div class="content">
                                 <form action="sadmin/question/add" method="post" name="form">
@@ -275,6 +275,7 @@
         
 @endsection
 @section('script')
+    <script src="ckeditor/plugins/ckeditor_wiris/plugin.js"></script>
     <script>
         $('#questionAdd').addClass("active");
         $("title").html("Thêm câu hỏi");

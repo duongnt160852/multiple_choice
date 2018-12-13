@@ -25,8 +25,8 @@ class UserController extends Controller
 	}
 
 	public function getAdd(){
-		$subject= Subject::orderBy('id')->get();
-		$topic=Topic::orderBy('id')->get();
+		$subject= Subject::where("status","!=","0")->orderBy('id')->get();
+		$topic=Topic::where("status","!=","0")->orderBy('id')->get();
 		if (Auth::guard('admin')->user()->status=='1') return view("sadmin.user.add",["subject"=>$subject,"topic"=>$topic]);
 		else return view("sadmin.user.add",["subject"=>$subject,"topic"=>$topic]);
 	}
@@ -75,7 +75,7 @@ class UserController extends Controller
 	}
 
 	public function postAdd1(Request $request){
-		if ($request->file==null) return redirect()->back()->with('loi','Không tồn tại tại file');  
+		if ($request->file==null) return redirect()->back()->with('loi','Không tồn tại file');  
 		$file=$request->file('file');
 		if($file->getClientOriginalExtension('file')!='xlsx') return redirect()->back()->with('loi','File không đúng định dạng');  
 		GLOBAL $validator;

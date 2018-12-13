@@ -20,7 +20,7 @@ class TopicController extends Controller
 		$this->middleware('auth:admin');
 	}
     public function getAdd(){
-		$subject= Subject::orderBy("id")->get();
+		$subject= Subject::where("status","1")->orderBy("id")->get();
 		if (Auth::guard('admin')->user()->status=='1') return view("sadmin.topic.add",["subject"=>$subject]);
 		else return view("admin.topic.add",["subject"=>$subject]);
 	}

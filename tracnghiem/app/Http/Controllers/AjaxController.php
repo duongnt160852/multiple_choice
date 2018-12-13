@@ -49,7 +49,7 @@ class AjaxController extends Controller
 
 	public function getTopic(){
 		$idSubject=$_REQUEST["str"];
-		$topic= Topic::where("idSubject",$idSubject)->get();
+		$topic= Topic::where([["idSubject",$idSubject],["status","1"]])->get();
 		foreach ($topic as $tp) {
 			echo "<option value='".$tp->id."'>".$tp->name."</option>";
 		} 

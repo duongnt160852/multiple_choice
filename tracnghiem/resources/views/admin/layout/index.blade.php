@@ -32,6 +32,7 @@
     <link href="assets/css/themify-icons.css" rel="stylesheet">
     <script src="ckeditor/ckeditor.js"></script>
     <script src="ckeditor/plugins/ckeditor_wiris/integration/WIRISplugins.js?viewer=image"></script>
+    <script async type="text/javascript" src="mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local"></script>
 
 </head>
 <body>
@@ -75,9 +76,9 @@
 	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 	<script src="assets/js/demo.js"></script>
 
-    <script type="text/javascript" async
+    {{-- <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
-</script>
+</script> --}}
     
 
     {{-- <script>

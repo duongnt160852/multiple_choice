@@ -26,7 +26,7 @@ class QuestionController extends Controller
 	}
 
 	public function getAdd(){
-		$subject= Subject::orderBy("id")->get();
+		$subject= Subject::where("status",1)->orderBy("id")->get();
 		if (Auth::guard('admin')->user()->status=='1') return view("sadmin.question.add",["subject"=>$subject]);
 		return view("admin.question.add",["subject"=>$subject]);
 	}
@@ -34,10 +34,18 @@ class QuestionController extends Controller
 	public function postAdd(Request $request){
 		$validator=Validator::make($request->all(), 
 			[
-				"name"=>"unique:questions,name"
+				"question"=>"required",
+				"A"=>"required",
+				"B"=>"required",
+				"C"=>"required",
+				"D"=>"required"
 			], 
 			[
-				"name.unique"=>"Câu hỏi đã tồn tại"
+				"question.required"=>"Bạn chưa nhập câu hỏi",
+				"A.required"=>"Bạn chưa nhập đáp án A",
+				"B.required"=>"Bạn chưa nhập đáp án B",
+				"C.required"=>"Bạn chưa nhập đáp án C",
+				"D.required"=>"Bạn chưa nhập đáp án D"
 			]);
 		if ($validator->fails()) {
 			if (Auth::guard('admin')->user()->status=='1') return redirect('sadmin/question/add')->withErrors($validator);

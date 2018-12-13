@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title></title>
+    <title>Làm Bài Thi</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -171,9 +171,7 @@
 
     <script type="text/javascript" language="javascript" src="ckeditor/ckeditor.js" ></script>
 
-    <script type="text/javascript" async
-            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
-    </script>
+    <script async type="text/javascript" src="mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local"></script>
     <script>
     var target_date = new Date().getTime() + (1000*60*<?php echo $exam->time ?>); // set the countdown date
     var hours, minutes, seconds; // variables for time units

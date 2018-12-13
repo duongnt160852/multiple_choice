@@ -159,7 +159,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Thời gian( phút)</label>
-                                                <input type="text" class="form-control border-input" required="" name="time" value="{{$exam->time}}">
+                                                <input type="text" class="form-control border-input" required="" name="time" value="{{$exam->time}}" pattern="[1-9][0-9]{0,2}" title="Nhập sai thời gian">
                                             </div>
                                         </div>
                                     </div>

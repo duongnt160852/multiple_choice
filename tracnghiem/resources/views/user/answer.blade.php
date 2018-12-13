@@ -169,9 +169,8 @@
 
     <script type="text/javascript" language="javascript" src="ckeditor/ckeditor.js" ></script>
 
-    <script type="text/javascript" async
-            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
-    </script>
+    <script async type="text/javascript" src="mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local"></script>
+    <script>
     <script>
     var target_date = new Date().getTime() + (1000*60*<?php echo $exam->time ?>); // set the countdown date
     var hours, minutes, seconds; // variables for time units
