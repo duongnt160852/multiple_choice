@@ -105,6 +105,11 @@
                         Đáp án: {!! $examquestion[$i]->question->answer !!}
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        {!! $examquestion[$i]->question->comment !!}
+                    </div>
+                </div>
             @endfor
             </form>
             </div>

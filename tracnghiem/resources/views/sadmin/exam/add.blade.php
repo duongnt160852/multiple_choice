@@ -241,7 +241,7 @@
                                                     <div>
                                                         <label>Thời gian thi</label>
                                                     </div>
-                                                    <input class="form-control border-input" type="text" name="time" value="" placeholder="Thời gian thi(phút)" required="" pattern="[1-9][0-9]{0,2}" title="Nhập sai thời gian">>
+                                                    <input class="form-control border-input" type="text" name="time" value="" placeholder="Thời gian thi(phút)" required="" pattern="[1-9][0-9]{0,2}" title="Nhập sai thời gian">
                                                 </div> 
                                                 
                                     </div>                                  
