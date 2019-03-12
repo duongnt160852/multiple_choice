@@ -267,7 +267,7 @@
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label>Company</label>
-                                                <input type="text" class="form-control border-input" disabled placeholder="Company" value="RABILOO">
+                                                <input type="text" class="form-control border-input" disabled placeholder="Company" value="HUST">
                                             </div>
                                         </div>
                                         <div class="col-md-3">

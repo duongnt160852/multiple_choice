@@ -52,7 +52,11 @@
 						<input class="input100" type="password" name="password" placeholder="Mật Khẩu">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
-
+					@if(session("thongbao"))
+						<div class="alert-danger">
+							{{session("thongbao")}}
+						</div>
+					@endif
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn" type="submit">
 							Đăng Nhập

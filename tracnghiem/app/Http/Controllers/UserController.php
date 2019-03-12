@@ -89,15 +89,35 @@ class UserController extends Controller
         		GLOBAL $validator;
         		$validator=Validator::make($sheet->toArray(), 
 					[
-						"username"=>"required|unique:users,username"
+						"username"=>"required|unique:users,username",
+						"name"=>"required",
+						"email"=>"required|email"
 					], 
 					[
 						"username.required"=>"MSDT trống",
-						"username.unique"=>"MSDT đã tồn tại"
+						"username.unique"=>"MSDT đã tồn tại",
+						"name.required"=>"Họ tên trống",
+						"email.required"=>"Email trống",
+						"email.email"=>"Email không đúng định dạng"
 					]);
 				if ($validator->fails()){
 					GLOBAL $a;
 					$a=0;
+					return;
+				}
+				if (!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$sheet->toArray()['dob'])){
+					GLOBAL $a;
+					$a=2;
+					return;
+				}
+				if (!preg_match("/^[1-9]|1[0-9]$/",$sheet->toArray()['idexam'])){
+					GLOBAL $a;
+					$a=3;
+					return;
+				}
+				if (!preg_match("/^[1-9]|1[0-2]$/",$sheet->toArray()['code'])){
+					GLOBAL $a;
+					$a=4;
 					return;
 				}
     			$user=new User;
@@ -117,7 +137,10 @@ class UserController extends Controller
         });
         
         if($a==1) return redirect()->back()->with('thongbao','Thêm thành công');    
-         return redirect()->back()->withErrors($validator);
+        if($a==0) return redirect()->back()->withErrors($validator);
+        if($a==2) return redirect()->back()->with('loi','Ngày sinh không đúng');
+        if($a==3) return redirect()->back()->with('loi','ID đề thi không đúng');
+        if($a==4) return redirect()->back()->with('loi','Mã đề thi không đúng');
     }
 
 	public function getEdit($id){
